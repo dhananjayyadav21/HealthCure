@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import BookSedule from '../components/BookSedule'
 
 const DoctorDetail = () => {
   return (
@@ -43,9 +44,9 @@ const DoctorDetail = () => {
             </section>  
 
             {/* DoctorDetail-Right-container  */}  
-            <section className='col-md-4 DoctorDetail-right-container d-flex justify-content-center align-items-center'>
-                <div className='bg-primary'>
-                        jhbhn
+            <section className='col-md-4 DoctorDetail-right-container d-flex justify-content-center d-none d-md-flex'>
+                <div className='bg-light p-4 rounded-4'>
+                    <BookSedule/>
                 </div>
             </section>
         </div>   

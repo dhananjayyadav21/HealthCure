@@ -1,9 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const DoctorCards = () => {
+
+   const navigate = useNavigate();
+
+   const ShowDoctorDetails = ()=>{
+      navigate("/doctorDetail")
+   }
+
   return (
     <>
-        <div className="col-sm-6 col-md-3">
+        <div className="col-sm-6 col-md-3" onClick={ShowDoctorDetails}>
             <div className='Doctor-card mx-1 rounded-3 d-flex flex-column justify-content-center align-items-center gap-2 shadow-sm rounded-3 cursor-pointer'>
                 <div className='Doctor-img-container rounded-top-3'>
                     <img className='card-img-top' src="assets/img/Doctor_icon.png" alt="Doctors" />
