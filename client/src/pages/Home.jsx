@@ -79,7 +79,6 @@ const Home = () => {
       <section className='px-3 mt-5 Doctor-container'>
        <h4 className='mt-3 mb-2 mt-sm-4 mb-sm-3 d-flex justify-content-start'>Top Doctor</h4>
         <div className="d-flex justify-content-center justify-content-sm-start align-items-center gap-3" >
-
           <div className='row g-3'>
             {Arra.map((e,index)=><DoctorCards key={index}/>)} 
           </div>

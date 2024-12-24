@@ -1,12 +1,11 @@
-:root{
-  --primary-bg-White:#ffffff;
-
+:root {
+  --primary-bg-White: #ffffff;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,118 +13,162 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-  font-family: 'Roboto', sans-serif;  
+  font-family: "Roboto", sans-serif;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
 
 
-/*========================================================= {Navbar} ===================================================*/
-.navbar{
+
+/*========================================================== {Navbar} ===================================================*/
+.navbar {
   background-color: var(--primary-bg-White);
   color: black;
 }
 
-.navbar img{
+.navbar img {
   height: 30px;
   width: 30px;
   border-radius: 50px;
 }
 
-.navbar .round-icon{
+.navbar .round-icon {
   width: 35px;
   height: 35px;
   border-radius: 50px;
   background: #ffffff;
 }
 
-.MobileBar-container{
+.MobileBar-container {
   background-color: #fbfafa;
   color: black;
 }
 
-/*=================================== {Home} ======================================*/
-.carousel img{
+
+
+
+/*============================================================= {Home} =======================================================*/
+.carousel img {
   width: 100%;
   height: 150px;
   object-fit: cover;
 }
 
-.Lets-start-container img{
-   height: 30px;
+.Lets-start-container img {
+  height: 30px;
 }
 
-.Lets-start-container p{
+.Lets-start-container p {
   font-size: xx-small;
 }
 
-.Doctor-img-container{
-  width:100%;
+.Doctor-img-container {
+  width: 100%;
   background-color: rgb(254, 202, 244);
 }
 
 .Doctor-container img,
-.Hotspital-container img{
+.Hotspital-container img {
   height: 200px;
   object-fit: contain;
 }
 
-.Hotspital-img-container{
-  width:100%;
+.Hotspital-img-container {
+  width: 100%;
   background-color: rgb(202, 254, 251);
 }
 
-/*==================================={get-start} ======================================*/
-.get-start img{
+/*====================================================== {get-start} =============================================================*/
+.get-start img {
   max-width: 90vw;
-   height: 50vh;
+  height: 50vh;
 }
 
-.get-start button{
+.get-start button {
   width: 350px;
 }
 
-/*===================================== {Auth} ===============================================*/
+
+
+
+
+/*========================================================== {Auth} ===============================================*/
 .SignIn-Container,
-.SignUp-Container{
+.SignUp-Container {
   height: 90vh !important;
 }
 
 .SignIn-Container i,
-.SignUp-Container i{
+.SignUp-Container i {
   color: rgb(5, 212, 212);
 }
 
 
-/*===================================== {Media query} ===========================*/
-@media screen and (min-width: 480px)  {
-  .carousel img{
+
+/*========================================================== {Doctor Detail} ======================================================*/
+.DoctorDetail-Banner img {
+  height: 200px;
+}
+
+.DoctorDetail-Banner .position-absolute {
+  top: 30%;
+  left: 40%;
+}
+
+.DoctorDetail-Name i {
+  color: rgb(221, 221, 5);
+}
+
+.DoctorDetail-left-container .btn-Appointment {
+  /* width: calc(100% - 14px); */
+  font-size: large;
+  font-weight: 600;
+  position: fixed;
+  bottom: 0;
+}
+
+/*================================================================= {Media query} ===========================================*/
+@media screen and (min-width: 480px) {
+  .carousel img {
     height: 220px;
   }
-  .Lets-start-container img{
+  .Lets-start-container img {
     height: 50px;
- }
- .Lets-start-container p{
-  font-size: small;
-  font-weight: 600;
- }
+  }
+  .Lets-start-container p {
+    font-size: small;
+    font-weight: 600;
+  }
 }
 
-@media screen and (max-width: 480px)  {
-  .Lets-start-container h5{
-  font-size: small ;
- }
- .get-start button{
-  width: 80vw;
-}
+@media screen and (max-width: 480px) {
+  .Lets-start-container h5 {
+    font-size: small;
+  }
+  .get-start button {
+    width: 80vw;
+  }
+  .DoctorDetail-Banner img {
+    height: 100px;
+  }
+  .position-absolute h5 {
+    font-size: small;
+  }
+  .position-absolute p {
+    font-size: xx-small;
+  }
 }
 
-@media screen and (min-width: 992px){
-  .carousel img{
+@media screen and (min-width: 720px) {
+  
+}
+
+@media screen and (min-width: 992px) {
+  .carousel img {
     height: 300px;
   }
 }
