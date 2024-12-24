@@ -14,8 +14,9 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
+  font-family: 'Roboto', sans-serif;  
 }
 
 
@@ -35,3 +36,37 @@ code {
   background-color: #fbfafa;
   color: black;
 }
+
+
+/*======================== {get-start} =======================*/
+.get-start img{
+  max-width: 90vw;
+   height: 50vh;
+}
+
+.get-start button{
+  width: 350px;
+}
+
+
+
+/*===================== Media query ===========================*/
+@media screen and (max-width: 480px)  {
+  .get-start button{
+    width: 80vw;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+
+}
+
+@media screen and (min-width: 992px){
+
+}
+
+
+@media screen and (min-width: 1280px){
+
+} 

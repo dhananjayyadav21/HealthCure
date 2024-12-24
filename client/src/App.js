@@ -2,6 +2,8 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import GetStart from "./pages/GetStart";
+import WelcomePage from "./components/WelcomePage";
 import AvailableSlots from "./components/AvailableSlots";
 import Reschedule from "./components/Reschedule";
 import Shedule from "./components/Shedule";
@@ -14,6 +16,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/getStart" element={<GetStart />}/>
+          <Route path="/welcomePage" element={<WelcomePage />}/>
           <Route path="/availableslots" element={<AvailableSlots />}/>
           <Route path="/shedule" element={<Shedule />}/>
           <Route path="/reschedule" element={<Reschedule />}/>

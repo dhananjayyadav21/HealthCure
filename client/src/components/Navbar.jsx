@@ -52,6 +52,9 @@ const Navbar = () => {
                     <div className='d-flex justify-content-between'>
                         <ul className="navbar-nav me-auto d-flex">
                             <li className="nav-item">
+                            <Link className="nav-text nav-link" to="/getStart">Getstart</Link>
+                            </li>
+                            <li className="nav-item">
                             <Link className="nav-text nav-link " to="/shedule">Shedule</Link>
                             </li>
                             <li className="nav-item">
@@ -63,6 +66,7 @@ const Navbar = () => {
                             <li className="nav-item">
                             <Link className="nav-text nav-link" to="/notification"><i class="fa-solid fa-bell"></i></Link>
                             </li>
+
                         </ul>
                     </div>
                 </div>
