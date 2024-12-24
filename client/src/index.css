@@ -14,9 +14,13 @@ body {
 }
 
 code {
-  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace; */
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
   font-family: 'Roboto', sans-serif;  
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 
@@ -44,13 +48,36 @@ code {
   color: black;
 }
 
-/*=================================== {carousel} ======================================*/
+/*=================================== {Home} ======================================*/
 .carousel img{
   width: 100%;
   height: 150px;
   object-fit: cover;
 }
 
+.Lets-start-container img{
+   height: 30px;
+}
+
+.Lets-start-container p{
+  font-size: xx-small;
+}
+
+.Doctor-img-container{
+  width:100%;
+  background-color: rgb(254, 202, 244);
+}
+
+.Doctor-container img,
+.Hotspital-container img{
+  height: 200px;
+  object-fit: contain;
+}
+
+.Hotspital-img-container{
+  width:100%;
+  background-color: rgb(202, 254, 251);
+}
 
 /*==================================={get-start} ======================================*/
 .get-start img{
@@ -76,16 +103,25 @@ code {
 
 /*===================================== {Media query} ===========================*/
 @media screen and (min-width: 480px)  {
-  .get-start button{
-    width: 80vw;
-  }
   .carousel img{
     height: 220px;
   }
+  .Lets-start-container img{
+    height: 50px;
+ }
+ .Lets-start-container p{
+  font-size: small;
+  font-weight: 600;
+ }
 }
 
-@media screen and (min-width: 768px) {
-  
+@media screen and (max-width: 480px)  {
+  .Lets-start-container h5{
+  font-size: small ;
+ }
+ .get-start button{
+  width: 80vw;
+}
 }
 
 @media screen and (min-width: 992px){
@@ -93,8 +129,3 @@ code {
     height: 300px;
   }
 }
-
-
-@media screen and (min-width: 1280px){
-
-} 
