@@ -18,14 +18,14 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/getStart" element={<GetStart />}/>
-          <Route path="/welcomePage" element={<WelcomePage />}/>
-          <Route path="/signIn" element={<SignIn />}/>
-          <Route path="/signUp" element={<SignUp />}/>
-          <Route path="/availableslots" element={<AvailableSlots />}/>
-          <Route path="/shedule" element={<Shedule />}/>
-          <Route path="/reschedule" element={<Reschedule />}/>
-          <Route path="/notification" element={<Notification />}/>
+          <Route path="/getStart" element={<GetStart />} />
+          <Route path="/welcomePage" element={<WelcomePage />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/availableslots" element={<AvailableSlots />} />
+          <Route path="/shedule" element={<Shedule />} />
+          <Route path="/reschedule" element={<Reschedule />} />
+          <Route path="/notification" element={<Notification />} />
         </Routes>
       </BrowserRouter>
     </>

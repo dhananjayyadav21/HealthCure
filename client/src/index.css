@@ -32,13 +32,27 @@ code {
   border-radius: 50px;
 }
 
+.navbar .round-icon{
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background: #ffffff;
+}
+
 .MobileBar-container{
   background-color: #fbfafa;
   color: black;
 }
 
+/*=================================== {carousel} ======================================*/
+.carousel img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
 
-/*======================== {get-start} =======================*/
+
+/*==================================={get-start} ======================================*/
 .get-start img{
   max-width: 90vw;
    height: 50vh;
@@ -48,7 +62,7 @@ code {
   width: 350px;
 }
 
-/*===================================== Auth ===============================================*/
+/*===================================== {Auth} ===============================================*/
 .SignIn-Container,
 .SignUp-Container{
   height: 90vh !important;
@@ -60,19 +74,24 @@ code {
 }
 
 
-/*===================== Media query ===========================*/
-@media screen and (max-width: 480px)  {
+/*===================================== {Media query} ===========================*/
+@media screen and (min-width: 480px)  {
   .get-start button{
     width: 80vw;
+  }
+  .carousel img{
+    height: 220px;
   }
 }
 
 @media screen and (min-width: 768px) {
-
+  
 }
 
 @media screen and (min-width: 992px){
-
+  .carousel img{
+    height: 300px;
+  }
 }
 
 

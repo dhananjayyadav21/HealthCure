@@ -29,7 +29,7 @@ const Navbar = () => {
                     {/* profile icon for MobileBar */}
                     <div className="nav-item dropdown">  
                         <a className="nav-text nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div><img  className='profile-img rounded-circle' src="https://www.ihgplc.com/~/media/Images/I/Ihg-Plc/images/news/2022/26-05-2022-ihg-hotels-and-resorts-is-proud-to-partner-with-pride-in-london/ihghr-pride-circle-RGB.png" alt="profile" /></div>
+                        <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><img  className='profile-img rounded-circle' src="https://www.ihgplc.com/~/media/Images/I/Ihg-Plc/images/news/2022/26-05-2022-ihg-hotels-and-resorts-is-proud-to-partner-with-pride-in-london/ihghr-pride-circle-RGB.png" alt="profile" /></div>
                         </a>
                         <ul className="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
                             <li><a className="dropdown-item" href="/">Edit Profile</a></li>
@@ -39,11 +39,11 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="nav-item d-lg-none">
-                         <Link className="nav-text nav-link" to="/notification"><i class="fa-solid fa-bell"></i></Link>
+                         <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i class="fa-solid fa-bell"></i></Link>
                     </div>
                     {/* Hamburger icon for MobileBar */}
-                    <i className={`fa-solid fa-bars mx-2 align-self-center d-lg-none d-${openMBDisply}`} onClick={openMobileBar}  ></i>
-                    <i className={`fa-solid fa-2x fa-xmark align-self-center d-lg-none d-${display}`} onClick={closeMobileBar}></i>
+                    <i className={`fa-solid fa-bars mx-1 align-self-center round-icon shadow-sm d-flex justify-content-center align-items-center d-lg-none d-${openMBDisply}`} onClick={openMobileBar}  ></i>
+                    <i className={`fa-solid fa-xmark align-self-center round-icon shadow-sm d-flex justify-content-center align-items-center d-lg-none d-${display}`} onClick={closeMobileBar}></i>
                 </span>
                 
                 {/* Colaps item Below Lg Screen */}
@@ -64,7 +64,7 @@ const Navbar = () => {
                             <Link className="nav-text nav-link " to="/reschedule">Reschedule</Link>
                             </li>
                             <li className="nav-item">
-                            <Link className="nav-text nav-link" to="/notification"><i class="fa-solid fa-bell"></i></Link>
+                            <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i class="fa-solid fa-bell"></i></Link>
                             </li>
 
                         </ul>
