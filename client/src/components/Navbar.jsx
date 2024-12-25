@@ -32,10 +32,10 @@ const Navbar = () => {
                         <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><img  className='profile-img rounded-circle' src="https://www.ihgplc.com/~/media/Images/I/Ihg-Plc/images/news/2022/26-05-2022-ihg-hotels-and-resorts-is-proud-to-partner-with-pride-in-london/ihghr-pride-circle-RGB.png" alt="profile" /></div>
                         </a>
                         <ul className="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
-                            <li><a className="dropdown-item" href="/">Edit Profile</a></li>
+                            <li><a className="dropdown-item" href="/">Role</a></li>
                             <li><a className="dropdown-item text-danger" href="/">Logout <i className="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                             <li><hr className="dropdown-divider"/></li>
-                            <li><a className="dropdown-item" href="/"><button className='btn btn-dark w-100'>My Appointment</button></a></li>
+                            <li><a className="dropdown-item" href="/"><button className='btn btn-dark w-100'>My Profile</button></a></li>
                         </ul>
                     </div>
                     <div className="nav-item d-lg-none">
