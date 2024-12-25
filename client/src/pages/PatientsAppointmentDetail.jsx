@@ -1,5 +1,4 @@
 import React from 'react'
-import AppointmentBill from '../components/AppointmentBill';
 import { Link } from 'react-router-dom';
 
 const PatientsAppointmentDetail = () => {
