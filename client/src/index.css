@@ -68,18 +68,51 @@ code {
 
 .Doctor-img-container {
   width: 100%;
-  background-color: rgb(254, 202, 244);
 }
 
 .Doctor-container img,
 .Hotspital-container img {
   height: 200px;
+  width: 100%;
   object-fit: contain;
+}
+
+.Hospital-Banner img{
+  height: 50vh;
+  width: 100%;
+  object-fit: cover, fill, contain;
 }
 
 .Hotspital-img-container {
   width: 100%;
   background-color: rgb(202, 254, 251);
+}
+
+.Hotspital-img-container img{
+  object-fit: cover;
+}
+
+.doctor-img-bg-1{
+  background-color: rgb(254, 202, 244);
+}
+.doctor-img-bg-2{
+  background-color: rgb(202, 224, 254);
+}
+.doctor-img-bg-3{
+  background-color: rgb(202, 254, 220);
+}
+.doctor-img-bg-4{
+  background-color: rgb(241, 254, 202);
+}
+.doctor-img-bg-5{
+  background-color: rgb(202, 248, 254);
+}
+.doctor-img-bg-6{
+  background-color: rgb(224, 202, 254);
+}
+
+.Footer-container{
+  background-color: rgb(13, 13, 20);
 }
 
 /*====================================================== {get-start} =============================================================*/
@@ -91,9 +124,6 @@ code {
 .get-start button {
   width: 350px;
 }
-
-
-
 
 
 /*========================================================== {Auth} ===============================================*/
@@ -156,7 +186,7 @@ code {
 /*================================================================= {Media query} ===========================================*/
 @media screen and (min-width: 480px) {
   .carousel img {
-    height: 220px;
+    height: 320px;
   }
   .Lets-start-container img {
     height: 50px;
@@ -183,6 +213,9 @@ code {
   .position-absolute p {
     font-size: xx-small;
   }
+  .Hospital-Banner img{
+    height: 30vh;
+  }
 }
 
 @media screen and (min-width: 720px) {
@@ -197,6 +230,6 @@ code {
 
 @media screen and (min-width: 992px) {
   .carousel img {
-    height: 300px;
+    height: 70vh;
   }
 }

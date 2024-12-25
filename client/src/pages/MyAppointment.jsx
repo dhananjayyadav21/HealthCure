@@ -1,4 +1,5 @@
 import React from 'react'
+import Appointmentcard from '../components/Appointmentcard'
 
 const MyAppointment = () => {
   return (
@@ -10,7 +11,7 @@ const MyAppointment = () => {
             {/* Missed Appointment */}
             <section className='col-md-4'>
                <div className='mx-2 bg-danger'>
-                     hhh
+                     <Appointmentcard/>
                </div>
             </section>
 

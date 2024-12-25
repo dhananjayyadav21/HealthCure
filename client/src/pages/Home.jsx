@@ -1,10 +1,11 @@
 import React from 'react'
 import DoctorCards from '../components/DoctorCards'
 import HotspitalCard from '../components/HotspitalCard'
+import Footer from "../components/Footer"
 
 const Home = () => {
 
-   let Arra = [{},{},{},{},{},{},{},]
+   let Arra = [{},{},{},{},{},{},{},{}]
 
   return (
     <div className='bg-light'>
@@ -20,7 +21,7 @@ const Home = () => {
               <button type="button" data-bs-target="#HomeBannerCrousal" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner rounded-4 border border-4 "> 
+            <div class="carousel-inner rounded-2 rounded-md-4 border border-2 "> 
               <div class="carousel-item active">
                   <img class="" src="assets/img/Home_banner_1.jpg" alt='1'/>
               </div>
@@ -50,49 +51,72 @@ const Home = () => {
 
       {/*================================= Lets Check =============================*/}
       <section className='px-4 Lets-start-container'>
-       <h5 className='mt-3 mb-2 mt-sm-4 mb-sm-3 text-secondary d-flex justify-content-center justify-content-sm-start'>Let`s start with HealthCure</h5>
-        <div className="d-flex justify-content-center justify-content-sm-start align-items-center gap-3" >
-          <div className='d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow-sm rounded-3 p-2 cursor-pointer'>
-              <img className='m-0 p-0' src="assets/img/Doctor_icon.png" alt="Doctors" />
+       <h5 className=' mb-2 mt-sm-4 mb-sm-3 text-secondary d-flex justify-content-center'>Let`s start with HealthCure</h5>
+        <div className="d-flex justify-content-center align-items-center gap-3" >
+          <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
+              <img className='m-0 p-0' src="assets/img/Doctor_3.png" alt="Doctors" />
               <small><p className='m-0'>Doctor</p></small>
           </div>
 
-          <div className='d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow-sm rounded-3 p-2 cursor-pointer'>
+          <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
               <img className='m-0 p-0' src="assets/img/apoinment.png" alt="Doctors" />
               <small><p className='m-0'>Appoinment</p></small>
           </div>
 
-          <div className='d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow-sm rounded-3t p-2 cursor-pointer'>
+          <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
               <img className='m-0 p-0' src="assets/img/sechudle.png" alt="Doctors" />
-              <small><p className='m-0'>Shedule</p></small>
+              <small><p className='m-0'>Reshedule</p></small>
           </div>
 
-          <div className='d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow-sm rounded-3 p-2 cursor-pointer'>
+          <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
               <img className='m-0 p-0' src="assets/img/notification.png" alt="Doctors" />
-              <small><p className='m-0'>Doctor</p></small>
+              <small><p className='m-0'>Notification</p></small>
           </div>
 
         </div>
       </section>
 
       {/*================================= Top Doctors =============================*/}
-      <section className='px-3 mt-5 Doctor-container'>
-       <h4 className='mt-3 mb-2 mt-sm-4 mb-sm-3 d-flex justify-content-start'>Top Doctor</h4>
+      <section className='container-md px-3 my-2 my-md-5 Doctor-container'>
+        <div className='container-md text-center'>
+          <h4 className='mt-3 mb-2 mt-sm-4 mb-sm-3'>Top Doctor</h4>
+          <p className='text-secondary'>End to end care from Top Surgeons at our HealthCure Care Clinics. Emphasizes comprehensive  medical services provided by leading surgeons at HealthCure clinics.</p>
+        </div> 
         <div className="d-flex justify-content-center justify-content-sm-start align-items-center gap-3" >
           <div className='row g-3'>
-            {Arra.map((e,index)=><DoctorCards key={index}/>)} 
+            {Arra.map((e,index)=>{
+              let currentIndex = index % 6;
+              return <DoctorCards key={index} index={currentIndex}/>
+          })} 
+          </div>
+        </div>
+      </section>
+
+      {/*================================= Hospital Banner =============================*/}
+      <section>
+        <div className='container-fluid Hospital-Banner'>
+          <img className='border border-3 rounded-4' src="assets/img/Doctor_banner.jpg" alt="Banner"/>
+        </div>
+      </section>
+
+      {/*================================= Top Hotspital =============================*/}
+      <section className='container-md px-3 my-5 Hotspital-container'>
+        <div className='text-center'>
+          <h4 className='mt-3 mb-2 mt-sm-4 mb-sm-3'>Top Hospital</h4>
+          <p className='text-secondary'>A top hospital is a premier healthcare institution known for its exceptional medical services, cutting-edge technology, and patient-centered care.</p>
+        </div>
+        <div className="d-flex justify-content-center justify-content-sm-start align-items-center gap-3" >
+          <div className='row g-3'>
+            {Arra.map((e,index)=>{
+            let currentIndex = index % 5;
+            return <HotspitalCard key={index} index={currentIndex}/>})} 
           </div>
         </div>
       </section>
 
       {/*================================= Top Hotspital =============================*/}
-      <section className='px-3 mt-5 Hotspital-container'>
-       <h4 className='mt-3 mb-2 mt-sm-4 mb-sm-3 d-flex justify-content-start'>Top Hospital</h4>
-        <div className="d-flex justify-content-center justify-content-sm-start align-items-center gap-3" >
-          <div className='row g-3'>
-            {Arra.map((e,index)=><HotspitalCard key={index}/>)} 
-          </div>
-        </div>
+      <section className='Footer'>
+         <Footer/> 
       </section>
       
     </div>

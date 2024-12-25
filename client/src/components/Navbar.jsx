@@ -49,10 +49,10 @@ const Navbar = () => {
                 {/* Colaps item Below Lg Screen */}
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     {/* Shedule, Available Slots, Reschedule, notification */}
-                    <div className='d-flex justify-content-between'>
-                        <ul className="navbar-nav me-auto d-flex">
+                    <div className='d-flex justify-content-between align-items-center'>
+                        <ul className="navbar-nav me-auto d-flex align-items-center">
                             <li className="nav-item">
-                            <Link className="nav-text nav-link" to="/getStart">Getstart</Link>
+                            <Link className="nav-text nav-link bg-info px-2 py-1 rounded-4 text-white fw-bold" to="/getStart">Getstart</Link>
                             </li>
                             <li className="nav-item">
                             <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
@@ -63,7 +63,6 @@ const Navbar = () => {
                             <li className="nav-item">
                             <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i class="fa-solid fa-bell"></i></Link>
                             </li>
-
                         </ul>
                     </div>
                 </div>

@@ -16,6 +16,8 @@ import PatientsAppointmentDetail from "./pages/PatientsAppointmentDetail";
 import AppointmentBill from "./components/AppointmentBill";
 
 import MyAppointment from "./pages/MyAppointment";
+import Appointmentcard from "./components/Appointmentcard";
+
 import AvailableSlots from "./components/AvailableSlots";
 import Reschedule from "./components/Reschedule";
 import Notification from "./components/Notification";
@@ -41,6 +43,8 @@ function App() {
           <Route path="/appointmentBill" element={<AppointmentBill />} />
 
           <Route path="/appointment" element={<MyAppointment />} />
+          <Route path="/appointmentcard" element={<Appointmentcard />} />
+
           <Route path="/availableslots" element={<AvailableSlots />} />
           <Route path="/reschedule" element={<Reschedule />} />
           <Route path="/notification" element={<Notification />} />

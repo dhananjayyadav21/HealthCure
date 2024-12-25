@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 const PatientsAppointmentDetail = () => {
   return (
     <>
-        <div className='p-2 p-md-4'>
-         
-         <div className='row'>
+        <div className='p-2 p-md-4'>      
+         <div className='d-flex justify-content-center align-items-center'>
              {/* PatientsAppointmentDetail-left-container  */}
              <section className='col-md-6 PatientsAppointmentDetail-left-container'>
                  <section className='DoctorDetail-Banner'>
@@ -57,11 +56,11 @@ const PatientsAppointmentDetail = () => {
              </section>  
  
              {/* DoctorDetail-Right-container  */}  
-             <section className='col-md-6 DoctorDetail-right-container d-flex justify-content-center d-none d-md-flex'>
+             {/* <section className='col-md-6 DoctorDetail-right-container d-flex justify-content-center d-none d-md-flex'>
                  <div className='AppointmentBill-container'>
                      <AppointmentBill/>
                  </div>
-             </section>
+             </section> */}
          </div>   
        </div>
 
