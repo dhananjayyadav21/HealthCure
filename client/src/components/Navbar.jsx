@@ -55,10 +55,7 @@ const Navbar = () => {
                             <Link className="nav-text nav-link" to="/getStart">Getstart</Link>
                             </li>
                             <li className="nav-item">
-                            <Link className="nav-text nav-link " to="/shedule">Shedule</Link>
-                            </li>
-                            <li className="nav-item">
-                            <Link className="nav-text nav-link " to="/availableslots">Available Slots</Link>
+                            <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
                             </li>
                             <li className="nav-item">
                             <Link className="nav-text nav-link " to="/reschedule">Reschedule</Link>

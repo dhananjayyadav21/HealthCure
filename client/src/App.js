@@ -2,16 +2,22 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+
 import GetStart from "./pages/GetStart";
 import OpeningPage from "./components/OpeningPage";
 import WelcomePage from "./components/WelcomePage";
+
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+
 import DoctorDetail from "./pages/DoctorDetail";
 import BookSedule from "./components/BookSedule";
+import PatientsAppointmentDetail from "./pages/PatientsAppointmentDetail";
+import AppointmentBill from "./components/AppointmentBill";
+
+import MyAppointment from "./pages/MyAppointment";
 import AvailableSlots from "./components/AvailableSlots";
 import Reschedule from "./components/Reschedule";
-import Shedule from "./components/Shedule";
 import Notification from "./components/Notification";
 
 function App() {
@@ -31,9 +37,11 @@ function App() {
 
           <Route path="/doctorDetail" element={<DoctorDetail />} />
           <Route path="/bookSedule" element={<BookSedule />} />
+          <Route path="/patientsAppointmentDetail" element={<PatientsAppointmentDetail />} />
+          <Route path="/appointmentBill" element={<AppointmentBill />} />
 
+          <Route path="/appointment" element={<MyAppointment />} />
           <Route path="/availableslots" element={<AvailableSlots />} />
-          <Route path="/shedule" element={<Shedule />} />
           <Route path="/reschedule" element={<Reschedule />} />
           <Route path="/notification" element={<Notification />} />
         </Routes>

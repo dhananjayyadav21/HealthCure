@@ -69,7 +69,7 @@ const BookSedule = () => {
         </section>
 
         <div>
-            <Link className='btn btn-warning btn-RequestAppointment text-white fw-sm-bold my-3' to="/">Request for Appointment</Link>
+            <Link className='btn btn-warning btn-RequestAppointment text-white fw-sm-bold my-3' to="/patientsAppointmentDetail">Request for Appointment</Link>
         </div>
 
       </div>

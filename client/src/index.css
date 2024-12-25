@@ -124,13 +124,34 @@ code {
 }
 
 .DoctorDetail-left-container .btn-Appointment,
-.btn-RequestAppointment {
+.btn-RequestAppointment{
   width: calc(100% - 16px);
   font-size: large;
   font-weight: 600;
   position: fixed;
   bottom: 0;
 }
+
+/*==================================================== {PatientsAppointment Detail} =================================================*/
+.AppointmentBill-form .form-control{
+   border: none; 
+}
+
+.AppointmentBill-form .form-control:hover,
+.AppointmentBill-form .form-control:focus-visible{
+  border: none; 
+  box-shadow: none;
+}
+
+.AppointmentBill-Patientdetails,
+.AppointmentBill-payment,
+.AppointmentBill-promocode,
+.AppointmentBill-name,
+.AppointmentBill-container{
+  background-color: var(--primary-bg-White);
+}
+
+
 
 /*================================================================= {Media query} ===========================================*/
 @media screen and (min-width: 480px) {
