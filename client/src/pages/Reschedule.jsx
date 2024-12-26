@@ -1,13 +1,11 @@
 import React from 'react'
-import Appointmentcard from './Appointmentcard'
+import Appointmentcard from '../components/Appointmentcard'
 import { useLocation } from 'react-router'
 
-const Reschedule = (props) => {
+const Reschedule = () => {
   let location = useLocation()
   const appointmentId = new URLSearchParams(location.search).get("appointmentId");
   console.log(appointmentId);
-
-  let Missed = [{},{}]
 
   return (
     <>
@@ -25,21 +23,22 @@ const Reschedule = (props) => {
         
                           <div className='Missed-Appointment scrollable '>
                             <div className='px-2'>
-                              {[{id:1},{id:2},{id:3},{id:4},{id:4}].map((ap)=>{
-                              return <Appointmentcard appointment={ap} /> })}  
+                              {[{id:1},{id:2},{id:3},{id:4},{id:4}].map((e,index)=>{
+                              let currentindex = index % 10
+                              return  <Appointmentcard key={index} index={currentindex}/> })}  
                             </div>
                           </div>
                       </div>
                  </div> 
              </section>
 
-            {appointmentId &&  <section className='col-md-7 Reschedule-Right-container' key={appointmentId}>
+            <section className='col-md-7 Reschedule-Right-container d-none d-md-flex' key={appointmentId}>
                  <div className='mx-md-1'>
                    {/* DoctorDetail-left-container  */}
                     <section className='DoctorDetail-left-container potion-relative'>
                         <section className='DoctorDetail-Banner'>
                             <div className='w-100 px-2 pt-2 border rounded-4 bg-white position-relative'>
-                                <img src={`assets/img/Doctor_${appointmentId}.png`} alt="Doctor" />
+                                <img src={`/assets/img/Doctor_5.png`} alt="Doctor" />
                                 <div className='position-absolute text-xenter'>
                                     <h5>Dr. Cyden Stack</h5>
                                     <p className='text-secondary'>Sr. Dental Specialist</p>
@@ -97,7 +96,7 @@ const Reschedule = (props) => {
                                     <div className="mb-3">
                                         <div className='border p-3 rounded-3 AppointmentBill-payment'>
                                             <h5>Visit Time</h5>
-                                            <p className='text-danger'><i class="fa-solid fa-circle-exclamation"></i> You missed your scheduled appointment. Please reschedule at your earliest convenience to ensure timely care.</p>
+                                            <p className='text-danger'><i className="fa-solid fa-circle-exclamation"></i> You missed your scheduled appointment. Please reschedule at your earliest convenience to ensure timely care.</p>
                                             <div className="text-secondary" >
                                               <div className='d-flex'>
                                                   <p className="m-1 w-25">Day</p>
@@ -110,102 +109,15 @@ const Reschedule = (props) => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className='col-md-6'>
-                                    <div className="mb-3">
-                                        <div className=' AppointmentBill-payment bg-light'>
-                                           <button className="btn btn-danger text-white" >Reschedile Appointment</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                                </div> 
                             </div>
                           </form>
                         </section>
                     </section> 
                  </div>
-             </section>}
+             </section>
         </div>
       </div> 
-
-        <section>      
-          {/* <!-- Modal --> */}
-          <div class="modal fade" id="RescheduleAppointment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="RescheduleAppointmentLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="RescheduleAppointmentLabel">Reschedule</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  
-                  {/* Sedule Date */}
-                    <section className='SeduleDate my-4'>
-                        <small><p className='fw-bold'>December</p></small>
-                        <div className='row g-2'>
-                          {Missed.map((e)=>
-                            <div className='col-3'>
-                                <div className='btn btn-outline-info fw-bolder rounded-3 d-flex flex-column justify-content-center'>
-                                <p className='m-0'>Mon</p>
-                                <p className='m-0'>10</p>
-                                </div>
-                            </div> )} 
-                        </div>
-                    </section>
-
-                    {/* Morning Slots */}
-                    <section className='MorningSlots my-4'>
-                        <small><p className='fw-bold'>Morning Slots</p></small>
-                        <div className='row g-2'>
-                          {Missed.map((e)=>
-                            <div className='col-4'>
-                                <div className='btn btn-outline-info rounded-3 d-flex justify-content-center'>
-                                    <p className='m-0'>10:30</p>
-                                    <p className='m-0'>Am</p>
-                                </div>
-                            </div> )} 
-                        </div>
-                    </section>
-
-                    {/* Afternoon Slots */}
-                    <section className='AfternoonSlots my-4'>
-                        <small><p className='fw-bold'>Afternoon Slots</p></small>
-                        <div className='row g-2'>
-                          {Missed.map((e)=>
-                            <div className='col-4'>
-                                <div className='btn btn-outline-info rounded-3 d-flex justify-content-center'>
-                                    <p className='m-0'>01:30</p>
-                                    <p className='m-0'>Pm</p>
-                                </div>
-                            </div> )} 
-                        </div>
-                    </section>
-
-                    {/* Evening Slots */}
-                    <section className='EveningSlots my-4'>
-                        <small><p className='fw-bold'>Evening Slots</p></small>
-                        <div className='row g-2'>
-                        {Missed.map((e)=>
-                            <div className='col-4'>
-                                <div className='btn btn-outline-info rounded-3 d-flex justify-content-center'>
-                                    <p className='m-0'>7:30</p>
-                                    <p className='m-0'>Pm</p>
-                                </div>
-                            </div> )} 
-                        </div>
-                    </section>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
-                  <button type="button" class="btn btn-primary">Update</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>  
-
 
     </>
   )

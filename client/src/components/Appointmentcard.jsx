@@ -2,19 +2,18 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Appointmentcard = (props) => {
-  
-  const {appointment} = props;
+
+  const {index} = props ;
   const navigate = useNavigate(); 
 
-  const SelectAppointment = (appointmentId)=>{
-    console.log(appointmentId)
-    navigate(`/reschedule?appointmentId=${appointmentId}`);
+  const ShowAppointmentDetails = ()=>{
+    navigate(`/patientDetailAfterBook/:${index}`);
   }
   return (
     <>
-        <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2 cursor-pointer' onClick={ ()=> SelectAppointment(appointment?.id)}>
+        <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2 cursor-pointer' onClick= {ShowAppointmentDetails}>
            <div className='Appointmentcard-img-container bg-light rounded-3'>
-              <img src="assets/img/Doctor_1.png" alt="doctor"/>
+              <img src={`/assets/img/Doctor_${index+1}.png`} alt="doctor"/>
            </div>
            <div className='w-100'>
               <div className='d-flex justify-content-between align-items-center'>
@@ -23,7 +22,7 @@ const Appointmentcard = (props) => {
                     <p className='text-secondary m-0'>Dentist</p>
                 </div>
                 <div>
-                    <img src="assets/img/Doctorr.png" alt="Call"  style={{width:"30px"}}/>
+                    <img src="/assets/img/Doctorr.png" alt="Call"  style={{width:"30px"}}/>
                 </div>
               </div>
               <div className='d-flex justify-content-between align-items-center'>

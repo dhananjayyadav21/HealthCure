@@ -75,8 +75,9 @@ const MyAppointment = () => {
   
                     <div className='Missed-Appointment scrollable '>
                       <div className='px-2'>
-                        {Missed.map(()=>{
-                        return  <Appointmentcard/> })}  
+                        {Missed.map((e,index)=>{
+                         let currentindex = index % 10
+                        return  <Appointmentcard key={index} index={currentindex}/> })}  
                       </div>
                     </div>
                 </div>
@@ -93,8 +94,9 @@ const MyAppointment = () => {
               
                     <div className='Upcomming-Appointment scrollable'>
                       <div className='px-2'>
-                        {Upcomming.map(()=>{
-                        return  <Appointmentcard/> })} 
+                        {Upcomming.map((e,index)=>{
+                         let currentindex = index % 10
+                        return  <Appointmentcard key={index} index={currentindex}/>})} 
                       </div>
                     </div>   
                 </div>
@@ -112,8 +114,9 @@ const MyAppointment = () => {
                  
                   <div className='Past-Appointment scrollable'>
                     <div className='px-2'>
-                      {Past.map(()=>{
-                      return  <Appointmentcard/> })} 
+                      {Past.map((e,index)=>{
+                      let currentindex = index % 10
+                      return  <Appointmentcard key={index} index={currentindex}/>})} 
                     </div> 
                   </div>
                 </div>

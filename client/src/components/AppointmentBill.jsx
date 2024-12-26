@@ -13,7 +13,7 @@ const AppointmentBill = () => {
                             <div className='col-12'>
                                 <div className="mb-3">
                                     <h5>Patient info:</h5> 
-                                    <div className='p-2 rounded-3 d-flex align-items-center AppointmentBill-name'><i class="fa-solid fa-user mx-2"></i> <input type="text" className="form-control" id="problem" placeholder="Name"/> </div>
+                                    <div className='p-2 rounded-3 d-flex align-items-center AppointmentBill-name'><i className="fa-solid fa-user mx-2"></i> <input type="text" className="form-control" id="problem" placeholder="Name"/> </div>
                                 </div>
                             </div>   
                             <div className='col-12'>
@@ -51,15 +51,15 @@ const AppointmentBill = () => {
                                     <div className='border p-3 rounded-3 AppointmentBill-payment'>
                                         <h5>How would you like to pay?</h5>
                                         <p className='text-secondary'>To make a payment, tap your desired payment method</p>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="VisaCard" id="VisaCard" checked/>
-                                            <label class="form-check-label" for="VisaCard">
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="VisaCard" id="VisaCard" checked/>
+                                            <label className="form-check-label" for="VisaCard">
                                                 Visa 
                                             </label>
                                             </div>
-                                            <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="Mastercard" id="Mastercard" />
-                                            <label class="form-check-label" for="Mastercard">
+                                            <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="Mastercard" id="Mastercard" />
+                                            <label className="form-check-label" for="Mastercard">
                                                 Mastercard
                                             </label>
                                         </div>

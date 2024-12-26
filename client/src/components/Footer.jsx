@@ -23,9 +23,9 @@ const Footer = () => {
           <div className="col-md-4 mb-3">
             <h5>Contact</h5>
             <p>
-              <a href="/" className='nav-link'><i class="fa-solid fa-phone mx-2"></i> +1-234-567-8901</a>
-              <a href="/" className='nav-link'><i class="fa-regular fa-envelope mx-2"></i> support@healthcure.com</a>
-              <a href="/" className='nav-link'><i class="fa-solid fa-location-crosshairs mx-2"></i> 123 HealthCure Street, City, Country</a>
+              <a href="/" className='nav-link'><i className="fa-solid fa-phone mx-2"></i> +1-234-567-8901</a>
+              <a href="/" className='nav-link'><i className="fa-regular fa-envelope mx-2"></i> support@healthcure.com</a>
+              <a href="/" className='nav-link'><i className="fa-solid fa-location-crosshairs mx-2"></i> 123 HealthCure Street, City, Country</a>
             </p>
           </div>
         </div>

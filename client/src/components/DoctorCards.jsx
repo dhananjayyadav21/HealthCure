@@ -2,12 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const DoctorCards = (props) => {
-   const {index} = props;
-  
-   const navigate = useNavigate();
 
+   const {index} = props;
+
+   const navigate = useNavigate();
+   
    const ShowDoctorDetails = ()=>{
-      navigate("/doctorDetail")
+      navigate(`/doctorDetail/${index}`)
    }
 
   return (

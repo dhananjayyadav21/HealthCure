@@ -32,7 +32,8 @@ code {
 
 .scrollable {
   scrollbar-color: #888 #e0e0e0;
-  scrollbar-width: thin
+  /* scrollbar-width: thin */
+  scrollbar-width:none
 }
 
 .cursor-pointer {

@@ -39,7 +39,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="nav-item d-lg-none">
-                         <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i class="fa-solid fa-bell"></i></Link>
+                         <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i className="fa-solid fa-bell"></i></Link>
                     </div>
                     {/* Hamburger icon for MobileBar */}
                     <i className={`fa-solid fa-bars mx-1 align-self-center round-icon shadow-sm d-flex justify-content-center align-items-center d-lg-none d-${openMBDisply}`} onClick={openMobileBar}  ></i>
@@ -61,7 +61,7 @@ const Navbar = () => {
                             <Link className="nav-text nav-link " to="/reschedule">Reschedule</Link>
                             </li>
                             {/* <li className="nav-item">
-                            <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i class="fa-solid fa-bell"></i></Link>
+                            <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i className="fa-solid fa-bell"></i></Link>
                             </li> */}
                         </ul>
                     </div>

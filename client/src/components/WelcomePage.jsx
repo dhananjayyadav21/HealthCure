@@ -6,7 +6,7 @@ const WelcomePage = () => {
     <>
        <div className="get-start d-flex flex-column justify-content-between align-items-center my-4 gap-5 text-center">
           <div className='d-flex flex-column justify-content-center'>
-            <img src="assets/img/Doctorr.png" alt="" />
+            <img src="/assets/img/Doctorr.png" alt="" />
             <h4 className='text-primary my-1'>HealthCure</h4>
             <p className='text-secondary'>Welcom to HealthCure</p>
           </div>

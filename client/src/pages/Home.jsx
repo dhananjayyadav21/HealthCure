@@ -12,38 +12,38 @@ const Home = () => {
       {/*================================================= crousal section =================================================*/}
       <section className='py-3 p-md-4'>
         <div className='container-fluid'>
-          <div id="HomeBannerCrousal" class="carousel slide">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#HomeBannerCrousal" data-bs-slide-to="0" class="active"
+          <div id="HomeBannerCrousal" className="carousel slide">
+            <div className="carousel-indicators">
+              <button type="button" data-bs-target="#HomeBannerCrousal" data-bs-slide-to="0" className="active"
                 aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#HomeBannerCrousal" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#HomeBannerCrousal" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner rounded-2 rounded-md-4 border border-2 "> 
-              <div class="carousel-item active">
-                  <img class="" src="assets/img/Home_banner_1.jpg" alt='1'/>
+            <div className="carousel-inner rounded-2 rounded-md-4 border border-2 "> 
+              <div className="carousel-item active">
+                  <img className="" src="/assets/img/Home_banner_1.jpg" alt='1'/>
               </div>
 
-              <div class="carousel-item">
-                  <img class="" src="assets/img/Home_banner_2.jpg" alt='2'/>
+              <div className="carousel-item">
+                  <img className="" src="/assets/img/Home_banner_2.jpg" alt='2'/>
               </div>
 
-              <div class="carousel-item">
-                  <img class="" src="assets/img/Home_banner_3.jpg" alt='3'/>
+              <div className="carousel-item">
+                  <img className="" src="/assets/img/Home_banner_3.jpg" alt='3'/>
               </div>
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#HomeBannerCrousal"
+            <button className="carousel-control-prev" type="button" data-bs-target="#HomeBannerCrousal"
               data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#HomeBannerCrousal"
+            <button className="carousel-control-next" type="button" data-bs-target="#HomeBannerCrousal"
               data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
             </button>
           </div>
         </div>
@@ -54,22 +54,22 @@ const Home = () => {
        <h5 className=' mb-2 mt-sm-4 mb-sm-3 text-secondary d-flex justify-content-center'>Let`s start with HealthCure</h5>
         <div className="d-flex justify-content-center align-items-center gap-3" >
           <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
-              <img className='m-0 p-0' src="assets/img/Doctor_3.png" alt="Doctors" />
+              <img className='m-0 p-0' src="/assets/img/Doctor_3.png" alt="Doctors" />
               <small><p className='m-0'>Doctor</p></small>
           </div>
 
           <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
-              <img className='m-0 p-0' src="assets/img/apoinment.png" alt="Doctors" />
+              <img className='m-0 p-0' src="/assets/img/apoinment.png" alt="Doctors" />
               <small><p className='m-0'>Appoinment</p></small>
           </div>
 
           <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
-              <img className='m-0 p-0' src="assets/img/sechudle.png" alt="Doctors" />
+              <img className='m-0 p-0' src="/assets/img/sechudle.png" alt="Doctors" />
               <small><p className='m-0'>Reshedule</p></small>
           </div>
 
           <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
-              <img className='m-0 p-0' src="assets/img/notification.png" alt="Doctors" />
+              <img className='m-0 p-0' src="/assets/img/notification.png" alt="Doctors" />
               <small><p className='m-0'>Notification</p></small>
           </div>
 
@@ -95,7 +95,7 @@ const Home = () => {
       {/*================================= Hospital Banner =============================*/}
       <section>
         <div className='container-fluid Hospital-Banner'>
-          <img className='border border-3 rounded-4' src="assets/img/Doctor_banner.jpg" alt="Banner"/>
+          <img className='border border-3 rounded-4' src="/assets/img/Doctor_banner.jpg" alt="Banner"/>
         </div>
       </section>
 

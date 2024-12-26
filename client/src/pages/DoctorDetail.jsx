@@ -5,14 +5,13 @@ import BookSedule from '../components/BookSedule'
 const DoctorDetail = () => {
   return (
     <>
-      <div className='p-2 p-md-4 DoctorDetail-Container '>
-         
+      <div className='p-2 p-md-4 DoctorDetail-Container '> 
         <div className='row'>
             {/* DoctorDetail-left-container  */}
             <section className='col-md-8 DoctorDetail-left-container potion-relative'>
                 <section className='DoctorDetail-Banner'>
                     <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative'>
-                        <img src="assets/img/Doctor_5.png" alt="Doctor" />
+                        <img src="/assets/img/Doctor_5.png" alt="Doctor" />
                         <div className='position-absolute text-xenter'>
                             <h5>Dr. Cyden Stack</h5>
                             <p className='text-secondary'>Sr. Dental Specialist</p>
@@ -24,11 +23,8 @@ const DoctorDetail = () => {
                     <div className='my-3 my-md-5'>
                     <h4>Medicine & Dental Specialist</h4>
                     <p className='text-secondary mb-2'>Good health clinic, MBBC, FCPS</p>
-                    <small><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span className='btn btn-warning rounded-5 mx-2 p-0 px-2 tex-white'>4.9</span></small>
+                    <small><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i> <span className='btn btn-warning rounded-5 mx-2 p-0 px-2 tex-white'>4.9</span></small>
                     </div>
-                    {/* <div className="">
-                    <Link className='btn btn-info text-white fw-sm-bold px-5 my-3 ' to="/">Book on Appointment</Link>
-                    </div> */}
                 </section>
 
                 <section className='DoctorDetail-About'>

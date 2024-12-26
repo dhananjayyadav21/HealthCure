@@ -9,23 +9,10 @@ const SignUp = () => {
 
             {/* <!-- SignUp Header --> */}
             <div className='mb-4'>
-                <i class="fa-solid fa-2x fa-user my-3"></i>
+                <i className="fa-solid fa-2x fa-user my-3"></i>
                 <h4 className="text-start mb-1 fw-bold">SignUp</h4>
                  <p className='text-secondary'>to continue to HealthCure</p>
             </div>
-
-            {/* <!-- Google SignUp Button --> */}
-            {/* <div className="d-grid">
-                <button className="btn btn-light border">
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon" className="me-2"  style={{width:"20px"}}/>
-                    Register with Google
-                </button>
-            </div> */}
-
-            {/* <!-- Divider --> */}
-            {/* <div className="text-center my-3">
-                <small>or</small>
-            </div> */}
             
             {/* <!-- SignUp Form --> */}
             <form noValidate>

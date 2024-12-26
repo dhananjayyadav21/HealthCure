@@ -9,24 +9,11 @@ const SignIn = () => {
 
             {/* <!-- Sing In Heading --> */}
             <div className='mb-4'>
-                <i class="fa-solid fa-2x fa-user my-3"></i>
+                <i className="fa-solid fa-2x fa-user my-3"></i>
                 <h4 className="text-start fw-bold mb-1">Sing In</h4>
                 <p className='text-secondary'>to continue to HealthCure</p>
             </div> 
            
-            {/* <!-- Google Sing In Button --> */}
-            {/* <div className="d-grid">
-                <button className="btn btn-light border">
-                    <img  src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon" className="me-2"  style={{width:"20px"}}/>
-                    Login with Google
-                </button>
-            </div> */}
-
-            {/* <!-- Divider --> */}
-            {/* <div className="text-center my-3">
-               <small>or</small>
-            </div> */}
-            
             {/* <!-- Sing In Form --> */}
             <form noValidate>
                 <div className="mb-3">

@@ -10,7 +10,7 @@ const PatientsAppointmentDetail = () => {
              <section className='col-md-6 PatientsAppointmentDetail-left-container'>
                  <section className='DoctorDetail-Banner'>
                      <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative'>
-                         <img src="assets/img/Doctor_5.png" alt="Doctor" />
+                         <img src="/assets/img/Doctor_5.png" alt="Doctor" />
                          <div className='position-absolute text-xenter'>
                              <h5>Dr. Cyden Stack</h5>
                              <p className='text-secondary'>Sr. Dental Specialist</p>

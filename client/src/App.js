@@ -18,9 +18,14 @@ import AppointmentBill from "./components/AppointmentBill";
 import MyAppointment from "./pages/MyAppointment";
 import Appointmentcard from "./components/Appointmentcard";
 
+
+import Reschedule from "./pages/Reschedule";
+import PatientDetailAfterBook from "./components/PatientDetailAfterBook";
+
 import AvailableSlots from "./components/AvailableSlots";
-import Reschedule from "./components/Reschedule";
 import Notification from "./components/Notification";
+
+import Notfound from "./pages/Notfound";
 
 function App() {
   return (
@@ -37,7 +42,7 @@ function App() {
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
 
-          <Route path="/doctorDetail" element={<DoctorDetail />} />
+          <Route path="/doctorDetail/:id" element={<DoctorDetail />} />
           <Route path="/bookSedule" element={<BookSedule />} />
           <Route path="/patientsAppointmentDetail" element={<PatientsAppointmentDetail />} />
           <Route path="/appointmentBill" element={<AppointmentBill />} />
@@ -45,9 +50,13 @@ function App() {
           <Route path="/appointment" element={<MyAppointment />} />
           <Route path="/appointmentcard" element={<Appointmentcard />} />
 
-          <Route path="/availableslots" element={<AvailableSlots />} />
+         
           <Route path="/reschedule" element={<Reschedule />} />
+          <Route path="/patientDetailAfterBook/:id" element={<PatientDetailAfterBook />} />
+
+          <Route path="/availableslots" element={<AvailableSlots />} />
           <Route path="/notification" element={<Notification />} />
+          <Route path="/*" element={<Notfound />} />
         </Routes>
       </BrowserRouter>
     </>
