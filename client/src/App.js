@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import UserProfile from "./pages/Profile";
 
 import GetStart from "./pages/GetStart";
 import OpeningPage from "./components/OpeningPage";
@@ -34,6 +35,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/userProfile" element={<UserProfile />} />
 
           <Route path="/getStart" element={<GetStart />} />
           <Route path="/openingPage" element={<OpeningPage />} />

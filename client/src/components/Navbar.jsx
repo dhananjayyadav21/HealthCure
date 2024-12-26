@@ -23,7 +23,7 @@ const Navbar = () => {
             <div className="container-fluid fs-6">
                     
                 {/* Brand-Logo For App */}
-                <Link className="nav-text navbar-brand mt-0" to="/"><h4 className='m-0'>HealthCure</h4></Link>
+                <h4 className='m-0'><Link className="nav-text nav-link navbar-brand mt-0" to="/">HealthCure</Link></h4>
         
                 <span className='d-flex align-items-center gap-2'>
                     {/* profile icon for MobileBar */}
@@ -35,7 +35,7 @@ const Navbar = () => {
                             <li><a className="dropdown-item" href="/">Role</a></li>
                             <li><a className="dropdown-item text-danger" href="/">Logout <i className="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                             <li><hr className="dropdown-divider"/></li>
-                            <li><a className="dropdown-item" href="/"><button className='btn btn-dark w-100'>My Profile</button></a></li>
+                            <li><a className="dropdown-item" href="/userProfile"><button className='btn btn-dark w-100'>My Profile</button></a></li>
                         </ul>
                     </div>
                     <div className="nav-item d-lg-none">
