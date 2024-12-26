@@ -32,55 +32,48 @@ const MyAppointment = () => {
 
   return (
     <>
-      <div className='my-3'>
+      <div className='py-md-3 bg-light'>
         <div className='container-fluid MyAppointment-container'>
             <div className='row'>
 
-             <section className='container-fluid d-md-none'>
-                <div className='d-flex justify-content-around align-items center my-2'>
-                 
+             <section className='container-fluid d-md-none bg-white mb-2 position-sticy top-0'>
+                <div className='d-flex justify-content-around align-items center my-2'>     
                   {/* Missed Appointment */}
                   <section className='col-4' onClick={showMissed} >
-                    <div className='d-flex justify-content-center align-items-center gap-1 p-1 bg-light mx-2 rounded-3'>
+                    <div className='d-flex justify-content-center align-items-center gap-1 p-1 bg-white mx-2 rounded-3'>
                       <span className='btn btn-danger rounded-circle p-1 m-0'></span>
                       <p className='m-0'>Missed</p> 
-                      <span className="count-icon bg-danger shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
                     </div>
                   </section>
 
                   {/* upco Appointment */}
                   <section className='col-4' onClick={showUpco}>
-                    <div className='d-flex justify-content-center align-items-center gap-1 p-1 bg-light mx-2 rounded-3'>
+                    <div className='d-flex justify-content-center align-items-center gap-1 p-1 bg-white mx-2 rounded-3'>
                       <span className='btn btn-warning rounded-circle p-1 m-0'></span>
                       <p className='m-0'>Up-co</p> 
-                      <span className="count-icon bg-warning shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
                     </div>
                   </section>
 
                   {/* past Appointment */}
                   <section className='col-4' onClick={showPast}>
-                    <div className='d-flex justify-content-center align-items-center gap-1 p-1 bg-light mx-2 rounded-3'>
+                    <div className='d-flex justify-content-center align-items-center gap-1 p-1 bg-white mx-2 rounded-3'>
                      <span className='btn btn-success rounded-circle p-1 m-0'></span> 
                       <p className='m-0'>Past</p> 
-                      <span className="count-icon bg-success shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
                     </div>
                   </section>
-
                </div>
              </section>
 
               {/* Missed Appointment */}
-              <section className={`col-md-4 d-${Mdisplay} my-1`}>
-                <div className=' bg-light p-1 py-3 rounded-4'>
-                    <div className='d-flex justify-content-center align-items-center gap-3 px-2'>
+              <section className={`col-md-4 d-${Mdisplay}`}>
+                <div className='p-1'>
+                    <div className={`d-flex justify-content-center align-items-center gap-3 m-2 py-2 bg-white rounded-2 border`}>
                       <span className='btn btn-danger rounded-circle p-1 m-0'></span>
-                      <h5 className='m-0'>Missed</h5> 
+                      <h6 className='m-0'>Missed</h6> 
                       <span className="count-icon bg-danger shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
                     </div>
-                    <div className='px-3'>
-                       <hr /> 
-                    </div>
-                    <div className='Missed-Appointment scrollable'>
+  
+                    <div className='Missed-Appointment scrollable '>
                       <div className='px-2'>
                         {Missed.map(()=>{
                         return  <Appointmentcard/> })}  
@@ -90,16 +83,14 @@ const MyAppointment = () => {
               </section>
 
               {/* Upcomming Appointment */}
-              <section className={`col-md-4 d-${Udisplay} my-1`}>
-                <div className=' bg-light p-1 rounded-4'>
-                    <div className='d-flex justify-content-center align-items-center gap-3 p-2'>
+              <section className={`col-md-4 d-${Udisplay}`}>
+                <div className='p-1'>
+                    <div className={`bg-white d-flex justify-content-center align-items-center gap-3 m-2 py-2 bg-white rounded-2 border`}>
                       <span className='btn btn-warning rounded-circle p-1 m-0'></span>
-                      <h5 className='m-0'>Upcomming</h5> 
+                      <h6 className='m-0'>Upcomming</h6> 
                       <span className="count-icon bg-warning shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
                     </div>
-                    <div className='px-3'>
-                       <hr /> 
-                    </div>
+              
                     <div className='Upcomming-Appointment scrollable'>
                       <div className='px-2'>
                         {Upcomming.map(()=>{
@@ -110,18 +101,17 @@ const MyAppointment = () => {
               </section> 
 
               {/* Past Appointment */}
-              <section className={`col-md-4 d-${Pdisplay} my-1`}>
-                <div className=' bg-light p-1 rounded-4'>
-                  <div className='d-flex justify-content-center align-items-center gap-3 p-2'>
+              <section className={`col-md-4 d-${Pdisplay}`}>
+                <div className='p-1'>
+                  <div className={`bg-white d-flex justify-content-center align-items-center gap-3 m-2 py-2 bg-white rounded-2 
+                    border`}>
                     <span className='btn btn-success rounded-circle p-1 m-0'></span>
-                    <h5 className='m-0'>Past</h5> 
+                    <h6 className='m-0'>Past</h6> 
                     <span className="count-icon bg-success shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
                   </div>
-                  <div className='px-3'>
-                     <hr /> 
-                  </div>
+                 
                   <div className='Past-Appointment scrollable'>
-                    <div className='p-2'>
+                    <div className='px-2'>
                       {Past.map(()=>{
                       return  <Appointmentcard/> })} 
                     </div> 

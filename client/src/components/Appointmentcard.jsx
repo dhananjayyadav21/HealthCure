@@ -1,9 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Appointmentcard = () => {
+const Appointmentcard = (props) => {
+  
+  const {appointment} = props;
+  const navigate = useNavigate(); 
+
+  const SelectAppointment = (appointmentId)=>{
+    console.log(appointmentId)
+    navigate(`/reschedule?appointmentId=${appointmentId}`);
+  }
   return (
     <>
-        <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2'>
+        <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2 cursor-pointer' onClick={ ()=> SelectAppointment(appointment?.id)}>
            <div className='Appointmentcard-img-container bg-light rounded-3'>
               <img src="assets/img/Doctor_1.png" alt="doctor"/>
            </div>

@@ -53,13 +53,6 @@ const PatientsAppointmentDetail = () => {
                     </div>
                 </section>
              </section>  
- 
-             {/* DoctorDetail-Right-container  */}  
-             {/* <section className='col-md-6 DoctorDetail-right-container d-flex justify-content-center d-none d-md-flex'>
-                 <div className='AppointmentBill-container'>
-                     <AppointmentBill/>
-                 </div>
-             </section> */}
          </div>   
        </div>
 

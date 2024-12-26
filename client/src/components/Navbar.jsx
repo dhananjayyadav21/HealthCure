@@ -60,9 +60,9 @@ const Navbar = () => {
                             <li className="nav-item">
                             <Link className="nav-text nav-link " to="/reschedule">Reschedule</Link>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                             <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i class="fa-solid fa-bell"></i></Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
@@ -76,11 +76,8 @@ const Navbar = () => {
                 
                     {/* Shedule, Available Slots, Reschedule, notification */}
                     <div onClick={closeMobileBar}>
-                        <li className="nav-item">
-                        <Link className="nav-text nav-link " to="/shedule">Shedule</Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link className="nav-text nav-link " to="/availableslots">Available Slots</Link>
+                    <li className="nav-item">
+                        <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
                         </li>
                         <li className="nav-item">
                         <Link className="nav-text nav-link " to="/reschedule">Reschedule</Link>

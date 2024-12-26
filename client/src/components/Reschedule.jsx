@@ -1,53 +1,133 @@
 import React from 'react'
+import Appointmentcard from './Appointmentcard'
+import { useLocation } from 'react-router'
 
-const Reschedule = () => {
+const Reschedule = (props) => {
+  let location = useLocation()
+  const appointmentId = new URLSearchParams(location.search).get("appointmentId");
+  console.log(appointmentId);
 
   let Missed = [{},{}]
 
   return (
     <>
-      <div className=''>
-        <section className='col-md-4'>
-         {/* Missed Appointment */}
-         <section className={`m-4`}>
-            <div className=' bg-light p-1 py-3 rounded-4'>
-                <div className='d-flex justify-content-center align-items-center gap-3 px-2'>
-                  <span className='btn btn-danger rounded-circle p-1 m-0'></span>
-                  <h5 className='m-0'>Reschedule</h5> 
-                </div>
-                <div className='px-3'>
-                    <hr /> 
-                </div>
-                <div className='Missed-Appointment scrollable'>
-                  <div className='px-2'>
-                    {Missed.map(()=>
-                     <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2'>
-                        <div className='Appointmentcard-img-container bg-light rounded-3'>
-                            <img src="assets/img/Doctor_1.png" alt="doctor"/>
-                        </div>
-                        <div className='w-100'>
-                            <div className='d-flex justify-content-between align-items-center'>
-                              <div className='my-2'>
-                                  <h6 className='m-0'>Dr. Doctor Name</h6>
-                                  <p className='text-secondary m-0'>Dentist</p>
-                              </div>
-                              <div>
-                                <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#RescheduleAppointment"></i>
-                              </div>
+      <div className='container-fluid py-3 bg-light'>
+        <div className='row'>
+             
+             <section className='col-md-5 Reschedule-left-container'>
+                 <div className='mx-md-1'>
+                    {/* Reschedule Appointment */}
+                      <div className='p-1'>
+                          <div className={`d-flex justify-content-center align-items-center gap-3 m-2 py-2 bg-white rounded-2 border`}>
+                            <span className='btn btn-danger rounded-circle p-1 m-0'></span>
+                            <h6 className='m-0'>Reschedule Appointment</h6> 
+                          </div>
+        
+                          <div className='Missed-Appointment scrollable '>
+                            <div className='px-2'>
+                              {[{id:1},{id:2},{id:3},{id:4},{id:4}].map((ap)=>{
+                              return <Appointmentcard appointment={ap} /> })}  
                             </div>
-                            <div className='d-flex justify-content-between align-items-center'>
-                              <p className='text-secondary m-0'>5 Dec 2023</p>
-                              <p className='badge bg-info rounded-5 m-0'>Status</p>
+                          </div>
+                      </div>
+                 </div> 
+             </section>
+
+            {appointmentId &&  <section className='col-md-7 Reschedule-Right-container' key={appointmentId}>
+                 <div className='mx-md-1'>
+                   {/* DoctorDetail-left-container  */}
+                    <section className='DoctorDetail-left-container potion-relative'>
+                        <section className='DoctorDetail-Banner'>
+                            <div className='w-100 px-2 pt-2 border rounded-4 bg-white position-relative'>
+                                <img src={`assets/img/Doctor_${appointmentId}.png`} alt="Doctor" />
+                                <div className='position-absolute text-xenter'>
+                                    <h5>Dr. Cyden Stack</h5>
+                                    <p className='text-secondary'>Sr. Dental Specialist</p>
+                                </div>
                             </div>
-                        </div>
-                      </div>)} 
-                  </div>
-                </div>
-            </div>
-          </section>
-        </section>
+                        </section>
 
+                        <section className='DoctorDetail-Name d-flex justify-content-between align-items-center my-2'>
+                          {/* <!-- Form --> */}
+                          <form className='AppointmentBill-form'>
+                            <div className='row'>  
+                                <div className='col-md-6'>
+                                    <div className="mb-3">
+                                        <div className='border p-3 rounded-3 AppointmentBill-Patientdetails'>
+                                            <h6>Fee details :</h6>
+                                            <div className='d-flex justify-content-between text-secondary'>
+                                                <p className='m-1'>Consultion Fees</p> 
+                                                <p className='m-1'>$55</p>
+                                            </div> 
+                                            <div className='d-flex justify-content-between text-secondary'>
+                                                <p className='m-1'>Vat <span>(5%)</span></p> 
+                                                <p className='m-1'>$4.5</p>
+                                            </div>
+                                            <div className='d-flex justify-content-between text-secondary'>
+                                                <p className="m-1" >Total</p>
+                                                <p className='m-1'>$59.5</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div className='col-md-6'>
+                                    <div className="mb-3">
+                                        <div className='border p-3 rounded-3 AppointmentBill-Patientdetails'>
+                                            <h6>Patient info:</h6>
+                                            <div className="text-secondary" >
+                                              <div className='d-flex'>
+                                                  <p className="m-1 w-25">Name</p>
+                                                  <p className='m-1'>: Marko janson</p>
+                                              </div>
+                                              <div className='d-flex'>
+                                                  <p className="m-1 w-25">Age</p>
+                                                  <p className='m-1'>: Age janson</p>
+                                              </div>
+                                              <div className='d-flex'>
+                                                  <p className="m-1 w-25">Weight </p>
+                                                  <p className='m-1'>: Weight janson</p>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+ 
+                                <div className='col-12'>
+                                    <div className="mb-3">
+                                        <div className='border p-3 rounded-3 AppointmentBill-payment'>
+                                            <h5>Visit Time</h5>
+                                            <p className='text-danger'><i class="fa-solid fa-circle-exclamation"></i> You missed your scheduled appointment. Please reschedule at your earliest convenience to ensure timely care.</p>
+                                            <div className="text-secondary" >
+                                              <div className='d-flex'>
+                                                  <p className="m-1 w-25">Day</p>
+                                                  <p className='m-1'>: 10 Dec 2024</p>
+                                              </div>
+                                              <div className='d-flex'>
+                                                  <p className="m-1 w-25">Time</p>
+                                                  <p className='m-1'>: Afternoon - 2:00-2:15</p>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='col-md-6'>
+                                    <div className="mb-3">
+                                        <div className=' AppointmentBill-payment bg-light'>
+                                           <button className="btn btn-danger text-white" >Reschedile Appointment</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                          </form>
+                        </section>
+                    </section> 
+                 </div>
+             </section>}
+        </div>
+      </div> 
 
         <section>      
           {/* <!-- Modal --> */}
@@ -126,7 +206,6 @@ const Reschedule = () => {
           </div>
         </section>  
 
-      </div> 
 
     </>
   )

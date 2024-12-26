@@ -215,7 +215,7 @@ code {
 .Missed-Appointment,
 .Upcomming-Appointment,
 .Past-Appointment{
-  height: 76vh;
+  height: 80vh;
 }
 
 .MyAppointment-container .count-icon {
