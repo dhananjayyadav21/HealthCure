@@ -66,7 +66,7 @@ code {
 }
 
 .MobileBar-container {
-  background-color: #fbfafa;
+  background-color: #e5e2e2;
   color: black;
 }
 
@@ -240,6 +240,10 @@ code {
 }
 
 @media screen and (max-width: 480px) {
+  .SignIn-Container,
+  .SignUp-Container {
+    height: 80vh !important;
+  }
   .Lets-start-container h5 {
     font-size: small;
   }
