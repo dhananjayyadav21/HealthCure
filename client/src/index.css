@@ -173,10 +173,10 @@ code {
 
 
 /*========================================================== {Auth} ===============================================*/
-.SignIn-Container,
+/* .SignIn-Container,
 .SignUp-Container {
   height: 90vh !important;
-}
+} */
 
 .SignIn-Container i,
 .SignUp-Container i {
