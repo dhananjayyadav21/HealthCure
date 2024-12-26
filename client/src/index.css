@@ -100,7 +100,7 @@ code {
 }
 
 .Hospital-Banner img{
-  height: 50vh;
+  height: 320px;
   width: 100%;
   object-fit: cover, fill, contain;
 }
@@ -271,6 +271,11 @@ code {
     font-weight: 600;
     position: fixed;
     bottom: 0;
+  }
+  .Hospital-Banner img{
+    height: 250px;
+    width: 100%;
+    object-fit: cover, fill, contain;
   }
 }
 
