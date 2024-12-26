@@ -76,7 +76,10 @@ const Navbar = () => {
                 
                     {/* Shedule, Available Slots, Reschedule, notification */}
                     <div onClick={closeMobileBar}>
-                    <li className="nav-item">
+                        <li className="nav-item">
+                        <Link className="nav-text nav-link bg-info px-2 py-1 rounded-4 text-white fw-bold" to="/getStart">Getstart</Link>
+                        </li>
+                        <li className="nav-item">
                         <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
                         </li>
                         <li className="nav-item">

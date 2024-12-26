@@ -5,8 +5,8 @@ const AppointmentBill = () => {
   return (
     <>
        <div className='mt-2 mt-md-4'>
-            <section className='d-flex justify-content-center align-items-center m-2 m-md-0 mt-5'>
-                <div className="form-containe col-6 rounded-4 shadow-sm bg-light py-4 px-3 p-md-5">
+            <section className='d-flex justify-content-center align-items-center m-2 m-md-0 mt-md-5'>
+                <div className="form-containe col-md-6 rounded-4 shadow-sm bg-light py-4 px-3 p-md-5">
                     {/* <!-- Form --> */}
                     <form className='AppointmentBill-form'>
                         <div className='row'>
