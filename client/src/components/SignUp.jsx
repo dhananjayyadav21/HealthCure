@@ -160,7 +160,7 @@ return (
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="Contact" className="form-label">Contact</label></small>
-                     <input type="tel" className="form-control" name='Contact' id="Contact" placeholder="Enter your Contact"/>
+                     <input type="tel" className="form-control" name='contact' id="Contact" placeholder="Enter your Contact"/>
                   </div>
                </div>
                <div className='col-12 col-md-6'>
