@@ -10,22 +10,18 @@ const doctorDetailSchema = new Schema({
 
   specialist:{
     type:String,
-    required:true,
   },
 
   hospital:{
     type:String,
-    required:true
   },
 
   hospitalAddress:{
     type:String,
-    required:true
   },
 
   hospitalContact:{
     type:String,
-    required:true
   },
 
   Fees:{

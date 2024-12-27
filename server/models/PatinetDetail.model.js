@@ -2,18 +2,21 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const patientDetailSchema = new Schema({
-    userId:{
+    userid:{
         type:Schema.Types.ObjectId,
         ref:'users'
     },
 
     contact:{
-        type:Number,
-        required:true
+        type:Number
     },
 
     bloodgroup:{
         type:String
+    },
+    Date:{
+        type:Date,
+        default: Date.now
     }
 });
 
