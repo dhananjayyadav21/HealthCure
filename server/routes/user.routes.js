@@ -15,13 +15,13 @@ const router = express.Router();
 router.post("/signup",
   [
     body("name")
-      .isLength({min: 5}).withMessage("user name should be minimum 5 characters required!"),
+      .isLength({min: 5}).withMessage("Name must be at least 5 characters required!"),
     body("email")
-      .trim().isEmail().withMessage("should be valide email required!"),
+      .trim().isEmail().withMessage("Email address appears to be invalid!"),
     body("password")
-      .isLength({min: 5}).withMessage("password should be minimum 5 characters required!"),
+      .isLength({min: 5}).withMessage("Passwords must be at least 5 characters required!"),
     body("role")
-      .trim().notEmpty().custom((value) => value == "doctor" || value == "patient").withMessage("role must be doctor or patient"),
+      .trim().notEmpty().custom((value) => value == "doctor" || value == "patient").withMessage("Role must be doctor or patient"),
   ],
   async (req, res) => {
 
@@ -74,7 +74,7 @@ router.post("/signup",
             });
         }
         success = true;
-        res.status(200).json({success,msg:"register Successfully"});
+        res.status(200).json({success,message:"Register Successfully"});
       
     } catch (error) {
         success = false;  
@@ -91,9 +91,9 @@ router.post("/signup",
 router.post('/signin',
     [
         body("email")
-          .trim().isEmail().withMessage("should be valide email required!"),
+          .trim().isEmail().withMessage("Email address appears to be invalid!"),
         body("password")
-          .isLength({min: 5}).withMessage("password should be minimum 5 characters required!"),
+          .isLength({min: 5}).withMessage("Passwords must be at least 5 characters required!"),
       ],
     async (req,res)=>{
 
@@ -108,10 +108,9 @@ router.post('/signin',
         // check user register or not
         let user = await User.findOne({email:req.body.email});
         if(!user){
-            return res.status(400).json({error:"plese try with right credentials"});
+            return res.status(400).json({error:"Plese try with right credentials"});
         }
-        console.log(user);
-
+    
         //compare hasdpassword
         let passwordcompare = await bcrypt.compare(req.body.password.toString(), user.password);
         if(!passwordcompare){
@@ -129,10 +128,9 @@ router.post('/signin',
 
         const AuthToken = Jwt.sign(Data,AuthToken_Secrate);
         success = true;
-        res.status(400).json({success,AuthToken});
-
+        res.status(400).json({message: "login Successfully", success,AuthToken});
     } catch (error) {
-        success:false
+        success = false;
         res.status(500).json({
         message: "Some internal server issue for login user",
         error: error}); 
@@ -141,15 +139,15 @@ router.post('/signin',
 
 
 //========================= get user details using POST:/api/authentication/getuser http request ===========================
-router.post('/getuser',FetchUser,async(req,res)=>{
+router.get('/getuser',FetchUser,async(req,res)=>{
 
     //provide user detail using user id
     try {
         let userid = req.user.userid;
         let user = await User.findOne({_id:userid}).select('-password');
         let Patient = await PatientrDetail.findOne({userid:userid}).select('-password');
-        let doctor = await DoctorDetail.findOne({userid:userid}).select('-password');
-        res.status(200).json({user,Patient,doctor});  
+        let Doctor = await DoctorDetail.findOne({userid:userid}).select('-password');
+        res.status(200).json({user,Patient,Doctor});  
 
     } catch (error) {
         return res.status(500).json({

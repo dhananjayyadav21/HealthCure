@@ -1,7 +1,20 @@
-// Import necessary libraries
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import HttpService from '../Service/HttpService';
 
 const UserProfile = () => {
+
+    useEffect(()=>{
+        UserDetails();
+    },[])
+
+    const [ userinfo, setUserInfo] = useState(null);
+
+    const UserDetails = async ()=>{
+        const response = await HttpService.GET('http://localhost:5000/api/authentication/getuser')
+        console.log("Userinfo ===>",response.data) ;
+        setUserInfo(response.data);
+    }
+
   return (
     <>
         <div className='bg-light' style={{minHeight:"100vh"}}>
@@ -9,78 +22,125 @@ const UserProfile = () => {
                 <div className='row'>
                     <section className='col-md-4 my-3'> 
                         <div className='bg-white rounded-3 shadow' >
-                            <div className='p-5'>
+
+                        {userinfo?.user?.role === "doctor"  &&    <div className='p-5'>
                                 <div className='d-flex justify-content-center'>
                                     <div style={{width:"150px"}}>
                                     <img className='bg-light' src="/assets/img/Doctor_4.png" alt="User-img" style={{width:"100%",borderRadius:"50%"}} />
                                     </div>
                                 </div>
                                 <div className='text-center'>
-                                    <h3 className="my-3 my-md-4">Dr. John Doe</h3>
-                                    <h6 className="text-secondary my-2">Cardiologist</h6>
-                                    <h6 className="text-secondary">Bay Area, San Francisco, CA</h6>
+                                    <h3 className="my-3 my-md-4 text-capitalize">{userinfo?.user?.name}</h3>
+                                    <h6 className="text-secondary my-2 text-capitalize">{userinfo?.Doctor?.specialist}</h6>
+                                    <h6 className="text-secondary text-capitalize">{userinfo?.Doctor?.hospital}</h6>
                                     <button className='btn btn-danger my-3 px-4'>Logout</button>
                                 </div> 
-                            </div>
+                            </div>}
+
+                            {userinfo?.user?.role === "patient"  &&  <div className='p-5'>
+                                <div className='d-flex justify-content-center'>
+                                    <div style={{width:"150px"}}>
+                                    <img className='bg-light' src="/assets/img/Doctor_4.png" alt="User-img" style={{width:"100%",borderRadius:"50%"}} />
+                                    </div>
+                                </div>
+                                <div className='text-center'>
+                                    <h3 className="my-3 my-md-4 text-capitalize">{userinfo?.user?.name}</h3>
+                                    <h6 className="text-secondary my-2">{userinfo?.user?.email}</h6>
+                                    <h6 className="text-secondary text-capitalize">{userinfo?.user?.role}</h6>
+                                    <button className='btn btn-danger my-3 px-4'>Logout</button>
+                                </div> 
+                            </div>}
                         </div>
                     </section>
 
-                    <section className='col-md-8 my-3' > 
+                    {userinfo?.user?.role === "doctor"  &&  <section className='col-md-8 my-3' > 
                         <div className='bg-white rounded-3 shadow' >
                             <div className='p-4 text-muted'>
                                 <div className='d-flex'>
                                     <h6 className='w-25'>Full Name</h6>
-                                    <h6>: Dr. John Doe</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.user?.name}</h6>
                                 </div>
                                 <hr />
                                 <div className='d-flex'>
                                     <h6 className='w-25'>Email</h6>
-                                    <h6>: example@example.com</h6>
-                                </div>
-                                <hr />
-                                <div className='d-flex'>
-                                    <h6 className='w-25'>Phone</h6>
-                                    <h6>: (097) 234-5678</h6>
-                                </div>
-                                <hr />
-                                <div className='d-flex'>
-                                    <h6 className='w-25'>Mobile</h6>
-                                    <h6>: (098) 765-4321</h6>
-                                </div>
-                                <hr />
-                                <div className='d-flex'>
-                                    <h6 className='w-25'>Address</h6>
-                                    <h6>: Bay Area, San Francisco, CA</h6>
+                                    <h6>: {userinfo?.user?.email}</h6>
                                 </div>
                                 <hr />
                                 <div className='d-flex'>
                                     <h6 className='w-25'>role</h6>
-                                    <h6>: Doctor</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.user?.role}</h6>
                                 </div>
                                 <hr />
                                 <div className='d-flex'>
                                     <h6 className='w-25'>specialist</h6>
-                                    <h6>: Cardiologist</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.Doctor?.specialist}</h6>
                                 </div>
                                 <hr />
                                 <div className='d-flex'>
                                     <h6 className='w-25'>Fees</h6>
-                                    <h6>: 400</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.Doctor?.Fees}</h6>
                                 </div>
                                 <hr />
                                 <div className='d-flex'>
-                                    <h6 className='w-25'>Shift</h6>
-                                    <h6>: Morning</h6>
+                                    <h6 className='w-25'>Phone</h6>
+                                    <h6>: {userinfo?.Doctor?.hospitalContact}</h6>
+                                </div>
+                                <hr />
+                                <div className='d-flex'>
+                                    <h6 className='w-25'>Hospital</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.Doctor?.hospital}</h6>
+                                </div>
+                                <hr />
+                                <div className='d-flex'>
+                                    <h6 className='w-25'>hospitalAddress</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.Doctor?.Fees}</h6>
                                 </div>
                                 <hr />
                                 <div className='d-flex'>
                                     <h6 className='w-25'>Day</h6>
-                                    <h6>: Monday</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.Doctor?.weekAvailability}</h6>
                                 </div>
                             </div> 
                         </div>
-                    </section>
-                    </div>
+                    </section>}
+
+                    {userinfo?.user?.role === "patient"  &&  <section className='col-md-8 my-3' > 
+                        <div className='bg-white rounded-3 shadow' >
+                            <div className='p-4 text-muted'>
+                                <div className='d-flex'>
+                                    <h6 className='w-25'>Full Name</h6>
+                                    <h6 className='text-capitalize'>:{userinfo?.user?.name}</h6>
+                                </div>
+                                <hr />
+                                <div className='d-flex'>
+                                    <h6 className='w-25'>Email</h6>
+                                    <h6>: {userinfo?.user?.email}</h6>
+                                </div>
+                                <hr />
+                                <div className='d-flex'>
+                                    <h6 className='w-25'>role</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.user?.role}</h6>
+                                </div>
+                                <hr />
+                                <div className='d-flex'>
+                                    <h6 className='w-25'>Phone</h6>
+                                    <h6>: {userinfo?.Patient?.contact}</h6>
+                                </div>
+                                <hr />
+                                <div className='d-flex'>
+                                    <h6 className='w-25'>Mobile</h6>
+                                    <h6>: {userinfo?.Patient?.contact}</h6>
+                                </div>
+                                <hr />
+                                <div className='d-flex'>
+                                    <h6 className='w-25'>Blood Group</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.Patient?.bloodgroup}</h6>
+                                </div>
+                            </div> 
+                        </div>
+                    </section>}
+
+                </div>
             </div>
         </div>  
     </> 

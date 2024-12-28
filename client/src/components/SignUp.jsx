@@ -1,60 +1,88 @@
 import React, { useState } from 'react'
+import HttpService from '../Service/HttpService';
 
 const SignUp = () => {
 
-const[currentRole, setCurrentRole] = useState();
+   const [currentRole, setCurrentRole] = useState();
+   const [errors, setErrors] = useState([]);
 
-const handleRadioChange = (event) => {
-setCurrentRole(event.target.value);
-console.log(event.target.value); // Print the current value
-};
+   //====== handle Form radionChange event for select patient or doctor ==============
+   const handleRadioChange = (event) => {
+     setCurrentRole(event.target.value);
+   };
 
-const handleSubmit = (event) => {
-event.preventDefault();
-const formData = new FormData(event.target);
-// Convert FormData to an object for easier logging
-const dataObject = {};
-formData.forEach((value, key) => {
-   if (dataObject[key]!=null) {
-      let newArrayValue = [];
-      if (typeof dataObject[key] == Array) {
-         newArrayValue = [...dataObject[key],value];
-      }else{
-         newArrayValue.push(dataObject[key])
+   //====== handle Form sumbit event ==============
+   const handleSubmit = (event) => {
+     event.preventDefault();
+     // Target Form
+     const formData = new FormData(event.target);
+     const formDataObject = {};
+     // Each form name and value store as kye,value
+     formData.forEach((value, key) => {
+       if (formDataObject[key] != null) {
+         if (!Array.isArray(formDataObject[key])) {
+           let newValueArray = [];
+           newValueArray.push(formDataObject[key]);
+           newValueArray.push(value);
+           formDataObject[key] = newValueArray;
+         } else {
+           formDataObject[key].push(value);
+         }
+       } else {
+         formDataObject[key] = value;
+       }
+     });
+
+      //register user with httpservice
+      adduser(formDataObject);
+   };
+
+   const adduser = async (formDataObject) => {
+      try {
+         setErrors([]);
+         const response = await HttpService.POST(
+            "http://localhost:5000/api/authentication/signup",
+            formDataObject
+          );
+          console.log(response.data);
+      } catch (error) {
+         console.error("hhhjj",error.response.data.error);
+         setErrors(error.response.data.error)
       }
-      
-      dataObject[key] = newArrayValue;
-   }else{
-      dataObject[key] = value;
-   }
-});
-// Print all form data to the console
-console.log("Form Data Submitted:", dataObject);
-};
+    };
 
 return (
 <>
-<div className="container d-flex justify-content-center align-items-center p-3 SignUp-Container mt-3 mt-md-5">
+<div className="container d-flex justify-content-center align-items-center p-3 SignUp-Container py-3">
    <div className="form-containe col-12 col-md-5 shadow rounded-4 py-4 px-3 p-md-5">
       {/* <!-- SignUp Header --> */}
       <div className='mb-4'>
          <i className="fa-solid fa-2x fa-user my-3"></i>
          <h4 className="text-start mb-1 fw-bold">SignUp</h4>
          <p className='text-secondary'>to continue to HealthCure</p>
+         {
+            errors.length !== 0 && <div>
+            { errors.map((e)=> <small className='d-block text-danger py-1'>
+               {e.msg}
+            </small>)}
+            </div>
+         }
       </div>
+      
       {/* <!-- SignUp Form --> */}
-      <form noValidate onSubmit={handleSubmit}>
+      <form noValidate onSubmit={handleSubmit} id='signupform'>
          <div className='row'>
             <div className='col-12 col-md-6'>
                <div className="mb-3">
-                  <small><label htmlFor="username" className="form-label">Username</label></small>
-                  <input type="text" className="form-control" name='username' id="username" placeholder="Enter your username"/>
+                  <small><label htmlFor="name" className="form-label">Username</label></small>
+                  <input type="text" className="form-control" name='name' id="name" placeholder="Enter your name"/>
                </div>
             </div>
             <div className='col-12 col-md-6'>
                <div className="mb-3">
                   <small><label htmlFor="email" className="form-label">Email</label></small>
                   <input type="email" className="form-control" name='email' id="email" placeholder="Enter your email"/>
+                  <small className='error text-danger'></small>
                </div>
             </div>
             <div className='col-12 col-md-6'>
@@ -107,7 +135,7 @@ return (
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="hospitalContact" className="form-label">Hostiplal/Clinic Contact</label></small>
-                     <input type="tel" className="form-control" id="hospitalContact" placeholder="Hostiplal/Clinic Contact"/>
+                     <input type="number" className="form-control" id="hospitalContact" placeholder="Hostiplal/Clinic Contact"/>
                   </div>
                </div>
                <div className='col-12 col-md-6'>
@@ -160,7 +188,7 @@ return (
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="Contact" className="form-label">Contact</label></small>
-                     <input type="tel" className="form-control" name='contact' id="Contact" placeholder="Enter your Contact"/>
+                     <input type="number" className="form-control" name='contact' id="Contact" placeholder="Enter your Contact"/>
                   </div>
                </div>
                <div className='col-12 col-md-6'>
