@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import DoctorCards from '../components/DoctorCards'
 import HotspitalCard from '../components/HotspitalCard'
 import Footer from "../components/Footer"
+import AuthContext from '../context/AuthContext'
 
 const Home = () => {
+   
+   const Context = useContext(AuthContext);
+   const { AllDoctors } = Context;
 
-   let Arra = [{},{},{},{},{},{},{},{}]
+   const [doctors, setDoctors] = useState([]);
+
+   useEffect(() => {
+     getDoctors();
+     // eslint-disable-next-line
+   }, []);
+
+   const getDoctors = async () => {
+     let res = await AllDoctors();
+     setDoctors(res.AllDoctor);
+     console.log(res);
+   };
+
+   console.log(doctors);
+
+   let Arra = [{},{},{},{},{},{},{}]
+
 
   return (
     <div className='bg-light'>
@@ -82,11 +102,11 @@ const Home = () => {
           <h4 className='mt-3 mb-2 mt-sm-4 mb-sm-3'>Top Doctor</h4>
           <p className='text-secondary'>End to end care from Top Surgeons at our HealthCure Care Clinics. Emphasizes comprehensive  medical services provided by leading surgeons at HealthCure clinics.</p>
         </div> 
-        <div className="d-flex justify-content-center justify-content-sm-start align-items-center gap-3" >
-          <div className='row g-3'>
-            {Arra.map((e,index)=>{
+        <div className="d-flex justify-content-center align-items-center gap-3" >
+          <div className='row g-3 w-100'>
+            {doctors.map((doctor,index)=>{
               let currentIndex = index % 6;
-              return <DoctorCards key={index} index={currentIndex}/>
+              return <DoctorCards key={index} index={currentIndex} doctor={doctor}/>
           })} 
           </div>
         </div>

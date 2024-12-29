@@ -2,14 +2,11 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const DoctorCards = (props) => {
-
-   const {index} = props;
-
+   const { index, doctor } = props;
    const navigate = useNavigate();
-   
-   const ShowDoctorDetails = ()=>{
-      navigate(`/doctorDetail/${index}`)
-   }
+   const ShowDoctorDetails = () => {
+     navigate(`/doctorDetail/${doctor._id}`);
+   };
 
   return (
     <>
@@ -19,8 +16,8 @@ const DoctorCards = (props) => {
                     <img className='card-img-top' src={`assets/img/Doctor_${index+1}.png`} alt="Doctors" />
                 </div>  
                 <div className='card-body py-2'>
-                    <h6 className='m-0'>Dr. Mack Johan</h6>
-                    <small><p className='m-0 text-secondary'>Dental Surgon</p></small>
+                    <h6 className='m-0 text-capitalize'>Dr. {doctor.name}</h6>
+                    <small><p className='m-0 text-secondary text-center text-capitalize'>{doctor.doctorDetails.specialist}</p></small>
                 </div>
             </div>
         </div>

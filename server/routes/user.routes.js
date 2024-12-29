@@ -10,6 +10,7 @@ require("dotenv").config();
 
 const AuthToken_Secrate = process.env.Secrate_key;
 const router = express.Router();
+const { ObjectId } = require('mongodb');
 
 //============================== create user using POST:/api/authentication/signup http request ===========================
 router.post(
@@ -166,12 +167,8 @@ router.get("/getuser", FetchUser, async (req, res) => {
   try {
     let userid = req.user.userid;
     let user = await User.findOne({ _id: userid }).select("-password");
-    let Patient = await PatientrDetail.findOne({ userid: userid }).select(
-      "-password"
-    );
-    let Doctor = await DoctorDetail.findOne({ userid: userid }).select(
-      "-password"
-    );
+    let Patient = await PatientrDetail.findOne({ userid: userid }).select("-password");
+    let Doctor = await DoctorDetail.findOne({ userid: userid }).select("-password");
     res.status(200).json({ user, Patient, Doctor });
   } catch (error) {
     return res.status(500).json({
@@ -213,6 +210,56 @@ router.get("/allDoctor", async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       message: "Some internal server error for getting alldoctors details",
+      errors: [{ msg: error }],
+    });
+  }
+});
+
+//==================== get GetDoctorDetailById using POST:/api/authentication/GetDoctorDetailById http request ==================
+router.get("/GetDoctorDetailById/:id", async (req, res) => {
+  //provide GetDoctorDetailById using user id
+  try {
+    let doctorId = req.params.id;
+    let doctorDetail = await User.aggregate([
+      {
+        $match: {
+          _id : new ObjectId(doctorId),
+          role: "doctor",
+        },
+      },
+      {
+        $lookup: {
+          from: "doctordetails",
+          localField: "_id",
+          foreignField: "userid",
+          as: "doctorDetails",
+        },
+      },
+      {
+        $unwind: "$doctorDetails",
+      },
+      {
+        $project: {
+          password: 0,
+        },
+      },
+      {
+        $limit: 1, 
+      },
+    ]);
+
+    if (doctorDetail.length>0) {
+      doctorDetail = doctorDetail[0];
+      res.status(200).json(doctorDetail);
+    }else{
+      res.status(404).json({errors: [{msg: "Doctor Details Not found"}]})
+    }
+
+    
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      message: "Some internal server error for getting user details",
       errors: [{ msg: error }],
     });
   }

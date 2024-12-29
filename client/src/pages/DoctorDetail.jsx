@@ -1,8 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import BookSedule from '../components/BookSedule'
+import AuthContext from '../context/AuthContext'
 
 const DoctorDetail = () => {
+
+    const Context = useContext(AuthContext);
+    const { GetDoctorDetailById } = Context;
+    const [ doctorDetail, setDoctorDetail] = useState();
+    const params= useParams()
+
+    useEffect(()=>{
+        getDoctorDetail();
+        // eslint-disable-next-line
+    },[]);
+
+    const getDoctorDetail = async () => {
+      try {
+        const doctorId = params.id;
+        let res = await GetDoctorDetailById(doctorId);
+        setDoctorDetail(res);
+        console.log(res)
+      } catch (error) {
+        console.log(error); 
+      }
+    };
+
   return (
     <>
       <div className='p-2 p-md-4 DoctorDetail-Container '> 
@@ -13,16 +36,16 @@ const DoctorDetail = () => {
                     <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative'>
                         <img src="/assets/img/Doctor_5.png" alt="Doctor" />
                         <div className='position-absolute text-xenter'>
-                            <h5>Dr. Cyden Stack</h5>
-                            <p className='text-secondary'>Sr. Dental Specialist</p>
+                            <h5>Dr. {doctorDetail?.name}</h5>
+                            <p className='text-secondary text-capitalize'>{doctorDetail?.doctorDetails?.specialist}</p>
                         </div>
                     </div>
                 </section>
 
                 <section className='DoctorDetail-Name d-flex justify-content-between align-items-center'>
                     <div className='my-3 my-md-5'>
-                    <h4>Medicine & Dental Specialist</h4>
-                    <p className='text-secondary mb-2'>Good health clinic, MBBC, FCPS</p>
+                    <h4 className='text-capitalize'>{doctorDetail?.doctorDetails?.specialist}</h4>
+                    <p className='text-secondary mb-2 text-capitalize'>{doctorDetail?.doctorDetails?.hospitalAddress}, {doctorDetail?.doctorDetails?.specialist}</p>
                     <small><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i> <span className='btn btn-warning rounded-5 mx-2 p-0 px-2 tex-white'>4.9</span></small>
                     </div>
                 </section>
@@ -30,7 +53,21 @@ const DoctorDetail = () => {
                 <section className='DoctorDetail-About'>
                 <div>
                     <h6>About</h6>
-                    <small><p className='text-secondary'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non dolorem alias velit praesentium ex, possimus ducimus est impedit optio reiciendis veniam amet, sapiente odio libero officia obcaecati at cumque rerum sed, magni quo facilis. Magnam amet blanditiis assumenda, repudiandae debitis reiciendis. Ipsam cum incidunt esse! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestiae debitis, dicta necessitatibus voluptates amet delectus odit consequuntur voluptate cupiditate placeat totam optio, perferendis impedit iure corporis! Minima veniam dolor molestias, ea iste vel sequi ducimus alias nihil magni fugit tenetur dicta odio accusantium sint quam voluptates officia deserunt nemo debitis quos. Laborum corporis eligendi, nesciunt dolore beatae, fugit ipsum officiis modi culpa dicta minima asperiores recusandae numquam unde aliquam excepturi aspernatur perspiciatis, quod hic distinctio ratione impedit iusto tenetur. Quae, vero error eius veritatis ea quod similique quasi libero nemo at itaque tempora nobis sunt magni soluta impedit quisquam! Harum repellat natus quis saepe soluta vel minus similique suscipit! Repellendus reiciendis nulla impedit sequi pariatur officiis eaque, tempore perferendis excepturi vero adipisci consequatur libero minus quia id quibusdam, dolor corrupti deserunt voluptates laboriosam autem veniam omnis? Optio beatae perspiciatis debitis sint possimus totam tenetur doloribus nostrum inventore iste atque illo pariatur vel perferendis nihil hic suscipit quae, id praesentium. Corrupti debitis sequi consequatur culpa rem quia delectus doloremque reprehenderit corporis, hic, doloribus fugit odit fugiat? Commodi, provident quia modi a explicabo hic iste officiis beatae nihil vero praesentium laboriosam minus facilis repudiandae quidem pariatur. Nostrum libero minus consectetur praesentium maiores odit enim vel ea illum sunt suscipit laborum odio beatae a dolores id autem, quaerat voluptate. Recusandae, eius maiores ad, minima porro numquam in fugiat nostrum non, ea culpa iusto architecto laboriosam quaerat minus nobis repellat eum voluptatem? Quis ipsum, porro cum voluptate libero perspiciatis non fugiat ducimus asperiores quibusdam.</p></small>
+                    <small><p className='text-secondary'>As a dedicated and compassionate MBBS doctor, I am committed to providing exceptional healthcare to my patients while continuously advancing my knowledge and skills in the medical field. With a solid foundation in medical sciences and clinical practice, I strive to uphold the highest standards of patient care, ensuring empathy, professionalism, and ethical conduct in every interaction. <br/><br/>  
+
+                    My journey as a medical professional began with rigorous academic training and hands-on clinical exposure during my MBBS program. This comprehensive education equipped me with expertise in diagnosing, treating, and managing a wide range of medical conditions. From general medicine to specialized procedures, I have developed a well-rounded understanding of patient care, emphasizing a holistic approach that considers not just the physical symptoms but also the emotional and psychological well-being of my patients. <br/><br/>   
+
+                    Throughout my career, I have prioritized building strong relationships with patients, fostering trust and open communication to better understand their concerns and deliver personalized care. My ability to listen actively and explain complex medical concepts in a clear and compassionate manner has been instrumental in helping patients make informed decisions about their health.<br/> <br/>  
+
+                    In addition to patient care, I am deeply committed to continuous learning and staying updated with the latest advancements in medical science. This dedication allows me to implement evidence-based practices and innovative treatments, ensuring my patients receive the best possible care. My participation in medical conferences, workshops, and ongoing professional development programs reflects my passion for lifelong learning and growth in the ever-evolving field of medicine. <br/><br/>   
+
+                    Beyond clinical practice, I am also an advocate for preventive healthcare and public health awareness. I believe in empowering individuals and communities with knowledge to make healthier lifestyle choices and reduce the burden of preventable diseases. Whether through health camps, community outreach programs, or educational initiatives, I actively contribute to promoting wellness and improving overall healthcare accessibility.<br/><br/>  
+
+                    Working effectively in a team setting is another aspect of my professional philosophy. I recognize the importance of collaboration with fellow healthcare professionals, nurses, and support staff to deliver comprehensive and efficient care. My adaptability, problem-solving abilities, and commitment to teamwork ensure a seamless and patient-centered approach in all medical settings.<br/><br/>    
+
+                    As I continue my journey in medicine, I aspire to specialize further in a field that aligns with my interests and strengths, contributing to advancements in healthcare and making a meaningful impact on the lives of my patients. Each day brings new challenges and learning opportunities, and I approach them with unwavering determination and a genuine desire to make a difference.<br/><br/>    
+
+                    In summary, being a doctor is not just a profession for me; it is a calling that reflects my dedication to healing and serving humanity. With integrity, empathy, and a relentless pursuit of excellence, I am driven to uphold the noble ideals of medicine and contribute positively to the well-being of individuals and society.</p></small>
                 </div>
                 </section>
 
