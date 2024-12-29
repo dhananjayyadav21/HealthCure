@@ -31,6 +31,7 @@ class HttpService {
       
     } catch (error) {
       console.log("accured some error in httpservice(POST) ====> :", error);
+      throw error;
     }
   };
 }

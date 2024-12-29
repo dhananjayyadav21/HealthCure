@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import HttpService from '../Service/HttpService';
+import React, { useContext, useEffect } from 'react';
+import AuthContext from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
 
+    const Context = useContext(AuthContext);
+    const { UserDetails,userinfo } = Context;
+    const navigate = useNavigate();
+
     useEffect(()=>{
         UserDetails();
+        // eslint-disable-next-line
     },[])
 
-    const [ userinfo, setUserInfo] = useState(null);
-
-    const UserDetails = async ()=>{
-        const response = await HttpService.GET('http://localhost:5000/api/authentication/getuser')
-        console.log("Userinfo ===>",response.data) ;
-        setUserInfo(response.data);
+    const Logout = ()=>{
+        localStorage.removeItem('AuthToken');
+        navigate('/');
     }
 
   return (
@@ -33,7 +36,7 @@ const UserProfile = () => {
                                     <h3 className="my-3 my-md-4 text-capitalize">{userinfo?.user?.name}</h3>
                                     <h6 className="text-secondary my-2 text-capitalize">{userinfo?.Doctor?.specialist}</h6>
                                     <h6 className="text-secondary text-capitalize">{userinfo?.Doctor?.hospital}</h6>
-                                    <button className='btn btn-danger my-3 px-4'>Logout</button>
+                                    <button className='btn btn-danger my-3 px-4' onClick={Logout} >Logout</button>
                                 </div> 
                             </div>}
 
@@ -47,7 +50,7 @@ const UserProfile = () => {
                                     <h3 className="my-3 my-md-4 text-capitalize">{userinfo?.user?.name}</h3>
                                     <h6 className="text-secondary my-2">{userinfo?.user?.email}</h6>
                                     <h6 className="text-secondary text-capitalize">{userinfo?.user?.role}</h6>
-                                    <button className='btn btn-danger my-3 px-4'>Logout</button>
+                                    <button className='btn btn-danger my-3 px-4' onClick={Logout} >Logout</button>
                                 </div> 
                             </div>}
                         </div>
@@ -109,7 +112,7 @@ const UserProfile = () => {
                             <div className='p-4 text-muted'>
                                 <div className='d-flex'>
                                     <h6 className='w-25'>Full Name</h6>
-                                    <h6 className='text-capitalize'>:{userinfo?.user?.name}</h6>
+                                    <h6 className='text-capitalize'>: {userinfo?.user?.name}</h6>
                                 </div>
                                 <hr />
                                 <div className='d-flex'>

@@ -19,7 +19,6 @@ import AppointmentBill from "./components/AppointmentBill";
 import MyAppointment from "./pages/MyAppointment";
 import Appointmentcard from "./components/Appointmentcard";
 
-
 import Reschedule from "./pages/Reschedule";
 import PatientDetailAfterBook from "./components/PatientDetailAfterBook";
 
@@ -27,40 +26,183 @@ import AvailableSlots from "./components/AvailableSlots";
 import Notification from "./components/Notification";
 
 import Notfound from "./pages/Notfound";
+import AuthState from "./context/AuthState";
+import GuardedRoute from "./components/GuardedRoute";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/userProfile" element={<UserProfile />} />
+      <AuthState>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-          <Route path="/getStart" element={<GetStart />} />
-          <Route path="/openingPage" element={<OpeningPage />} />
-          <Route path="/welcomePage" element={<WelcomePage />} />
+            <Route
+              path="/userProfile"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<UserProfile />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/getStart"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<GetStart />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/openingPage"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<OpeningPage />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/welcomePage"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<WelcomePage />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null} // Public route
+                  element={<SignIn />}
+                  redirectTo="/"
+                />
+              }
+            />
+            <Route
+              path="/signUp"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null} // Public route
+                  element={<SignUp />}
+                  redirectTo="/"
+                />
+              }
+            />
+            <Route
+              path="/doctorDetail/:id"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<DoctorDetail />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/bookSedule"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<BookSedule />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/patientsAppointmentDetail"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<PatientsAppointmentDetail />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/appointmentBill"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<AppointmentBill />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/appointment"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<MyAppointment />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/appointmentcard"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<Appointmentcard />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/reschedule"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<Reschedule />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/patientDetailAfterBook/:id"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<PatientDetailAfterBook />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/availableslots"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<AvailableSlots />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/notification"
+              element={
+                <GuardedRoute
+                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  element={<Notification />}
+                  redirectTo="/signin"
+                />
+              }
+            />
 
-          <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signUp" element={<SignUp />} />
-
-          <Route path="/doctorDetail/:id" element={<DoctorDetail />} />
-          <Route path="/bookSedule" element={<BookSedule />} />
-          <Route path="/patientsAppointmentDetail" element={<PatientsAppointmentDetail />} />
-          <Route path="/appointmentBill" element={<AppointmentBill />} />
-
-          <Route path="/appointment" element={<MyAppointment />} />
-          <Route path="/appointmentcard" element={<Appointmentcard />} />
-
-         
-          <Route path="/reschedule" element={<Reschedule />} />
-          <Route path="/patientDetailAfterBook/:id" element={<PatientDetailAfterBook />} />
-
-          <Route path="/availableslots" element={<AvailableSlots />} />
-          <Route path="/notification" element={<Notification />} />
-          <Route path="/*" element={<Notfound />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/*" element={<Notfound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthState>
     </>
   );
 }

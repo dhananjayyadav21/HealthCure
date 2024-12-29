@@ -1,20 +1,32 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import AuthContext from '../context/AuthContext';
 
 const Navbar = () => {
+   
+    const Context = useContext(AuthContext);
+    const { userRole } = Context;
 
-   const [display, setDisplay] = useState("none");
-   const [openMBDisply, setopenMBDisply] = useState("");
+    const location = useLocation();
+    const navigate = useNavigate();
 
-   const openMobileBar = ()=>{
-        setDisplay("");
-        setopenMBDisply("none");
-   }
+    const [display, setDisplay] = useState("none");
+    const [openMBDisply, setopenMBDisply] = useState("");
 
-   const closeMobileBar = ()=>{
-        setDisplay("none");
-        setopenMBDisply("");
-   }
+    const openMobileBar = () => {
+      setDisplay("");
+      setopenMBDisply("none");
+    };
+
+    const closeMobileBar = () => {
+      setDisplay("none");
+      setopenMBDisply("");
+    };
+
+    const Logout = () => {
+      localStorage.removeItem("AuthToken");
+      navigate('/');
+    };
 
   return (
     <>
@@ -32,8 +44,8 @@ const Navbar = () => {
                         <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><img  className='profile-img rounded-circle' src="https://www.ihgplc.com/~/media/Images/I/Ihg-Plc/images/news/2022/26-05-2022-ihg-hotels-and-resorts-is-proud-to-partner-with-pride-in-london/ihghr-pride-circle-RGB.png" alt="profile" /></div>
                         </a>
                         <ul className="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
-                            <li><a className="dropdown-item" href="/">Role</a></li>
-                            <li><a className="dropdown-item text-danger" href="/">Logout <i className="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                            <li><h6 className="dropdown-item text-capitalize">{userRole}</h6></li>
+                            <li><h6 className="dropdown-item text-danger" onClick={Logout}>Logout <i className="fa-solid fa-arrow-right-from-bracket"></i></h6></li>
                             <li><hr className="dropdown-divider"/></li>
                             <li><a className="dropdown-item" href="/userProfile"><button className='btn btn-dark w-100'>My Profile</button></a></li>
                         </ul>
@@ -50,20 +62,22 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     {/* Shedule, Available Slots, Reschedule, notification */}
                     <div className='d-flex justify-content-between align-items-center'>
-                        <ul className="navbar-nav me-auto d-flex align-items-center">
-                            <li className="nav-item">
-                            <Link className="nav-text nav-link bg-info px-2 py-1 rounded-4 text-white fw-bold" to="/getStart">Getstart</Link>
-                            </li>
+
+                    { ["/signin","/signup","/getStart","/welcomePage"].includes(location.pathname) ? "" : 
+
+                       <> <ul className="navbar-nav me-auto d-flex align-items-center">
+
+                        { !localStorage.getItem('AuthToken') ? <> <li className="nav-item">
+                            <Link className="nav-text nav-link bg-info px-2 py-1 rounded-4 text-white fw-bold" to="/getStart">Getstart</Link></li> </> : "" 
+                        }
                             <li className="nav-item">
                             <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
                             </li>
                             <li className="nav-item">
                             <Link className="nav-text nav-link " to="/reschedule">Reschedule</Link>
                             </li>
-                            {/* <li className="nav-item">
-                            <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i className="fa-solid fa-bell"></i></Link>
-                            </li> */}
-                        </ul>
+                        </ul> </> 
+                    }
                     </div>
                 </div>
             </div>
@@ -76,9 +90,10 @@ const Navbar = () => {
                 
                     {/* Shedule, Available Slots, Reschedule, notification */}
                     <div onClick={closeMobileBar}>
-                        <li className="nav-item">
-                        <Link className="nav-text nav-link bg-info px-2 py-1 rounded-4 text-white fw-bold" to="/getStart">Getstart</Link>
-                        </li>
+
+                    { !localStorage.getItem('AuthToken') ? <> <li className="nav-item">
+                        <Link className="nav-text nav-link bg-info px-2 py-1 rounded-4 text-white fw-bold" to="/getStart">Getstart</Link></li> </> : "" 
+                    }
                         <li className="nav-item">
                         <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
                         </li>

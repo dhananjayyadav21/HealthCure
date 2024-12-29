@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import HttpService from '../Service/HttpService'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import AuthContext from '../context/AuthContext';
 
 const SignIn = () => {
 
-    const [errors, setErrors] = useState([]);
+    const Context = useContext(AuthContext);
+    const { login,loginResponse, errors } = Context;
+    const navigate = useNavigate();
 
     const handleonSubmit = (event)=>{
         event.preventDefault();
@@ -15,22 +17,16 @@ const SignIn = () => {
         });
         
         //login user with httpservice
-        login(formDataObject);
+        login(formDataObject)
     }
-
-    const login = async (formDataObject) => {
-        try {
-           const response = await HttpService.POST(
-              "http://localhost:5000/api/authentication/signin",
-              formDataObject
-            );
-            console.log(response.data);
-        } catch (error) {
-           console.error(error.response.data.error);
-           setErrors(error.response.data.error)
-        }
-      };
-
+    
+    //If success true show alert and navigate
+    if(loginResponse.success === true){
+        localStorage.setItem("AuthToken",loginResponse.AuthToken)
+        alert(loginResponse.message);
+        navigate('/');
+    }
+ 
   return (
     <>
        <div className="container d-flex justify-content-center align-items-center px-3 py-3 SignIn-Container">
@@ -43,9 +39,11 @@ const SignIn = () => {
                 <p className='text-secondary'>to continue to HealthCure</p>
                 {
                     errors.length !== 0 && <div>
-                    { errors.map((e,i)=> <small key={i} className='d-block text-danger py-1'>
-                    {e.msg}
-                    </small>)}
+                    { errors.map((e,i)=> 
+                         <small key={i} className='d-block text-danger py-1'>
+                         {e.msg}
+                         </small>
+                     )}
                     </div>
                 }
             </div> 
@@ -65,7 +63,7 @@ const SignIn = () => {
                     <input type="password" className="form-control" name='password' id="password" placeholder="Enter your password"/>
                 </div>
 
-                <button type="submit" className="btn btn-info text-white fw-bolder w-100">Sing In</button>
+              <button id='login' type="submit" className="btn btn-info text-white fw-bolder w-100">Sing In</button>  
             </form>
 
         </div>

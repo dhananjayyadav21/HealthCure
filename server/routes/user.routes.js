@@ -28,16 +28,16 @@ router.post("/signup",
     // if accured validation error, send bad request
     const error = validationResult(req);
     if (!error.isEmpty()) {
-      return res.status(400).json({error: error.array(),
+      return res.status(400).json({errors: error.array(),
       });
     }
 
     try {
 
         // check user alrady exist or not
-        let user = await User.findOne({email:req.body.email});
+        let user = await User.findOne({email:req.body.email.toLowerCase()});
         if(user){
-        return res.status(400).json({error:"user alrady register with this email address"});
+        return res.status(400).json({errors:[{msg:"User already registered with this email address"}]});
         }
 
         // genrate hash password
@@ -47,7 +47,7 @@ router.post("/signup",
 
         user = await User.create({
         name: req.body.name,
-        email: req.body.email,
+        email: req.body.email.toLowerCase(),
         role: req.body.role,
         password: sequrepassword,
         });
@@ -80,7 +80,7 @@ router.post("/signup",
         success = false;  
         res.status(500).json({
             message: "Some internal server issue for creating user",
-            error: error});
+            errors: [{msg:error}]}); 
     }
   }
 );
@@ -100,21 +100,20 @@ router.post('/signin',
     // if accured validation error, send bad request
     const error = validationResult(req);
     if (!error.isEmpty()) {
-      return res.status(400).json({error: error.array()});
+      return res.status(400).json({errors: error.array()});
     }
 
     try {
-        
         // check user register or not
-        let user = await User.findOne({email:req.body.email});
+        let user = await User.findOne({email:req.body.email.toLowerCase()});
         if(!user){
-            return res.status(400).json({error:"Plese try with right credentials"});
+            return res.status(400).json({errors:[{msg:"Plese try with right credentials"}]});
         }
     
         //compare hasdpassword
         let passwordcompare = await bcrypt.compare(req.body.password.toString(), user.password);
         if(!passwordcompare){
-            return res.status(400).json({error:"plese try with right credentials"});
+            return res.status(400).json({errors:[{msg:"Plese try with right credentials"}]});
         }
 
         //create auth token for login user 
@@ -128,12 +127,12 @@ router.post('/signin',
 
         const AuthToken = Jwt.sign(Data,AuthToken_Secrate);
         success = true;
-        res.status(400).json({message: "login Successfully", success,AuthToken});
+        res.status(200).json({message: "Login Successfully", success,AuthToken});
     } catch (error) {
         success = false;
         res.status(500).json({
         message: "Some internal server issue for login user",
-        error: error}); 
+        errors: [{msg:error}]}); 
     }
 });
 
@@ -152,7 +151,7 @@ router.get('/getuser',FetchUser,async(req,res)=>{
     } catch (error) {
         return res.status(500).json({
         message:"Some internal server error for getting user details", 
-        error:error});
+        errors: [{msg:error}]}); 
     }
 })
 

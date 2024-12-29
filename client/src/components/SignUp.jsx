@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
-import HttpService from '../Service/HttpService';
+import React, { useContext, useState } from 'react'
+import AuthContext from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
 
+   const Context = useContext(AuthContext);
+   const { adduser, signpResponse, errors } = Context;
    const [currentRole, setCurrentRole] = useState();
-   const [errors, setErrors] = useState([]);
+   const navigate = useNavigate();
 
    //====== handle Form radionChange event for select patient or doctor ==============
    const handleRadioChange = (event) => {
@@ -32,24 +35,15 @@ const SignUp = () => {
          formDataObject[key] = value;
        }
      });
-
       //register user with httpservice
       adduser(formDataObject);
    };
 
-   const adduser = async (formDataObject) => {
-      try {
-         setErrors([]);
-         const response = await HttpService.POST(
-            "http://localhost:5000/api/authentication/signup",
-            formDataObject
-          );
-          console.log(response.data);
-      } catch (error) {
-         console.error("hhhjj",error.response.data.error);
-         setErrors(error.response.data.error)
-      }
-    };
+   //If success true show alert and navigate
+   if(signpResponse.success === true){
+      alert(signpResponse.message);
+      navigate('/signin');
+   }
 
 return (
 <>
