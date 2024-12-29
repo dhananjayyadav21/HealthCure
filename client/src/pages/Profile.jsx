@@ -1,22 +1,30 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
 
+
     const Context = useContext(AuthContext);
-    const { UserDetails,userinfo } = Context;
+    const { UserDetails } = Context;
+    const [userinfo, setUserInfo] = useState();
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        UserDetails();
-        // eslint-disable-next-line
-    },[])
+    useEffect(() => {
+      getUser();
+      // eslint-disable-next-line
+    }, []);
 
-    const Logout = ()=>{
-        localStorage.removeItem('AuthToken');
-        navigate('/');
-    }
+    const getUser = async () => {
+      let res = await UserDetails();
+      setUserInfo(res);
+    };
+
+    const Logout = () => {
+      localStorage.removeItem("AuthToken");
+      localStorage.removeItem("UserRole");
+      navigate("/");
+    };
 
   return (
     <>

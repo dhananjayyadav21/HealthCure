@@ -4,8 +4,6 @@ const HotspitalCard = (props) => {
 
   const {index} = props;
 
-  console.log(index)
-
   return (
     <>
       <div className="col-sm-6 col-md-3">

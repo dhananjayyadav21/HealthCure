@@ -42,7 +42,7 @@ function App() {
               path="/userProfile"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<UserProfile />}
                   redirectTo="/signin"
                 />
@@ -52,7 +52,7 @@ function App() {
               path="/getStart"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={false}
                   element={<GetStart />}
                   redirectTo="/signin"
                 />
@@ -62,7 +62,7 @@ function App() {
               path="/openingPage"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={false}
                   element={<OpeningPage />}
                   redirectTo="/signin"
                 />
@@ -72,7 +72,7 @@ function App() {
               path="/welcomePage"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={false}
                   element={<WelcomePage />}
                   redirectTo="/signin"
                 />
@@ -82,7 +82,7 @@ function App() {
               path="/signin"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null} // Public route
+                  hasToBeAuthenticated={false} // Public route
                   element={<SignIn />}
                   redirectTo="/"
                 />
@@ -92,7 +92,7 @@ function App() {
               path="/signUp"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null} // Public route
+                  hasToBeAuthenticated={false} // Public route
                   element={<SignUp />}
                   redirectTo="/"
                 />
@@ -102,7 +102,7 @@ function App() {
               path="/doctorDetail/:id"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<DoctorDetail />}
                   redirectTo="/signin"
                 />
@@ -112,7 +112,7 @@ function App() {
               path="/bookSedule"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<BookSedule />}
                   redirectTo="/signin"
                 />
@@ -122,7 +122,7 @@ function App() {
               path="/patientsAppointmentDetail"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<PatientsAppointmentDetail />}
                   redirectTo="/signin"
                 />
@@ -132,7 +132,7 @@ function App() {
               path="/appointmentBill"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<AppointmentBill />}
                   redirectTo="/signin"
                 />
@@ -142,7 +142,7 @@ function App() {
               path="/appointment"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<MyAppointment />}
                   redirectTo="/signin"
                 />
@@ -152,7 +152,7 @@ function App() {
               path="/appointmentcard"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<Appointmentcard />}
                   redirectTo="/signin"
                 />
@@ -162,7 +162,7 @@ function App() {
               path="/reschedule"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<Reschedule />}
                   redirectTo="/signin"
                 />
@@ -172,7 +172,7 @@ function App() {
               path="/patientDetailAfterBook/:id"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<PatientDetailAfterBook />}
                   redirectTo="/signin"
                 />
@@ -182,7 +182,7 @@ function App() {
               path="/availableslots"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<AvailableSlots />}
                   redirectTo="/signin"
                 />
@@ -192,7 +192,7 @@ function App() {
               path="/notification"
               element={
                 <GuardedRoute
-                  isAuthenticated={localStorage.getItem("AuthToken")!=null}
+                  hasToBeAuthenticated={true}
                   element={<Notification />}
                   redirectTo="/signin"
                 />

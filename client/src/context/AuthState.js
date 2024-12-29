@@ -12,7 +12,7 @@ const AuthState = (props) => {
               "http://localhost:5000/api/authentication/signup",
               formDataObject
             );
-            setSignpResponse(response.data);
+            return response.data;
         } catch (error) {
            if (error?.response?.data?.errors) {
               setErrors(error?.response?.data?.errors??[])
@@ -27,7 +27,7 @@ const AuthState = (props) => {
               "http://localhost:5000/api/authentication/signin",
               formDataObject
             );
-            setLoginResponse(response.data);
+            return response.data;
         } catch (error) {
            console.error(error?.response?.data?.errors);
            setErrors(error?.response?.data?.errors)
@@ -36,20 +36,27 @@ const AuthState = (props) => {
 
     //user info get   
     const UserDetails = async ()=>{
+          try {
             const response = await HttpService.GET('http://localhost:5000/api/authentication/getuser')
-            setUserInfo(response.data);
-            setUserRole(response.data.user.role)
-
+            return response.data;
+          } catch (error) {
+            console.error(error);
+            throw error;
+          }
+          
         }
+
+    //doctors info get   
+    const AllDoctors = async ()=>{
+        const response = await HttpService.GET('http://localhost:5000/api/authentication/allDoctor')
+        return response.data;
+    }    
+
        
       const [errors, setErrors] = useState([]);
-      const [ loginResponse, setLoginResponse] = useState([]);
-      const [ signpResponse, setSignpResponse] = useState([]);
-      const [ userinfo, setUserInfo] = useState(null);
-      const [ userRole, setUserRole] = useState(null);
 
   return (
-    <AuthContext.Provider value={{adduser,signpResponse, login,loginResponse, errors ,UserDetails,userinfo,userRole}}>
+    <AuthContext.Provider value={{adduser, login, errors ,UserDetails, AllDoctors}}>
       {props.children}
     </AuthContext.Provider>
   )

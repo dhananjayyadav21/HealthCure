@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react'
 import AuthContext from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
 
    const Context = useContext(AuthContext);
-   const { adduser, signpResponse, errors } = Context;
+   const { adduser, errors } = Context;
    const [currentRole, setCurrentRole] = useState();
    const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const SignUp = () => {
    };
 
    //====== handle Form sumbit event ==============
-   const handleSubmit = (event) => {
+   const handleSubmit = async (event) => {
      event.preventDefault();
      // Target Form
      const formData = new FormData(event.target);
@@ -35,19 +35,19 @@ const SignUp = () => {
          formDataObject[key] = value;
        }
      });
-      //register user with httpservice
-      adduser(formDataObject);
-   };
 
-   //If success true show alert and navigate
-   if(signpResponse.success === true){
-      alert(signpResponse.message);
-      navigate('/signin');
-   }
+      //register user with httpservice
+      let res = await adduser(formDataObject);
+      if(res?.success === true){
+         alert(res.message);
+         navigate('/signin');
+      }
+      
+   };
 
 return (
 <>
-<div className="container d-flex justify-content-center align-items-center p-3 SignUp-Container py-3">
+<div className="container d-flex justify-content-center align-items-center p-3 SignUp-Container py-3 py-md-5">
    <div className="form-containe col-12 col-md-5 shadow rounded-4 py-4 px-3 p-md-5">
       {/* <!-- SignUp Header --> */}
       <div className='mb-4'>
@@ -143,31 +143,31 @@ return (
                      <small><label htmlFor="weekAvailability" className="form-label">Available in Week</label></small>
                      <div className="row">
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Monday" id="mondayCheck" name="dayAvailable"/>
+                           <input className="form-check-input" type="checkbox" value="Monday" id="mondayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="mondayCheck">Monday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Tuesday" id="tuesdayCheck" name="dayAvailable"/>
+                           <input className="form-check-input" type="checkbox" value="Tuesday" id="tuesdayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="tuesdayCheck">Tuesday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Wednesday" id="wednesdayCheck" name="dayAvailable"/>
+                           <input className="form-check-input" type="checkbox" value="Wednesday" id="wednesdayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="wednesdayCheck">Wednesday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Thursday" id="thursdayCheck" name="dayAvailable"/>
+                           <input className="form-check-input" type="checkbox" value="Thursday" id="thursdayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="thursdayCheck">Thursday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Friday" id="fridayCheck" name="dayAvailable"/>
+                           <input className="form-check-input" type="checkbox" value="Friday" id="fridayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="fridayCheck">Friday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Saturday" id="saturdayCheck" name="dayAvailable"/>
+                           <input className="form-check-input" type="checkbox" value="Saturday" id="saturdayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="saturdayCheck">Saturday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Sunday" id="sundayCheck" name="dayAvailable"/>
+                           <input className="form-check-input" type="checkbox" value="Sunday" id="sundayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="sundayCheck">Sunday</label>
                         </div>
                      </div>
@@ -175,7 +175,7 @@ return (
                </div>
             </div>
             }
-
+                     
             {/*======================================= Patinets fields =========================================*/}
             {currentRole==="patient" && 
             <div className='row'>
@@ -194,9 +194,8 @@ return (
             </div>
             }
          </div>
-         <button type="submit" className="btn btn-info text-white fw-bolder w-100">
-            Register
-         </button>
+         <button type="submit" className="btn btn-info text-white fw-bolder w-100">Register</button>
+         <small className='d-flex p-1'>Already have an account?<Link to="/signin" className='nav-link fw-normal text-primary'>Sign in</Link></small>
       </form>
    </div>
 </div>
