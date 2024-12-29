@@ -61,7 +61,7 @@ const BookSedule = ({doctorDetail}) => {
         }
     
         return availableIntervals;
-      };
+    };
     
     let date = nextDays(14);
     

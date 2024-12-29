@@ -10,7 +10,7 @@ require("dotenv").config();
 
 const AuthToken_Secrate = process.env.Secrate_key;
 const router = express.Router();
-const { ObjectId } = require('mongodb');
+const { ObjectId } = require("mongodb");
 
 //============================== create user using POST:/api/authentication/signup http request ===========================
 router.post(
@@ -43,13 +43,9 @@ router.post(
       // check user alrady exist or not
       let user = await User.findOne({ email: req.body.email.toLowerCase() });
       if (user) {
-        return res
-          .status(400)
-          .json({
-            errors: [
-              { msg: "User already registered with this email address" },
-            ],
-          });
+        return res.status(400).json({
+          errors: [{ msg: "User already registered with this email address" }],
+        });
       }
 
       // genrate hash password
@@ -150,7 +146,7 @@ router.post(
       success = true;
       res
         .status(200)
-        .json({ message: "Login Successfully", success, AuthToken,Role});
+        .json({ message: "Login Successfully", success, AuthToken, Role });
     } catch (error) {
       success = false;
       res.status(500).json({
@@ -167,8 +163,12 @@ router.get("/getuser", FetchUser, async (req, res) => {
   try {
     let userid = req.user.userid;
     let user = await User.findOne({ _id: userid }).select("-password");
-    let Patient = await PatientrDetail.findOne({ userid: userid }).select("-password");
-    let Doctor = await DoctorDetail.findOne({ userid: userid }).select("-password");
+    let Patient = await PatientrDetail.findOne({ userid: userid }).select(
+      "-password"
+    );
+    let Doctor = await DoctorDetail.findOne({ userid: userid }).select(
+      "-password"
+    );
     res.status(200).json({ user, Patient, Doctor });
   } catch (error) {
     return res.status(500).json({
@@ -223,7 +223,7 @@ router.get("/GetDoctorDetailById/:id", async (req, res) => {
     let doctorDetail = await User.aggregate([
       {
         $match: {
-          _id : new ObjectId(doctorId),
+          _id: new ObjectId(doctorId),
           role: "doctor",
         },
       },
@@ -244,20 +244,98 @@ router.get("/GetDoctorDetailById/:id", async (req, res) => {
         },
       },
       {
-        $limit: 1, 
+        $limit: 1,
       },
     ]);
 
-    if (doctorDetail.length>0) {
+    if (doctorDetail.length > 0) {
       doctorDetail = doctorDetail[0];
       res.status(200).json(doctorDetail);
-    }else{
-      res.status(404).json({errors: [{msg: "Doctor Details Not found"}]})
+    } else {
+      res.status(404).json({ errors: [{ msg: "Doctor Details Not found" }] });
     }
-
-    
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    return res.status(500).json({
+      message: "Some internal server error for getting user details",
+      errors: [{ msg: error }],
+    });
+  }
+});
+
+router.get("/getAvialbeDateForDoctor/:id", async (req, res) => {
+  //provide GetDoctorDetailById using user id
+  try {
+    let doctorId = req.params.id;
+    let date = req.query.date;
+    const currentDate = new Date();
+
+    const nextDays = (n) =>
+      Array.from({ length: n }, (_, index) => {
+        const nextDay = new Date(currentDate);
+        nextDay.setDate(currentDate.getDate() + index + 1);
+
+        // Format as "DayName, YYYY-MM-DD"
+        const dayName = nextDay.toLocaleDateString("en-US", {
+          weekday: "long",
+        });
+        const formattedDate = nextDay.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+
+        return { dayName, formattedDate };
+      });
+
+    let nextDaysfordoctor = nextDays(20);
+    res.status(200).json(nextDaysfordoctor);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "Some internal server error for getting user details",
+      errors: [{ msg: error }],
+    });
+  }
+});
+
+router.get("/getAvialbeTimeDateAndForDoctor/:id", async (req, res) => {
+  //provide GetDoctorDetailById using user id
+  try {
+    let doctorId = req.params.id;
+    let date = req.query.date;
+    const generateTimeIntervals = (date) => {
+      const currentDate = new Date();
+  
+      // Define the start and end times (10:00 AM to 2:00 PM)
+      const startHour = 1; // 10 AM
+      const endHour = 5; // 2 PM
+  
+      // Parse the selected date and set the time to start at 10 AM
+      const selectedDateObj = new Date(date);
+      selectedDateObj.setHours(startHour, 0, 0, 0); // Set the start time to 10:00 AM
+  
+      const availableIntervals = [];
+  
+      // Loop through and add 30-minute intervals
+      while (selectedDateObj.getHours() < endHour) {
+        const timeString = selectedDateObj.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+  
+        // Add interval if it hasn't passed yet
+        if (selectedDateObj > currentDate) {
+          availableIntervals.push(timeString);
+        }
+  
+        // Increment by 30 minutes
+        selectedDateObj.setMinutes(selectedDateObj.getMinutes() + 30);
+      }
+  
+      return availableIntervals;
+  };
+
+    let TimeIntervals = generateTimeIntervals(date);
+    res.status(200).json(TimeIntervals);
+  } catch (error) {
+    console.log(error);
     return res.status(500).json({
       message: "Some internal server error for getting user details",
       errors: [{ msg: error }],
