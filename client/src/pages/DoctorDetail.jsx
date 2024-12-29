@@ -79,7 +79,7 @@ const DoctorDetail = () => {
             {/* DoctorDetail-Right-container  */}  
             <section className='col-md-4 DoctorDetail-right-container d-flex justify-content-center d-none d-md-flex'>
                 <div className='bg-light p-4 rounded-4'>
-                    <BookSedule/>
+                    <BookSedule doctorDetail={doctorDetail}/>
                 </div>
             </section>
         </div>   

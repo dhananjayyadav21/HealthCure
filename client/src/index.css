@@ -308,3 +308,28 @@ code {
     height: 70vh;
   }
 }
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.calandar-day:has(input[type="radio"]:checked),
+.calandar-time:has(input[type="radio"]:checked)
+{
+  color: white;
+  background-color: var(--bs-btn-hover-bg); /* Bootstrap info color */
+  border-radius: 5px;
+}
+
+.cursor-not-allowed{
+  cursor: not-allowed;
+}

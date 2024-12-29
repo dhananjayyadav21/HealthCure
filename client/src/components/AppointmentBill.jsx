@@ -1,7 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const AppointmentBill = () => {
+
+    const location = useLocation();
+    const navigate = useNavigate(); 
+
+    const PatientDetail = location.state;
+    const doctorDetail = location?.state?.doctorDetail;
+    const vat = 5;
+    // doctorDetail.doctorDetails = {...doctorDetail.doctorDetails,Fees:55}
+
   return (
     <>
        <div className='mt-2 mt-md-4'>
@@ -13,7 +22,7 @@ const AppointmentBill = () => {
                             <div className='col-12'>
                                 <div className="mb-3">
                                     <h5>Patient info:</h5> 
-                                    <div className='p-2 rounded-3 d-flex align-items-center AppointmentBill-name'><i className="fa-solid fa-user mx-2"></i> <input type="text" className="form-control" id="problem" placeholder="Name"/> </div>
+                                    <div className='p-2 rounded-3 d-flex align-items-center AppointmentBill-name'><i className="fa-solid fa-user mx-2"></i> <input type="text" value={PatientDetail?.PatientName} className="form-control" id="problem" placeholder="Name"/> </div>
                                 </div>
                             </div>   
                             <div className='col-12'>
@@ -22,16 +31,16 @@ const AppointmentBill = () => {
                                         <h5>Patient details</h5>
                                         <div className='d-flex justify-content-between text-secondary'>
                                             <p className='m-0'>Consultion Fees</p> 
-                                            <p className='m-0'>$55</p>
+                                            <p className='m-0'>${doctorDetail.doctorDetails?.Fees??0}</p>
                                         </div> 
                                         <div className='d-flex justify-content-between text-secondary'>
-                                            <p className='m-0'>Vat <span>(5%)</span></p> 
-                                            <p className='m-0'>$4.5</p>
+                                            <p className='m-0'>Vat <span>({vat}%)</span></p> 
+                                            <p className='m-0'>${(doctorDetail.doctorDetails?.Fees??0) * vat/100}</p>
                                         </div>
                                         <hr />
                                         <div className='d-flex justify-content-between'>
                                             <h5>Total Payable</h5>
-                                            <h5 className='fw-bold'>$59.5</h5>
+                                            <h5 className='fw-bold'>${doctorDetail.doctorDetails?.Fees?? 0+ (doctorDetail.doctorDetails?.Fees??0) * vat/100}</h5>
                                         </div>
                                     </div>
                                 </div>

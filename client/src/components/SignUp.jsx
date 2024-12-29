@@ -135,7 +135,7 @@ return (
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="Fees" className="form-label">Fees</label></small>
-                     <input type="number" className="form-control" id="Fees" placeholder="Enter Fees"/>
+                     <input type="number" name='Fees' className="form-control" id="Fees" placeholder="Enter Fees"/>
                   </div>
                </div>
                <div className='col-12'>
