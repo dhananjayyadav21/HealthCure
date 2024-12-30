@@ -4,12 +4,10 @@ import { useNavigate } from 'react-router-dom'
 const Appointmentcard = (props) => {
 
   const {index, Appointments} = props ;
-
-  console.log(Appointments,"****************")
   const navigate = useNavigate(); 
-
+  
   const ShowAppointmentDetails = ()=>{
-    navigate(`/patientDetailAfterBook/:${index}`);
+    navigate(`/patientDetailAfterBook/:${index}`, {state:{...Appointments}});
   }
   return (
     <>

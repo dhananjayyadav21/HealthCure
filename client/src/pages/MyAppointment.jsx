@@ -20,19 +20,16 @@ const MyAppointment = () => {
 
   const GetMissedAppointments = async (appointmentStatus) => {
     const res = await GetAppointments(appointmentStatus);
-    console.log("Missed appointments", res.appointments);
     setMissedAppointments(res.appointments);
   };
 
   const GetScheduledAppointments = async (appointmentStatus) => {
     const res = await GetAppointments(appointmentStatus);
-    console.log("Scheduled appointments", res.appointments);
     setScheduledAppointments(res.appointments);
   };
 
   const GetCompletedAppointments = async (appointmentStatus) => {
     const res = await GetAppointments(appointmentStatus);
-    console.log("Complete appointments", res.appointments);
     setCompletedAppointments(res.appointments);
   };
 

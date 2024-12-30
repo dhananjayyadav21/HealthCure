@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
 const BookSedule = ({doctorDetail}) => {
 
@@ -35,8 +35,6 @@ const BookSedule = ({doctorDetail}) => {
 
     const onDateChange = (event)=>{
         setSelectedDate(event.target.value);
-        console.log(event.target.value);
-        console.log(selectedDate);
         GetAvialbeTimeForDate(event.target.value);
     }
 
@@ -50,7 +48,6 @@ const BookSedule = ({doctorDetail}) => {
     };
     
     // let date = nextDays();
-    
     const handleSubmit = async (event) => {
       event.preventDefault();
       // Target Form
@@ -73,8 +70,6 @@ const BookSedule = ({doctorDetail}) => {
       });
 
       formDataObject["doctorId"] = doctorId;
-
-      console.log(formDataObject);
       navigate('/patientsAppointmentDetail',{state:{...formDataObject,doctorDetail}});
     };
 
@@ -132,12 +127,6 @@ const BookSedule = ({doctorDetail}) => {
         </section>
 
         <div>
-            {/* <Link className='btn btn-warning btn-RequestAppointment text-white fw-sm-bold my-3' 
-            to={{
-                pathname: '/patientsAppointmentDetail',
-                state:{id:1,name:'sabaoon'}
-              }} 
-            >Request for Appointment</Link> */}
             <button  className='btn btn-warning btn-RequestAppointment text-white fw-sm-bold my-3' to="/patientsAppointmentDetail" type="submit">Request for Appointment</button>
         </div>
 
