@@ -34,7 +34,7 @@ const DoctorDetail = () => {
             <section className='col-md-8 DoctorDetail-left-container potion-relative'>
                 <section className='DoctorDetail-Banner'>
                     <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative'>
-                        <img src="/assets/img/Doctor_5.png" alt="Doctor" />
+                        <img src="/assets/img/Doctor_6.png" alt="Doctor" />
                         <div className='position-absolute text-xenter'>
                             <h5>Dr. {doctorDetail?.name}</h5>
                             <p className='text-secondary text-capitalize'>{doctorDetail?.doctorDetails?.specialist}, MBBS, MS</p>

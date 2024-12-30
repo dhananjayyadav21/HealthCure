@@ -68,7 +68,7 @@ const AppointmentBill = () => {
                                         <div className="text-secondary" >
                                             <div className='d-flex'>
                                                 <p className="m-1 w-25">Name</p>
-                                                <p className='m-1'>: {PatientDetail?.PatientName}</p>
+                                                <p className='m-1 text-capitalize'>: {PatientDetail?.PatientName}</p>
                                             </div>
                                             <div className='d-flex'>
                                                 <p className="m-1 w-25">Age</p>
@@ -89,15 +89,15 @@ const AppointmentBill = () => {
                                         <div className="text-secondary" >
                                             <div className='d-flex'>
                                                 <p className="m-1 w-25">Name</p>
-                                                <p className='m-1'>: {doctorDetail?.name}</p>
+                                                <p className='m-1 text-capitalize'>: {doctorDetail?.name}</p>
                                             </div>
                                             <div className='d-flex'>
                                                 <p className="m-1 w-25">Contact</p>
-                                                <p className='m-1'>: {doctorDetail?.doctorDetails?.hospitalContact ?doctorDetail?.doctorDetails?.hospitalContact : "210 456 8695"}</p>
+                                                <p className='m-1 text-capitalize'>: {doctorDetail?.doctorDetails?.hospitalContact ?doctorDetail?.doctorDetails?.hospitalContact : "210 456 8695"}</p>
                                             </div>
                                             <div className='d-flex'>
                                                 <p className="m-1 w-25">Hospital</p>
-                                                <p className='m-1'>: {doctorDetail?.doctorDetails?.hospital}</p>
+                                                <p className='m-1 text-capitalize'>: {doctorDetail?.doctorDetails?.hospital}</p>
                                             </div>
                                         </div>
                                     </div>

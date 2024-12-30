@@ -32,13 +32,12 @@ const Appointmentcard = (props) => {
     AppointmentStatusUpdate(appointmentId, { status: "Completed" });
   }
 
- 
   return (
     <>
-        <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2 cursor-pointer' >
+        <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2 cursor-pointer' onClick= {ShowAppointmentDetails}>
 
           { localStorage.getItem('UserRole') === "patient" ? <>
-              <div className='Appointmentcard-img-container bg-light rounded-3' onClick= {ShowAppointmentDetails}>
+              <div className='Appointmentcard-img-container bg-light rounded-3'>
                   <img src={`/assets/img/Doctor_${index+1}.png`} alt="doctor"/>
               </div>
               <div className='w-100'>
@@ -59,14 +58,14 @@ const Appointmentcard = (props) => {
           }
 
           { localStorage.getItem('UserRole') === "doctor" ? <>
-              <div className='Appointmentcard-img-container bg-light rounded-3' onClick= {ShowAppointmentDetails}>
-                  <img src={`/assets/img/Doctor_${index+1}.png`} alt="doctor"/>
+              <div className='Appointmentcard-img-container bg-light rounded-3'>
+                  <img src={`/assets/img/Patient.png`} alt="doctor"/>
               </div>
               <div className='w-100'>
                   <div className='d-flex justify-content-between align-items-center'>
                     <div className='my-2'>
                         <h6 className='m-0 text-capitalize'>{Appointments?.patientname}</h6>
-                        <p className='text-secondary text-capitalize m-0'>{Appointments?.problem}</p>
+                        <p className='text-secondary text-capitalize m-0'>{(Appointments?.problem).slice(0,20)}...</p>
                     </div>
                     <div>
                       {Appointments?.status === "Scheduled" ? 

@@ -60,9 +60,9 @@ const Reschedule = () => {
                     <section className='DoctorDetail-left-container potion-relative'>
 
                     {UserRole === "patient" ?     
-                        <section className='DoctorDetail-Banner'>
+                        <section className='DoctorDetail-Banner col-12 '>
                             <div className='w-100 px-2 pt-2 border rounded-4 bg-white position-relative'>
-                                <img src={`/assets/img/Doctor_5.png`} alt="Doctor" />
+                                <img src={`/assets/img/Doctor_6.png`} alt="Doctor" />
                                 <div className='position-absolute text-xenter'>
                                 <h5>Dr. {missedAppointments[0]?.doctorname}</h5>
                                     <p className='text-secondary'>Sr. {missedAppointments[0]?.doctorspecialist}</p>
@@ -72,18 +72,18 @@ const Reschedule = () => {
                     }
 
                     {UserRole === "doctor" ?
-                        <section className='DoctorDetail-Banner'>
+                        <section className='DoctorDetail-Banner col-12 '>
                             <div className='w-100 px-2 pt-2 border rounded-4 bg-white position-relative'>
                                 <img src={`/assets/img/Patient.png`} alt="Doctor" />
                                 <div className='position-absolute text-xenter'>
-                                <h5>{missedAppointments[0]?.patientname}</h5>
-                                    <p className='text-secondary'>{missedAppointments[0]?.problem}</p>
+                                <h5 className='text-capitalize'>{missedAppointments[0]?.patientname}</h5>
+                                    <p className='text-secondary text-capitalize'>{missedAppointments[0]?.problem}</p>
                                 </div>
                             </div>
                         </section> : ""
                     }
 
-                        <section className='DoctorDetail-Name d-flex justify-content-between align-items-center my-2'>
+                        <section className='col-12 w-100 DoctorDetail-Name d-flex justify-content-between align-items-center my-2'>
                           {/* <!-- Form --> */}
                           <form className='AppointmentBill-form'>
                             <div className='row'>  
@@ -136,7 +136,7 @@ const Reschedule = () => {
                                          
                                         {UserRole === 'patient' ? <>
                                             <p className='text-danger text-capitalize'><i className="fa-solid fa-circle-exclamation"></i> You missed your scheduled appointment. Please reschedule at your earliest convenience to ensure timely care.</p></> :  
-                                            <p className='text-danger text-capitalize'><i className="fa-solid fa-circle-exclamation"></i>{missedAppointments[0]?.patientname} missed scheduled appointment.</p>
+                                            <p className='text-danger text-capitalize'><i className="fa-solid fa-circle-exclamation"></i><span className='text-capitalize'> {missedAppointments[0]?.patientname} </span>missed scheduled appointment.</p>
                                         } 
                                             <div className="text-secondary" >
                                               <div className='d-flex'>
