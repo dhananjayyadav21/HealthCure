@@ -1,33 +1,62 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Appointmentcard from '../components/Appointmentcard'
+import AuthContext from '../context/AuthContext'
 
 const MyAppointment = () => {
 
-  let Missed = [{},{},{},{},{},{},{},{},{},{}]
-  let Upcomming = [{},{},{}]
-  let Past = [{},{},{},{},{}]
+  const Context = useContext(AuthContext);
+  const { GetAppointments } = Context;
 
-  const [Mdisplay , setMdisplay] = useState("");
-  const [Udisplay , setUdisplay] = useState("");
-  const [Pdisplay , setPdisplay] = useState("");
+  useEffect(() => {
+    GetMissedAppointments("Missed");
+    GetScheduledAppointments("Scheduled");
+    GetCompletedAppointments("Completed");
+    // eslint-disable-next-line
+  }, []);
 
-  const showMissed = ()=>{
+  const [missedAppointments, setMissedAppointments] = useState([]);
+  const [scheduledAppointments, setScheduledAppointments] = useState([]);
+  const [completedAppointments, setCompletedAppointments] = useState([]);
+
+  const GetMissedAppointments = async (appointmentStatus) => {
+    const res = await GetAppointments(appointmentStatus);
+    console.log("Missed appointments", res.appointments);
+    setMissedAppointments(res.appointments);
+  };
+
+  const GetScheduledAppointments = async (appointmentStatus) => {
+    const res = await GetAppointments(appointmentStatus);
+    console.log("Scheduled appointments", res.appointments);
+    setScheduledAppointments(res.appointments);
+  };
+
+  const GetCompletedAppointments = async (appointmentStatus) => {
+    const res = await GetAppointments(appointmentStatus);
+    console.log("Complete appointments", res.appointments);
+    setCompletedAppointments(res.appointments);
+  };
+
+  const [Mdisplay, setMdisplay] = useState("");
+  const [Udisplay, setUdisplay] = useState("");
+  const [Pdisplay, setPdisplay] = useState("");
+
+  const showMissed = () => {
     setMdisplay("");
     setUdisplay("none");
     setPdisplay("none");
-  }
+  };
 
-  const showUpco = ()=>{
+  const showUpco = () => {
     setMdisplay("none");
     setUdisplay("");
     setPdisplay("none");
-  }
+  };
 
-  const showPast = ()=>{
+  const showPast = () => {
     setMdisplay("none");
     setUdisplay("none");
     setPdisplay("");
-  }
+  };
 
 
   return (
@@ -58,7 +87,7 @@ const MyAppointment = () => {
                   <section className='col-4' onClick={showPast}>
                     <div className='d-flex justify-content-center align-items-center gap-1 p-1 bg-white mx-2 rounded-3'>
                      <span className='btn btn-success rounded-circle p-1 m-0'></span> 
-                      <p className='m-0'>Past</p> 
+                      <p className='m-0'>Completed</p> 
                     </div>
                   </section>
                </div>
@@ -70,14 +99,14 @@ const MyAppointment = () => {
                     <div className={`d-flex justify-content-center align-items-center gap-3 m-2 py-2 bg-white rounded-2 border`}>
                       <span className='btn btn-danger rounded-circle p-1 m-0'></span>
                       <h6 className='m-0'>Missed</h6> 
-                      <span className="count-icon bg-danger shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
+                      <span className="count-icon bg-danger shadow-sm d-flex justify-content-center align-items-center text-white m-0">{missedAppointments.length}</span>
                     </div>
   
                     <div className='Missed-Appointment scrollable '>
                       <div className='px-2'>
-                        {Missed.map((e,index)=>{
+                        {missedAppointments.map((Appointments,index)=>{
                          let currentindex = index % 10
-                        return  <Appointmentcard key={index} index={currentindex}/> })}  
+                        return  <Appointmentcard key={index} index={currentindex} Appointments={Appointments}/> })}  
                       </div>
                     </div>
                 </div>
@@ -89,14 +118,14 @@ const MyAppointment = () => {
                     <div className={`bg-white d-flex justify-content-center align-items-center gap-3 m-2 py-2 bg-white rounded-2 border`}>
                       <span className='btn btn-warning rounded-circle p-1 m-0'></span>
                       <h6 className='m-0'>Upcomming</h6> 
-                      <span className="count-icon bg-warning shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
+                      <span className="count-icon bg-warning shadow-sm d-flex justify-content-center align-items-center text-white m-0">{scheduledAppointments.length}</span>
                     </div>
               
                     <div className='Upcomming-Appointment scrollable'>
                       <div className='px-2'>
-                        {Upcomming.map((e,index)=>{
+                        {scheduledAppointments?.map((Appointments,index)=>{
                          let currentindex = index % 10
-                        return  <Appointmentcard key={index} index={currentindex}/>})} 
+                        return  <Appointmentcard key={index} index={currentindex} Appointments={Appointments} />})} 
                       </div>
                     </div>   
                 </div>
@@ -108,15 +137,15 @@ const MyAppointment = () => {
                   <div className={`bg-white d-flex justify-content-center align-items-center gap-3 m-2 py-2 bg-white rounded-2 
                     border`}>
                     <span className='btn btn-success rounded-circle p-1 m-0'></span>
-                    <h6 className='m-0'>Past</h6> 
-                    <span className="count-icon bg-success shadow-sm d-flex justify-content-center align-items-center text-white m-0">5</span>
+                    <h6 className='m-0'>Completed</h6> 
+                    <span className="count-icon bg-success shadow-sm d-flex justify-content-center align-items-center text-white m-0">{completedAppointments.length}</span>
                   </div>
                  
                   <div className='Past-Appointment scrollable'>
                     <div className='px-2'>
-                      {Past.map((e,index)=>{
+                      {completedAppointments?.map((Appointments,index)=>{
                       let currentindex = index % 10
-                      return  <Appointmentcard key={index} index={currentindex}/>})} 
+                      return  <Appointmentcard key={index} index={currentindex} Appointments={Appointments}/>})} 
                     </div> 
                   </div>
                 </div>

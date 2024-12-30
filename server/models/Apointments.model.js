@@ -8,6 +8,10 @@ const appointmentSchema = new Schema({
     ref: 'users'
   },
 
+  patientname:{
+    type:String
+  },
+
   age:{
     type:Number,
   },
@@ -31,6 +35,14 @@ const appointmentSchema = new Schema({
   doctorid:{
     type: Schema.Types.ObjectId, 
     ref: 'users'
+  },
+
+  doctorname:{
+    type:String
+  },
+
+  doctorspecialist:{
+    type:String
   },
 
   date:{

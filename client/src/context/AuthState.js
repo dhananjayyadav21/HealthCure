@@ -59,8 +59,8 @@ const AuthState = (props) => {
     }
   };
 
-   //doctors info get
-   const  GetDoctorDetailById = async (id) => {
+  //============================================= GetDoctorDetailById get ===============================================
+  const GetDoctorDetailById = async (id) => {
     try {
       const response = await HttpService.GET(
         `http://localhost:5000/api/authentication/GetDoctorDetailById/${id}`
@@ -72,8 +72,8 @@ const AuthState = (props) => {
     }
   };
 
-   //doctors info get
-   const  GetAvialbeDateForDoctor = async (id) => {
+  //============================================= GetAvialbeDateForDoctor get ===============================================
+  const GetAvialbeDateForDoctor = async (id) => {
     try {
       const response = await HttpService.GET(
         `http://localhost:5000/api/appointment/getAvialbeDateForDoctor/${id}`
@@ -85,8 +85,8 @@ const AuthState = (props) => {
     }
   };
 
-   //doctors info get
-   const  GetAvialbeTimeDateAndForDoctor = async (id,date) => {
+  //============================================= GetAvialbeTimeDateAndForDoctor get ===============================================
+  const GetAvialbeTimeDateAndForDoctor = async (id, date) => {
     try {
       const response = await HttpService.GET(
         `http://localhost:5000/api/appointment/getAvialbeTimeDateAndForDoctor/${id}?date=${date}`
@@ -98,12 +98,11 @@ const AuthState = (props) => {
     }
   };
 
-
-  //appointments info get
-  const  GetAppointments = async (id,date) => {
+  //============================================== appointments info get ===================================================
+  const GetAppointments = async (appointmentStatus) => {
     try {
       const response = await HttpService.GET(
-        `http://localhost:5000/api/appointment/getappointment`
+        `http://localhost:5000/api/appointment/getappointment?appointmentStatus=${appointmentStatus}`
       );
       return response.data;
     } catch (error) {
@@ -116,7 +115,17 @@ const AuthState = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ adduser, login, errors, UserDetails, AllDoctors,GetDoctorDetailById,GetAvialbeDateForDoctor,GetAvialbeTimeDateAndForDoctor, GetAppointments}}
+      value={{
+        adduser,
+        login,
+        errors,
+        UserDetails,
+        AllDoctors,
+        GetDoctorDetailById,
+        GetAvialbeDateForDoctor,
+        GetAvialbeTimeDateAndForDoctor,
+        GetAppointments,
+      }}
     >
       {props.children}
     </AuthContext.Provider>

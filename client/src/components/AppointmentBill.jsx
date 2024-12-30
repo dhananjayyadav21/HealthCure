@@ -1,11 +1,10 @@
 import React, { } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import HttpService from '../Service/httpservice';
 
 const AppointmentBill = () => {
 
-    const location = useLocation();
-    const navigate = useNavigate(); 
+    const location = useLocation(); 
 
     const PatientDetail = location.state;
     const doctorDetail = location?.state?.doctorDetail;
@@ -16,12 +15,15 @@ const AppointmentBill = () => {
     console.log(PatientDetail);
 
     const appointmentDataObject = {
+        patientname: PatientDetail?.PatientName,
         age: PatientDetail?.Age,
         weight: PatientDetail?.Weight,
         problem: PatientDetail?.Problem,
         consultionFees: doctorDetail?.doctorDetails?.Fees?? 0,
         totalPay: doctorDetail?.doctorDetails?.Fees?? 0+ (doctorDetail?.doctorDetails?.Fees??0) * vat/100,
         doctorid: PatientDetail?.doctorId,
+        doctorname: doctorDetail?.name,
+        doctorspecialist: doctorDetail?.doctorDetails?.specialist,
         date: PatientDetail?.day,
         time: PatientDetail?.time,
     }
@@ -47,8 +49,8 @@ const AppointmentBill = () => {
   return (
     <>
        <div className='pt-2 px-md-4'>
-            <section className='d-flex justify-content-center align-items-center m-2 m-md-0 mt-md-5'>
-                <div className="form-containe col-lg-6 rounded-4 shadow-sm bg-light py-4 px-3 p-md-5">
+            <section className='d-flex justify-content-center align-items-center m-2 mt-md-3'>
+                <div className="form-containe col-lg-8 rounded-4 shadow-sm bg-light p-4 px-3 p-md-5">
                     {/* <!-- Form --> */}
                     <form className='AppointmentBill-form'>
                         <div className='row'>
@@ -116,7 +118,7 @@ const AppointmentBill = () => {
                                         <hr />
                                         <div className='d-flex justify-content-between'>
                                             <h5>Total Payable</h5>
-                                            <h5 className='fw-bold'>${doctorDetail?.doctorDetails?.Fees?? 0+ (doctorDetail?.doctorDetails?.Fees??0) * vat/100}</h5>
+                                            <h5 className='fw-bold'>${(doctorDetail?.doctorDetails?.Fees?? 0) + ((doctorDetail?.doctorDetails?.Fees??0) * vat/100)}</h5>
                                         </div>
                                     </div>
                                 </div>

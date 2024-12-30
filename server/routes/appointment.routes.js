@@ -18,12 +18,15 @@ router.post("/createappointment",FetchUser, async (req, res) => {
 
     const appointment = await Appointments.create({
       patientid:userid,
+      patientname:req.body.patientname,
       age: req.body.age,
       weight: req.body.weight,
       problem: req.body.problem,
       consultionFees: req.body.consultionFees,
       totalPay: req.body.totalPay,
       doctorid: req.body.doctorid,
+      doctorname: req.body.doctorname,
+      doctorspecialist: req.body.doctorspecialist,
       date: req.body.date,
       time: req.body.time,
       status: req.body.status,
@@ -42,7 +45,7 @@ router.post("/createappointment",FetchUser, async (req, res) => {
 });
 
 
-//============================================ = [createappointment] ==============================================
+//============================================= [getappointment] ==============================================
 router.get("/getappointment",FetchUser, async (req, res) => {
   try {
 
@@ -50,7 +53,15 @@ router.get("/getappointment",FetchUser, async (req, res) => {
     if (!userid) {
         return res.status(400).send({ error: 'Patient ID is required' });
     }
-    const appointments = await Appointments.find({patientid:userid})
+    const { appointmentStatus } = req.query;
+    const appointments = await Appointments.find({
+      $or: [
+        { patientid: userid },
+        { doctorid: userid }
+    ],
+      status: appointmentStatus
+    });
+    
 
     success = true;
     res.status(200).json({ success, message: "Appointment get", appointments });

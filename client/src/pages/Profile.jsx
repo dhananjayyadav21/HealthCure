@@ -37,7 +37,7 @@ const UserProfile = () => {
                         {userinfo?.user?.role === "doctor"  &&    <div className='p-5'>
                                 <div className='d-flex justify-content-center'>
                                     <div style={{width:"150px"}}>
-                                    <img className='bg-light' src="/assets/img/Doctor_4.png" alt="User-img" style={{width:"100%",borderRadius:"50%"}} />
+                                    <img className='bg-light' src="/assets/img/Doctor_6.png" alt="User-img" style={{width:"100%",borderRadius:"50%"}} />
                                     </div>
                                 </div>
                                 <div className='text-center'>
@@ -51,7 +51,7 @@ const UserProfile = () => {
                             {userinfo?.user?.role === "patient"  &&  <div className='p-5'>
                                 <div className='d-flex justify-content-center'>
                                     <div style={{width:"150px"}}>
-                                    <img className='bg-light' src="/assets/img/Doctor_4.png" alt="User-img" style={{width:"100%",borderRadius:"50%"}} />
+                                    <img className='bg-light' src="/assets/img/Patient.png" alt="User-img" style={{width:"100%",borderRadius:"50%"}} />
                                     </div>
                                 </div>
                                 <div className='text-center'>
