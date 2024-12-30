@@ -22,7 +22,7 @@ const PatientsAppointmentDetail = () => {
         <div className='p-2 p-md-4'>      
          <div className='d-flex justify-content-center align-items-center'>
              {/* PatientsAppointmentDetail-left-container  */}
-             <section className='col-md-6 PatientsAppointmentDetail-left-container'>
+             <section className='col-md-8 PatientsAppointmentDetail-left-container'>
                  <section className='DoctorDetail-Banner'>
                      <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative'>
                          <img src="/assets/img/Doctor_5.png" alt="Doctor" />

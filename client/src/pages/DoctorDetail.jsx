@@ -20,7 +20,7 @@ const DoctorDetail = () => {
         const doctorId = params.id;
         let res = await GetDoctorDetailById(doctorId);
         setDoctorDetail(res);
-        console.log(res)
+        // console.log(res)
       } catch (error) {
         console.log(error); 
       }
@@ -37,14 +37,14 @@ const DoctorDetail = () => {
                         <img src="/assets/img/Doctor_5.png" alt="Doctor" />
                         <div className='position-absolute text-xenter'>
                             <h5>Dr. {doctorDetail?.name}</h5>
-                            <p className='text-secondary text-capitalize'>{doctorDetail?.doctorDetails?.specialist}</p>
+                            <p className='text-secondary text-capitalize'>{doctorDetail?.doctorDetails?.specialist}, MBBS, MS</p>
                         </div>
                     </div>
                 </section>
 
                 <section className='DoctorDetail-Name d-flex justify-content-between align-items-center'>
                     <div className='my-3 my-md-5'>
-                    <h4 className='text-capitalize'>{doctorDetail?.doctorDetails?.specialist}</h4>
+                    <h4 className='text-capitalize'>{doctorDetail?.doctorDetails?.specialist}, MBBS, MS</h4>
                     <p className='text-secondary mb-2 text-capitalize'>{doctorDetail?.doctorDetails?.hospitalAddress}, {doctorDetail?.doctorDetails?.specialist}</p>
                     <small><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i> <span className='btn btn-warning rounded-5 mx-2 p-0 px-2 tex-white'>4.9</span></small>
                     </div>

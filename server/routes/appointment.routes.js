@@ -1,18 +1,23 @@
 const express = require("express");
 const Appointments = require("../models/Apointments.model");
 const CommonHelper = require("../helpers/commonhelper");
-const router = express.Router();
 const DoctorDetail = require("../models/DoctorDetail.model");
+const FetchUser = require("../middleware/FetchUser.middleware");
+const router = express.Router();
 const { ObjectId } = require("mongodb");
 
-router.post("/createappointment", async (req, res) => {
+
+//============================================ = [createappointment] ==============================================
+router.post("/createappointment",FetchUser, async (req, res) => {
   try {
-    // if (!req.body.patientid) {
-    //     return res.status(400).send({ error: 'Patient ID is required' });
-    // }
+
+    let userid = req.user.userid;
+    if (!userid) {
+        return res.status(400).send({ error: 'Patient ID is required' });
+    }
 
     const appointment = await Appointments.create({
-      //   patientid: req.body.patientid,
+      patientid:userid,
       age: req.body.age,
       weight: req.body.weight,
       problem: req.body.problem,
@@ -25,9 +30,8 @@ router.post("/createappointment", async (req, res) => {
     });
 
     success = true;
-    res
-      .status(200)
-      .json({ success, message: "Appointment Created", appointment });
+    res.status(200).json({ success, message: "Appointment Created", appointment });
+
   } catch (error) {
     success = false;
     res.status(500).json({
@@ -37,6 +41,7 @@ router.post("/createappointment", async (req, res) => {
   }
 });
 
+//============================================ [getAvialbeDateForDoctor] ==============================================
 router.get("/getAvialbeDateForDoctor/:id", async (req, res) => {
   //provide GetDoctorDetailById using user id
   try {
@@ -49,18 +54,22 @@ router.get("/getAvialbeDateForDoctor/:id", async (req, res) => {
       return res.status(400).json({ errors: [{ msg: "Doctor Not Found" }] });
     }
 
-    const nextDaysfordoctor = CommonHelper.nextDays(20,doctorDetails.weekAvailability || []);
-
+    const nextDaysfordoctor = CommonHelper.nextDays(
+      20,
+      doctorDetails.weekAvailability || []
+    );
     res.status(200).json(nextDaysfordoctor);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      message: "Some internal server error for getting user details",
+      message: "Some internal server error for getAvialbeDateForDoctor details",
       errors: [{ msg: error }],
     });
   }
 });
 
+
+//============================================ [getAvialbeTimeDateAndForDoctor] ==============================================
 router.get("/getAvialbeTimeDateAndForDoctor/:id", async (req, res) => {
   //provide GetDoctorDetailById using user id
   try {
@@ -85,7 +94,7 @@ router.get("/getAvialbeTimeDateAndForDoctor/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      message: "Some internal server error for getting user details",
+      message: "Some internal server error for getAvialbeTimeDateAndForDoctor details",
       errors: [{ msg: error }],
     });
   }

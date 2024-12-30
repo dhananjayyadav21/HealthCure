@@ -15,9 +15,9 @@ const DoctorCards = (props) => {
                 <div className={`Doctor-img-container doctor-img-bg-${index+1} rounded-top-3`} >
                     <img className='card-img-top' src={`assets/img/Doctor_${index+1}.png`} alt="Doctors" />
                 </div>  
-                <div className='card-body py-2'>
+                <div className='card-body py-2  text-center'>
                     <h6 className='m-0 text-capitalize'>Dr. {doctor.name}</h6>
-                    <small><p className='m-0 text-secondary text-center text-capitalize'>{doctor.doctorDetails.specialist}</p></small>
+                    <small><p className='m-0 text-secondary text-capitalize'>{doctor.doctorDetails.specialist}</p></small>
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ const BookSedule = ({doctorDetail}) => {
     const nextDays = async ()=> {
       try {
         let res = await GetAvialbeDateForDoctor(doctorId);
-        console.log(res)
+        // console.log(res)
         setDates(res);
       } catch (error) {
         
@@ -84,11 +84,11 @@ const BookSedule = ({doctorDetail}) => {
         
         {/* Sedule Date */}
         <section className='SeduleDate my-4'>
-            <small><p className='fw-bold'>December</p></small>
+            <small><p className='fw-bold'>Date</p></small>
             <div className='row g-2'>
                {dates?.map((day,index)=>
 
-                <div className='col-3'>
+                <div className='col-3' key={index}>
                 <div className={`btn btn-outline-info fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-day cursor-pointer ${filledDateSlots.includes(day.formattedDate)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
                 <label className={`d-flex flex-column align-items-center ${filledDateSlots.includes(day.formattedDate)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`} htmlFor={"day"+day.formattedDate}>
                     <input 

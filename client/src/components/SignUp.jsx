@@ -129,7 +129,7 @@ return (
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="hospitalContact" className="form-label">Hostiplal/Clinic Contact</label></small>
-                     <input type="number" className="form-control" id="hospitalContact" placeholder="Hostiplal/Clinic Contact"/>
+                     <input type="number" className="form-control" name='hospitalContact' id="hospitalContact" placeholder="Hostiplal/Clinic Contact"/>
                   </div>
                </div>
                <div className='col-12 col-md-6'>
