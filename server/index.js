@@ -3,6 +3,7 @@ const app = express();
 const conectToMongo = require('./Config/db');
 conectToMongo();
 const cors = require('cors')
+require('./Schedule');
 
 const port = 5000;
 
