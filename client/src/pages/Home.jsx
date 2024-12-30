@@ -19,13 +19,9 @@ const Home = () => {
    const getDoctors = async () => {
      let res = await AllDoctors();
      setDoctors(res.AllDoctor);
-     console.log(res);
    };
 
-   console.log(doctors);
-
    let Arra = [{},{},{},{},{},{},{}]
-
 
   return (
     <div className='bg-light'>
@@ -111,13 +107,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/*================================= Hospital Banner =============================*/}
-      {/* <section>
-        <div className='container-fluid Hospital-Banner'>
-          <img className='border border-3 rounded-4' src="/assets/img/Doctor_banner.jpg" alt="Banner"/>
-        </div>
-      </section> */}
 
       {/*================================= Top Hotspital =============================*/}
       <section className='container-md px-3 my-5 Hotspital-container'>

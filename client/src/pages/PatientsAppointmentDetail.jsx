@@ -27,7 +27,7 @@ const PatientsAppointmentDetail = () => {
                      <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative'>
                          <img src="/assets/img/Doctor_5.png" alt="Doctor" />
                          <div className='position-absolute text-xenter'>
-                             <h5>Dr. {doctorDetail.name}</h5>
+                             <h5>Dr. {doctorDetail?.name}</h5>
                              <p className='text-secondary'>{doctorDetail?.doctorDetails?.specialist}</p>
                          </div>
                      </div>

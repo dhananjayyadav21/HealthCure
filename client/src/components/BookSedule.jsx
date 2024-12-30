@@ -1,69 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState,useContext,useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-
+import AuthContext from '../context/AuthContext'
 const BookSedule = ({doctorDetail}) => {
 
     const params= useParams();
-    const currentDate = new Date();
+
+    const Context = useContext(AuthContext);
+    const { GetAvialbeDateForDoctor,GetAvialbeTimeDateAndForDoctor } = Context;
+    const doctorId = params.id;
     const navigate = useNavigate(); 
 
-    const [selectedDate,setSelectedDate] = useState();
+    const [dates,setDates] = useState([]);
     const [timeSlots,setTimeSlots] = useState([]);
+    const [selectedDate,setSelectedDate] = useState();
+
     const [filledTimeSlots,setFilledTimeSlots] = useState(["03:00 am","04:00 am"]);
-    const [filledDateSlots,setfilledDateSlots] = useState(["2024-12-31"]);
+    const [filledDateSlots,setfilledDateSlots] = useState(["2024-12-30"]);
+
+     useEffect(() => {
+      nextDays();
+         // eslint-disable-next-line
+    }, []);
 
     // Generate an array of the next 14 days
-    const nextDays = (n)=> Array.from({ length: n }, (_, index) => {
-        const nextDay = new Date(currentDate);
-        nextDay.setDate(currentDate.getDate() + index + 1);
+    const nextDays = async ()=> {
+      try {
+        let res = await GetAvialbeDateForDoctor(doctorId);
+        console.log(res)
+        setDates(res);
+      } catch (error) {
         
-        // Format as "DayName, YYYY-MM-DD"
-        const dayName = nextDay.toLocaleDateString('en-US', { weekday: 'long' });
-        const formattedDate = nextDay.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-    
-        return { dayName, formattedDate };
-    });
+      }
+    };
 
     const onDateChange = (event)=>{
         setSelectedDate(event.target.value);
         console.log(event.target.value);
         console.log(selectedDate);
-        setTimeSlots(generateTimeIntervals(event.target.value));
+        GetAvialbeTimeForDate(event.target.value);
     }
 
-    const generateTimeIntervals = (date) => {
-        const currentDate = new Date();
-    
-        // Define the start and end times (10:00 AM to 2:00 PM)
-        const startHour = 1; // 10 AM
-        const endHour = 5; // 2 PM
-    
-        // Parse the selected date and set the time to start at 10 AM
-        const selectedDateObj = new Date(date);
-        selectedDateObj.setHours(startHour, 0, 0, 0); // Set the start time to 10:00 AM
-    
-        const availableIntervals = [];
-    
-        // Loop through and add 30-minute intervals
-        while (selectedDateObj.getHours() < endHour) {
-          const timeString = selectedDateObj.toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit',
-          });
-    
-          // Add interval if it hasn't passed yet
-          if (selectedDateObj > currentDate) {
-            availableIntervals.push(timeString);
-          }
-    
-          // Increment by 30 minutes
-          selectedDateObj.setMinutes(selectedDateObj.getMinutes() + 30);
-        }
-    
-        return availableIntervals;
+    const GetAvialbeTimeForDate = async (date) => {
+      try {
+       let times = await GetAvialbeTimeDateAndForDoctor(doctorId,date);
+       setTimeSlots(times);
+      } catch (error) {
+        
+      }
     };
     
-    let date = nextDays(14);
+    // let date = nextDays();
     
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -86,7 +72,6 @@ const BookSedule = ({doctorDetail}) => {
         }
       });
 
-      const doctorId = params.id;
       formDataObject["doctorId"] = doctorId;
 
       console.log(formDataObject);
@@ -101,11 +86,11 @@ const BookSedule = ({doctorDetail}) => {
         <section className='SeduleDate my-4'>
             <small><p className='fw-bold'>December</p></small>
             <div className='row g-2'>
-               {date.map((day,index)=>
+               {dates?.map((day,index)=>
 
                 <div className='col-3'>
                 <div className={`btn btn-outline-info fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-day cursor-pointer ${filledDateSlots.includes(day.formattedDate)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
-                <label className={`d-flex flex-column align-items-center ${filledDateSlots.includes(day.formattedDate)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`} for={"day"+day.formattedDate}>
+                <label className={`d-flex flex-column align-items-center ${filledDateSlots.includes(day.formattedDate)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`} htmlFor={"day"+day.formattedDate}>
                     <input 
                     type="radio" 
                     name="day" 
@@ -128,18 +113,18 @@ const BookSedule = ({doctorDetail}) => {
         <section className='MorningSlots my-4'>
             <small><p className='fw-bold'>Time Slots</p></small>
             <div className='row g-2'>
-               {timeSlots.map((e)=>
+               {timeSlots?.map((e)=>
                 <div className='col-4'>
-                    <div className={`btn fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-time ${filledTimeSlots.includes(e)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
-                    <label className={`d-flex align-items-center cursor-pointer justify-content-center ${filledTimeSlots.includes(e)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
+                    <div className={`btn fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-time ${!e.isAvailable?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
+                    <label className={`d-flex align-items-center cursor-pointer justify-content-center ${!e.isAvailable?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
                     <input 
                     type="radio" 
                     name="time" 
-                    value={e}
-                    disabled={filledTimeSlots.includes(e)}
+                    value={e.time}
+                    disabled={!e.isAvailable}
                     className="visually-hidden" 
                     />  
-                        <p className='m-0 text-center text-uppercase'>{e}</p>
+                        <p className='m-0 text-center text-uppercase'>{e.time}</p>
                        </label> 
                     </div>
                 </div> )} 

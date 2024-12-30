@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/authentication', require('./routes/user.routes'));
+app.use('/api/appointment', require('./routes/appointment.routes'));
 
 app.get('/',(req,res)=>{
     res.send('hellow');

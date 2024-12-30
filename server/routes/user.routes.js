@@ -178,7 +178,7 @@ router.get("/getuser", FetchUser, async (req, res) => {
   }
 });
 
-//========================= getall doctor details using POST:/api/authentication/getuser http request ===========================
+//========================= getall doctor details using POST:/api/authentication/allDoctor http request ===========================
 router.get("/allDoctor", async (req, res) => {
   //provide user detail using user id
   try {
@@ -217,7 +217,7 @@ router.get("/allDoctor", async (req, res) => {
 
 //==================== get GetDoctorDetailById using POST:/api/authentication/GetDoctorDetailById http request ==================
 router.get("/GetDoctorDetailById/:id", async (req, res) => {
-  //provide GetDoctorDetailById using user id
+ 
   try {
     let doctorId = req.params.id;
     let doctorDetail = await User.aggregate([
@@ -254,86 +254,6 @@ router.get("/GetDoctorDetailById/:id", async (req, res) => {
     } else {
       res.status(404).json({ errors: [{ msg: "Doctor Details Not found" }] });
     }
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      message: "Some internal server error for getting user details",
-      errors: [{ msg: error }],
-    });
-  }
-});
-
-router.get("/getAvialbeDateForDoctor/:id", async (req, res) => {
-  //provide GetDoctorDetailById using user id
-  try {
-    let doctorId = req.params.id;
-    let date = req.query.date;
-    const currentDate = new Date();
-
-    const nextDays = (n) =>
-      Array.from({ length: n }, (_, index) => {
-        const nextDay = new Date(currentDate);
-        nextDay.setDate(currentDate.getDate() + index + 1);
-
-        // Format as "DayName, YYYY-MM-DD"
-        const dayName = nextDay.toLocaleDateString("en-US", {
-          weekday: "long",
-        });
-        const formattedDate = nextDay.toISOString().split("T")[0]; // Format as YYYY-MM-DD
-
-        return { dayName, formattedDate };
-      });
-
-    let nextDaysfordoctor = nextDays(20);
-    res.status(200).json(nextDaysfordoctor);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      message: "Some internal server error for getting user details",
-      errors: [{ msg: error }],
-    });
-  }
-});
-
-router.get("/getAvialbeTimeDateAndForDoctor/:id", async (req, res) => {
-  //provide GetDoctorDetailById using user id
-  try {
-    let doctorId = req.params.id;
-    let date = req.query.date;
-    const generateTimeIntervals = (date) => {
-      const currentDate = new Date();
-  
-      // Define the start and end times (10:00 AM to 2:00 PM)
-      const startHour = 1; // 10 AM
-      const endHour = 5; // 2 PM
-  
-      // Parse the selected date and set the time to start at 10 AM
-      const selectedDateObj = new Date(date);
-      selectedDateObj.setHours(startHour, 0, 0, 0); // Set the start time to 10:00 AM
-  
-      const availableIntervals = [];
-  
-      // Loop through and add 30-minute intervals
-      while (selectedDateObj.getHours() < endHour) {
-        const timeString = selectedDateObj.toLocaleTimeString([], {
-          hour: '2-digit',
-          minute: '2-digit',
-        });
-  
-        // Add interval if it hasn't passed yet
-        if (selectedDateObj > currentDate) {
-          availableIntervals.push(timeString);
-        }
-  
-        // Increment by 30 minutes
-        selectedDateObj.setMinutes(selectedDateObj.getMinutes() + 30);
-      }
-  
-      return availableIntervals;
-  };
-
-    let TimeIntervals = generateTimeIntervals(date);
-    res.status(200).json(TimeIntervals);
   } catch (error) {
     console.log(error);
     return res.status(500).json({

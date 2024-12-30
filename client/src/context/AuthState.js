@@ -72,13 +72,39 @@ const AuthState = (props) => {
     }
   };
 
+   //doctors info get
+   const  GetAvialbeDateForDoctor = async (id) => {
+    try {
+      const response = await HttpService.GET(
+        `http://localhost:5000/api/appointment/getAvialbeDateForDoctor/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
+   //doctors info get
+   const  GetAvialbeTimeDateAndForDoctor = async (id,date) => {
+    try {
+      const response = await HttpService.GET(
+        `http://localhost:5000/api/appointment/getAvialbeTimeDateAndForDoctor/${id}?date=${date}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
  
 
   const [errors, setErrors] = useState([]);
 
   return (
     <AuthContext.Provider
-      value={{ adduser, login, errors, UserDetails, AllDoctors,GetDoctorDetailById }}
+      value={{ adduser, login, errors, UserDetails, AllDoctors,GetDoctorDetailById,GetAvialbeDateForDoctor,GetAvialbeTimeDateAndForDoctor}}
     >
       {props.children}
     </AuthContext.Provider>

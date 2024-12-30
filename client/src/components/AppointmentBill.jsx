@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import HttpService from '../Service/httpservice';
 
 const AppointmentBill = () => {
 
@@ -10,6 +11,37 @@ const AppointmentBill = () => {
     const doctorDetail = location?.state?.doctorDetail;
     const vat = 5;
     // doctorDetail.doctorDetails = {...doctorDetail.doctorDetails,Fees:55}
+
+    console.log(location.state)
+
+
+    const appointmentDataObject = {
+        age: PatientDetail.Age,
+        weight: PatientDetail.Weight,
+        problem: PatientDetail.Problem,
+        consultionFees: doctorDetail.doctorDetails?.Fees?? 0,
+        totalPay: doctorDetail.doctorDetails?.Fees?? 0+ (doctorDetail.doctorDetails?.Fees??0) * vat/100,
+        doctorid: PatientDetail.doctorId,
+        date: PatientDetail.day,
+        time: PatientDetail.time,
+    }
+
+    useEffect(()=>{
+        appointment(appointmentDataObject);
+    })
+
+     // appointment Using httpService (post) request
+    const appointment = async (formDataObject) => {
+        try {
+        const response = await HttpService.POST(
+            "http://localhost:5000/api/appointment/createappointment",
+            formDataObject
+        );
+        return response.data;
+        } catch (error) {
+        console.error(error?.response?.data?.errors);
+        }
+    };
 
   return (
     <>
