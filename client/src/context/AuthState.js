@@ -98,13 +98,25 @@ const AuthState = (props) => {
     }
   };
 
- 
+
+  //appointments info get
+  const  GetAppointments = async (id,date) => {
+    try {
+      const response = await HttpService.GET(
+        `http://localhost:5000/api/appointment/getappointment`
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
 
   const [errors, setErrors] = useState([]);
 
   return (
     <AuthContext.Provider
-      value={{ adduser, login, errors, UserDetails, AllDoctors,GetDoctorDetailById,GetAvialbeDateForDoctor,GetAvialbeTimeDateAndForDoctor}}
+      value={{ adduser, login, errors, UserDetails, AllDoctors,GetDoctorDetailById,GetAvialbeDateForDoctor,GetAvialbeTimeDateAndForDoctor, GetAppointments}}
     >
       {props.children}
     </AuthContext.Provider>

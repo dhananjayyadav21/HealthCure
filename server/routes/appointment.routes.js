@@ -41,6 +41,30 @@ router.post("/createappointment",FetchUser, async (req, res) => {
   }
 });
 
+
+//============================================ = [createappointment] ==============================================
+router.get("/getappointment",FetchUser, async (req, res) => {
+  try {
+
+    let userid = req.user.userid;
+    if (!userid) {
+        return res.status(400).send({ error: 'Patient ID is required' });
+    }
+    const appointments = await Appointments.find({patientid:userid})
+
+    success = true;
+    res.status(200).json({ success, message: "Appointment get", appointments });
+
+  } catch (error) {
+    success = false;
+    res.status(500).json({
+      message: "Some internal server issue for getting appointment",
+      errors: [{ msg: error }],
+    });
+  }
+});
+
+
 //============================================ [getAvialbeDateForDoctor] ==============================================
 router.get("/getAvialbeDateForDoctor/:id", async (req, res) => {
   //provide GetDoctorDetailById using user id
