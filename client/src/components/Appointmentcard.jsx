@@ -1,20 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AuthContext from '../context/AuthContext';
 
 const Appointmentcard = (props) => {
 
-  const {index, Appointments} = props ;
-  const navigate = useNavigate(); 
+  const { index, Appointments } = props;
+  const navigate = useNavigate();
+
+  const ShowAppointmentDetails = () => {
+    navigate(`/patientDetailAfterBook/:${index}`, {
+      state: { ...Appointments },
+    });
+  };
   
-  const ShowAppointmentDetails = ()=>{
-    navigate(`/patientDetailAfterBook/:${index}`, {state:{...Appointments}});
+
+  const Context = useContext(AuthContext);
+  const { UpdateAppointmentStatus } = Context;
+
+  const AppointmentStatusUpdate = async (appointmentId, status) => {
+    const res = await UpdateAppointmentStatus(appointmentId, status);
+    if (res.data.status === true) {
+      alert("Appointment updated as a missed");
+    }
+  };
+
+  const handleMissedUpdateStatus = (appointmentId) => {
+    AppointmentStatusUpdate(appointmentId, { status: "Missed" });
+  };
+
+  const handleCompletedUpdateStatus = (appointmentId) => {
+    AppointmentStatusUpdate(appointmentId, { status: "Completed" });
   }
+
+ 
   return (
     <>
-        <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2 cursor-pointer' onClick= {ShowAppointmentDetails}>
+        <div className='d-flex align-items-center bg-white shadow-sm gap-2 gap-md-3 p-1 p-md-2 rounded-3 my-2 cursor-pointer' >
 
           { localStorage.getItem('UserRole') === "patient" ? <>
-              <div className='Appointmentcard-img-container bg-light rounded-3'>
+              <div className='Appointmentcard-img-container bg-light rounded-3' onClick= {ShowAppointmentDetails}>
                   <img src={`/assets/img/Doctor_${index+1}.png`} alt="doctor"/>
               </div>
               <div className='w-100'>
@@ -35,7 +59,7 @@ const Appointmentcard = (props) => {
           }
 
           { localStorage.getItem('UserRole') === "doctor" ? <>
-              <div className='Appointmentcard-img-container bg-light rounded-3'>
+              <div className='Appointmentcard-img-container bg-light rounded-3' onClick= {ShowAppointmentDetails}>
                   <img src={`/assets/img/Doctor_${index+1}.png`} alt="doctor"/>
               </div>
               <div className='w-100'>
@@ -46,7 +70,7 @@ const Appointmentcard = (props) => {
                     </div>
                     <div>
                       {Appointments?.status === "Scheduled" ? 
-                        <p className='badge bg-success rounded-5 m-0'>Complete</p> :
+                        <p className='badge bg-success rounded-5 m-0'onClick={()=>handleCompletedUpdateStatus(Appointments._id)} >Complete</p> :
                         <img src="/assets/img/Doctorr.png" alt="Call"  style={{width:"30px"}}/>
                       }
                     </div>
@@ -54,7 +78,7 @@ const Appointmentcard = (props) => {
                   <div className='d-flex justify-content-between align-items-center'>
                     <p className='text-secondary m-0'>{new Date(Appointments?.date).toLocaleDateString('en-IN',{timeZone: 'Asia/Kolkata',})}</p>
                     {Appointments?.status === "Scheduled" ? 
-                        <p className='badge bg-danger  rounded-5 m-0'>Missed</p> :
+                        <p className='badge bg-danger rounded-5 m-0' onClick={()=>handleMissedUpdateStatus(Appointments._id)}>Missed</p> :
                         <p className='badge bg-info rounded-5 m-0'>{Appointments?.status }</p> 
                     }
                   </div>

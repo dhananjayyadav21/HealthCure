@@ -3,7 +3,7 @@ import AuthContext from "./AuthContext";
 import HttpService from "../Service/httpservice";
 
 const AuthState = (props) => {
-  // register user Using httpService (post) request
+  //================================== register user Using httpService (post) request ===============================
   const adduser = async (formDataObject) => {
     try {
       setErrors([]);
@@ -19,7 +19,7 @@ const AuthState = (props) => {
     }
   };
 
-  // Login user Using httpService (post) request
+  //========================================== Login user Using httpService (post) request ===================================
   const login = async (formDataObject) => {
     try {
       const response = await HttpService.POST(
@@ -33,7 +33,7 @@ const AuthState = (props) => {
     }
   };
 
-  //user info get
+  //===================================================== user info get ============================================
   const UserDetails = async () => {
     try {
       const response = await HttpService.GET(
@@ -46,7 +46,7 @@ const AuthState = (props) => {
     }
   };
 
-  //doctors info get
+  //======================================================== doctors info get ============================================
   const AllDoctors = async () => {
     try {
       const response = await HttpService.GET(
@@ -110,6 +110,22 @@ const AuthState = (props) => {
       throw error;
     }
   };
+  
+
+  //============================================== Update appointment status (PUT) ===================================================
+  const UpdateAppointmentStatus = async (appointmentId, status) => {
+    try {
+      const response = await HttpService.PUT(
+        `http://localhost:5000/api/appointment/updateAppointment/${appointmentId}`,
+        status
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error in updating appointment status: ", error);
+      throw error;
+    }
+  };
+
 
   const [errors, setErrors] = useState([]);
 
@@ -125,6 +141,7 @@ const AuthState = (props) => {
         GetAvialbeDateForDoctor,
         GetAvialbeTimeDateAndForDoctor,
         GetAppointments,
+        UpdateAppointmentStatus,
       }}
     >
       {props.children}

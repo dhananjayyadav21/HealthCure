@@ -33,6 +33,9 @@ const MyAppointment = () => {
     setCompletedAppointments(res.appointments);
   };
 
+
+
+
   const [Mdisplay, setMdisplay] = useState("");
   const [Udisplay, setUdisplay] = useState("");
   const [Pdisplay, setPdisplay] = useState("");

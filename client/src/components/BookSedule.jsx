@@ -12,10 +12,8 @@ const BookSedule = ({doctorDetail}) => {
 
     const [dates,setDates] = useState([]);
     const [timeSlots,setTimeSlots] = useState([]);
+    // eslint-disable-next-line 
     const [selectedDate,setSelectedDate] = useState();
-
-    const [filledTimeSlots,setFilledTimeSlots] = useState(["03:00 am","04:00 am"]);
-    const [filledDateSlots,setfilledDateSlots] = useState(["2024-12-30"]);
 
      useEffect(() => {
       nextDays();
@@ -84,15 +82,14 @@ const BookSedule = ({doctorDetail}) => {
                {dates?.map((day,index)=>
 
                 <div className='col-3' key={index}>
-                <div className={`btn btn-outline-info fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-day cursor-pointer ${filledDateSlots.includes(day.formattedDate)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
-                <label className={`d-flex flex-column align-items-center ${filledDateSlots.includes(day.formattedDate)?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`} htmlFor={"day"+day.formattedDate}>
+                <div className={`btn btn-outline-info fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-day cursor-pointer`}>
+                <label className={`d-flex flex-column align-items-center}`} htmlFor={"day"+day.formattedDate}>
                     <input 
                     type="radio" 
                     name="day" 
                     id={"day"+day.formattedDate}
                     value={day.formattedDate}
                     onChange={onDateChange}
-                    disabled={filledDateSlots.includes(day.formattedDate)}
                     className="visually-hidden cursor-pointer" 
                     />
                     <p className='m-0 text-uppercase'>{day.dayName.substring(0,3)}</p>
@@ -111,13 +108,13 @@ const BookSedule = ({doctorDetail}) => {
                {timeSlots?.map((e)=>
                 <div className='col-4'>
                     <div className={`btn fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-time ${!e.isAvailable?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
-                    <label className={`d-flex align-items-center cursor-pointer justify-content-center ${!e.isAvailable?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
+                    <label className={`d-flex align-items-center cursor-pointer justify-content-center ${!e.isAvailable?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`} title={!e.isAvailable?"Not Avilable": "Avilable" }>
                     <input 
                     type="radio" 
                     name="time" 
                     value={e.time}
                     disabled={!e.isAvailable}
-                    className="visually-hidden" 
+                    className="visually-hidden"
                     />  
                         <p className='m-0 text-center text-uppercase'>{e.time}</p>
                        </label> 
