@@ -31,7 +31,7 @@ const AppointmentBill = () => {
      if(res?.success === true){
         alert("Your Appointment Book");
      }else{
-        alert("An appointment is already scheduled with this doctor at the selected date and time.");
+        alert("Somthing went wrong!, please try again");
      }
    }
 

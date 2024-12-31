@@ -57,6 +57,7 @@ const ReSeduleCalender = ({AppointmentsDetails}) => {
     event.preventDefault();
     const formDataObject = reScheduleDateTime;
     formDataObject["appointmentid"] = AppointmentsDetails?._id;
+    formDataObject["doctorid"] = AppointmentsDetails?.doctorid;
 
     //---- Reschedule Appointment
     const res = await rescheduleAppointment(formDataObject);
@@ -64,6 +65,8 @@ const ReSeduleCalender = ({AppointmentsDetails}) => {
         refClose.current.click();
         navigate('/');
         alert(`${res?.message}`)
+    }else{
+      alert('Somthing went wrong!, please try again');
     }
   };
 

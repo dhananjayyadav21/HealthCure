@@ -175,11 +175,28 @@ router.put("/rescheduleAppointment", FetchUser, async (req, res) => {
     const date = req.body.date;
     const time = req.body.time;
     const appointmentid = req.body.appointmentid;
+    const doctorid =  req.body.doctorid;
 
     if (!appointmentid) {
       return res
         .status(400)
         .send({ error: "Appointment ID are required" });
+    }
+
+    // Check if an appointment already exists for the same doctor, date, and time
+    const existingAppointment = await Appointments.findOne({
+      where: {
+        doctorid: doctorid,
+        date: new Date(date),
+        time: time,
+      },
+    });
+
+    if (existingAppointment) {
+      return res.status(400).json({
+        success: false,
+        message: "Unfortunately An appointment is already scheduled with this doctor at the selected date and time.",
+      });
     }
 
     const appointment = await Appointments.findById(appointmentid);
