@@ -35,7 +35,8 @@ Reschedule Functionality: Users can reschedule their missed appointments.
 Node.js for back-end processing. ✉️
 Nodemailer for sending emails.
 
-
+# Flowchart:
+![image](https://github.com/user-attachments/assets/2de48542-193f-4963-ad56-56889a58f2bb)
 
 
 ## Technologies Used:
