@@ -1,14 +1,16 @@
 # Healthcare Web App: Doctor Appointment Scheduling & Management
 ## Features:
 
-#### User Registration and Authentication:🔒
+### User Registration and Authentication:🔒
 
-Sign-Up: Users can register by providing their name, email, and password.
+#### Sign-Up: 
+Users can register by providing their name, email, and password.
 Login: Secure login using email and password with token-based authentication.
 Password Reset: Users can reset their passwords through email if they forget them.
 
 #### Technology: 📝
 MERN Stack (MongoDB, Express.js, React, Node.js)
+
 JWT (JSON Web Token) for authentication
 
 ### Doctor Scheduling System: 🩺
