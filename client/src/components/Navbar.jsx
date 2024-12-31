@@ -41,7 +41,10 @@ const Navbar = () => {
                     {/* profile icon for MobileBar */}
                     <div className="nav-item dropdown">  
                         <a className="nav-text nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><img  className='profile-img rounded-circle' src="https://www.ihgplc.com/~/media/Images/I/Ihg-Plc/images/news/2022/26-05-2022-ihg-hotels-and-resorts-is-proud-to-partner-with-pride-in-london/ihghr-pride-circle-RGB.png" alt="profile" /></div>
+                        { userRole === "patient" ? 
+                             <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><img  className='profile-img rounded-circle' src="assets/img/Patient.png" alt="profile" /></div> :
+                             <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><img  className='profile-img rounded-circle' src="assets/img/Doctorr.png" alt="profile" /></div>
+                        }
                         </a>
                         <ul className="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
                             <li><h6 className="dropdown-item text-capitalize">{userRole}</h6></li>
