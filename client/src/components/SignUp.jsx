@@ -94,13 +94,13 @@ return (
             <div className='col-12 col-md-12'>
                <div className="mb-3">
                   <small><label htmlFor="email" className="form-label">Role</label></small>
-                  <div class="form-check form-switch">
-                     <input onChange={handleRadioChange} name='role' value="patient" class="form-check-input" type="radio" id="Patient"/>
-                     <label class="form-check-label" for="Patient">Patient</label>
+                  <div className="form-check form-switch">
+                     <input onChange={handleRadioChange} name='role' value="patient" className="form-check-input" type="radio" id="Patient"/>
+                     <label className="form-check-label" for="Patient">Patient</label>
                   </div>
-                  <div class="form-check form-switch">
-                     <input onChange={handleRadioChange} name='role' value="doctor" class="form-check-input" type="radio" id="Doctor"/>
-                     <label class="form-check-label" for="Doctor">Doctor</label>
+                  <div className="form-check form-switch">
+                     <input onChange={handleRadioChange} name='role' value="doctor" className="form-check-input" type="radio" id="Doctor"/>
+                     <label className="form-check-label" for="Doctor">Doctor</label>
                   </div>
                </div>
             </div>

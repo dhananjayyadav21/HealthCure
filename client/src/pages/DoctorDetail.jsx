@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import BookSedule from '../components/BookSedule'
+import BookSchedule from '../components/BookSchedule'
 import AuthContext from '../context/AuthContext'
 
 const DoctorDetail = () => {
@@ -72,14 +72,14 @@ const DoctorDetail = () => {
                 </section>
 
                 {/* <div className="d-flex justify-content-md-end d-md-none">
-                <Link className='btn btn-info btn-Appointment text-white fw-sm-bold my-3 ' to="/BookSedule">Book on Appointment</Link>
+                <Link className='btn btn-info btn-Appointment text-white fw-sm-bold my-3 ' to="/BookSchedule">Book on Appointment</Link>
                 </div> */}
             </section>  
 
             {/* DoctorDetail-Right-container  */}  
             <section className='col-md-4 DoctorDetail-right-container d-flex justify-content-center'>
                 <div className='bg-light p-4 rounded-4 w-100'>
-                    <BookSedule doctorDetail={doctorDetail}/>
+                    <BookSchedule doctorDetail={doctorDetail}/>
                 </div>
             </section>
         </div>   

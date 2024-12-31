@@ -12,7 +12,7 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 
 import DoctorDetail from "./pages/DoctorDetail";
-import BookSedule from "./components/BookSedule";
+import BookSchedule from "./components/BookSchedule";
 import PatientsAppointmentDetail from "./pages/PatientsAppointmentDetail";
 import AppointmentBill from "./components/AppointmentBill";
 
@@ -113,7 +113,7 @@ function App() {
               element={
                 <GuardedRoute
                   hasToBeAuthenticated={true}
-                  element={<BookSedule />}
+                  element={<BookSchedule />}
                   redirectTo="/signin"
                 />
               }

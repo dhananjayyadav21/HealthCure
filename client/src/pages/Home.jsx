@@ -17,8 +17,12 @@ const Home = () => {
    }, []);
 
    const getDoctors = async () => {
-     let res = await AllDoctors();
+     try {
+      let res = await AllDoctors();
      setDoctors(res.AllDoctor);
+     } catch (error) {
+      console.log(error);
+     }
    };
 
    let Arra = [{},{},{},{},{},{},{}]

@@ -4,7 +4,7 @@ class CommonHelper {
 
     // Define the start and end times (10:00 AM to 2:00 PM)
     const startHour = 10; // 10 AM
-    const endHour = 20; // 2 PM
+    const endHour = 14; // 2 PM
 
     // Parse the selected date and set the time to start at 10 AM
     const selectedDateObj = new Date(date);

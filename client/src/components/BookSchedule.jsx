@@ -1,7 +1,7 @@
 import React, { useState,useContext,useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
-const BookSedule = ({doctorDetail}) => {
+const BookSchedule = ({doctorDetail}) => {
 
     const params= useParams();
 
@@ -73,7 +73,7 @@ const BookSedule = ({doctorDetail}) => {
 
   return (
     <>
-      <form  onSubmit={handleSubmit} className='BookSedule-container p-2 potion-relative'>
+      <form  onSubmit={handleSubmit} className='BookSchedule-container p-2 potion-relative'>
         
         {/* Sedule Date */}
         <section className='SeduleDate my-4'>
@@ -109,7 +109,7 @@ const BookSedule = ({doctorDetail}) => {
                {timeSlots?.map((e)=>
                 <div className='col-4'>
                     <div className={`btn fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-time ${!e.isAvailable?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`}>
-                    <label className={`d-flex align-items-center cursor-pointer justify-content-center ${!e.isAvailable?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`} title={!e.isAvailable?"Not Avilable": "Avilable" }>
+                    <label className={`d-flex align-items-center cursor-pointer justify-content-center ${!e.isAvailable?'btn-outline-danger cursor-not-allowed':'btn-outline-info cursor-pointer'}`} title={!e.isAvailable?"Not Available": "Available" }>
                     <input 
                     type="radio" 
                     name="time" 
@@ -133,4 +133,4 @@ const BookSedule = ({doctorDetail}) => {
   )
 }
 
-export default BookSedule
+export default BookSchedule

@@ -65,11 +65,12 @@ const Appointmentcard = (props) => {
                   <div className='d-flex justify-content-between align-items-center'>
                     <div className='my-2'>
                         <h6 className='m-0 text-capitalize'>{Appointments?.patientname}</h6>
+                        {/* {Appointments?.} */}
                         <p className='text-secondary text-capitalize m-0'>{(Appointments?.problem).slice(0,20)}...</p>
                     </div>
                     <div>
                       {Appointments?.status === "Scheduled" ? 
-                        <p className='badge bg-success rounded-5 m-0'onClick={()=>handleCompletedUpdateStatus(Appointments._id)} >Complete</p> :
+                        <p className='btn btn-outline-success btn-sm rounded-2 py-0 m-0'onClick={()=>handleCompletedUpdateStatus(Appointments._id)} >Complete<i class="fa-solid fa-circle-check ms-1"></i></p> :
                         <img src="/assets/img/Doctorr.png" alt="Call"  style={{width:"30px"}}/>
                       }
                     </div>
@@ -77,7 +78,7 @@ const Appointmentcard = (props) => {
                   <div className='d-flex justify-content-between align-items-center'>
                     <p className='text-secondary m-0'>{new Date(Appointments?.date).toLocaleDateString('en-IN',{timeZone: 'Asia/Kolkata',})}</p>
                     {Appointments?.status === "Scheduled" ? 
-                        <p className='badge bg-danger rounded-5 m-0' onClick={()=>handleMissedUpdateStatus(Appointments._id)}>Missed</p> :
+                        <p className='btn btn-outline-danger btn-sm rounded-3 py-0 m-0' onClick={()=>handleMissedUpdateStatus(Appointments._id)}>Missed<i class="fa-solid fa-circle-xmark ms-1"></i></p> :
                         <p className='badge bg-info rounded-5 m-0'>{Appointments?.status }</p> 
                     }
                   </div>

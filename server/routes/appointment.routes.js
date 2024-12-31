@@ -168,4 +168,46 @@ router.put("/updateAppointment/:id", FetchUser, async (req, res) => {
 });
 
 
+//============================================= [rescheduleAppointment] ==============================================
+router.put("/rescheduleAppointment", FetchUser, async (req, res) => {
+  try {
+
+    const date = req.body.date;
+    const time = req.body.time;
+    const appointmentid = req.body.appointmentid;
+
+    if (!appointmentid) {
+      return res
+        .status(400)
+        .send({ error: "Appointment ID are required" });
+    }
+
+    const appointment = await Appointments.findById(appointmentid);
+    if (!appointment) {
+      return res.status(404).send({ error: "Appointment not found" });
+    }
+
+    appointment.date = date;
+    appointment.time = time;
+    appointment.status = "Scheduled"
+    appointment.isRescheduled = true
+    await appointment.save();
+    const success = true;
+   
+    console.log(appointment);
+
+    res
+      .status(200)
+      .json({ success, message: "Appointment ReScheduling Successfully", appointment });
+  } catch (error) {
+    const success = false;
+    res.status(500).json({
+      message:
+        "Some internal server issue while rescheduling the appointment ",
+      errors: [{ msg: error.message }],
+    });
+  }
+});
+
+
 module.exports = router;

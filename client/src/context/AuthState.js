@@ -142,6 +142,21 @@ const AuthState = (props) => {
     }
   };
 
+
+  //============================================== Update appointment status (PUT) ===================================================
+  const rescheduleAppointment = async (data) => {
+    try {
+      const response = await HttpService.PUT(
+        `http://localhost:5000/api/appointment/rescheduleAppointment`,
+        data
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error in rescheduling appointment: ", error);
+      throw error;
+    }
+  };
+
   const [errors, setErrors] = useState([]);
 
   return (
@@ -158,6 +173,7 @@ const AuthState = (props) => {
         appointment,
         GetAppointments,
         UpdateAppointmentStatus,
+        rescheduleAppointment,
       }}
     >
       {props.children}

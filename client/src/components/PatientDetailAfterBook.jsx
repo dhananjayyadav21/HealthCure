@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
+import ReSeduleCalender from './RescheduleCalenders';
 
 const PatientDetailAfterBook = () => {
 
@@ -10,6 +11,8 @@ const PatientDetailAfterBook = () => {
     const ConsultionFees = AppointmentsDetails?.consultionFees;
     const vat = 5;
     const VatFess = (ConsultionFees * vat)/100;
+
+    console.log(AppointmentsDetails)
 
   return (
     <>  
@@ -111,13 +114,13 @@ const PatientDetailAfterBook = () => {
                                     </div>
                                 </div>
                             </div>
-
+                       
                             <div className='col-md-6'>
                                 <div className="mb-3">
                                     {UserRole === 'patient' ?
                                         <div className=' AppointmentBill-payment'>
                                             { AppointmentsDetails?.status === "Missed" ?
-                                                <button className="btn btn-danger text-white" >Reschedile Appointment</button> :""
+                                                <button type='button' className="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#RescheduleModal" >Reschedule Appointment</button> :""
                                             } 
                                         </div> : ""
                                     }
@@ -125,7 +128,9 @@ const PatientDetailAfterBook = () => {
                             </div>
                         </div>
                     </form>
-                    
+
+                    <ReSeduleCalender AppointmentsDetails={AppointmentsDetails}/>
+ 
                 </div>
             </section>
         </div>
