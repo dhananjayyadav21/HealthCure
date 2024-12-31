@@ -10,7 +10,6 @@ const AuthState = (props) => {
     try {
       setErrors([]);
       const response = await HttpService.POST(
-        // "http://localhost:5000/api/authentication/signup",
         `${GlobalUrls.AddUSER}`,
         formDataObject
       );
@@ -26,7 +25,6 @@ const AuthState = (props) => {
   const login = async (formDataObject) => {
     try {
       const response = await HttpService.POST(
-        // "http://localhost:5000/api/authentication/signin",
         `${GlobalUrls.LOGIN_URL}`,
         formDataObject
       );
@@ -41,7 +39,6 @@ const AuthState = (props) => {
   const UserDetails = async () => {
     try {
       const response = await HttpService.GET(
-        // "http://localhost:5000/api/authentication/getuser",
         `${GlobalUrls.GETUSER_URL}`,
       );
       return response.data;
@@ -55,7 +52,6 @@ const AuthState = (props) => {
   const AllDoctors = async () => {
     try {
       const response = await HttpService.GET(
-        // "http://localhost:5000/api/authentication/allDoctor",
         `${GlobalUrls.ALL_DOCTOR_URL}`,
       );
       return response.data;
@@ -69,7 +65,6 @@ const AuthState = (props) => {
   const GetDoctorDetailById = async (id) => {
     try {
       const response = await HttpService.GET(
-        // `http://localhost:5000/api/authentication/GetDoctorDetailById/${id}`,
         `${GlobalUrls.GET_DOCTOR_BY_ID}/${id}`
       );
       return response.data;
@@ -85,7 +80,6 @@ const AuthState = (props) => {
   const GetAvialbeDateForDoctor = async (id) => {
     try {
       const response = await HttpService.GET(
-        // `http://localhost:5000/api/appointment/getAvialbeDateForDoctor/${id}`
         `${GlobalUrls.AVILABLE_DATE_FOR_DOCTOR}/${id}`
       );
       return response.data;
@@ -99,7 +93,6 @@ const AuthState = (props) => {
   const GetAvialbeTimeDateAndForDoctor = async (id, date) => {
     try {
       const response = await HttpService.GET(
-        // `http://localhost:5000/api/appointment/getAvialbeTimeDateAndForDoctor/${id}?date=${date}`
         `${GlobalUrls.AVILABLE_TIMEDATE_FOR_DOCTOR}/${id}?date=${date}`
       );
       return response.data;
@@ -113,7 +106,6 @@ const AuthState = (props) => {
   const appointment = async (formDataObject) => {
     try {
       const response = await HttpService.POST(
-        // "http://localhost:5000/api/appointment/createappointment",
         `${GlobalUrls.APPOINTMENT}`,
         formDataObject
       );
@@ -127,7 +119,6 @@ const AuthState = (props) => {
   const GetAppointments = async (appointmentStatus) => {
     try {
       const response = await HttpService.GET(
-        // `http://localhost:5000/api/appointment/getappointment?appointmentStatus=${appointmentStatus}`
         `${GlobalUrls.GET_APPOINTMENTS}?appointmentStatus=${appointmentStatus}`
       );
       return response.data;
@@ -141,7 +132,6 @@ const AuthState = (props) => {
   const UpdateAppointmentStatus = async (appointmentId, status) => {
     try {
       const response = await HttpService.PUT(
-        // `http://localhost:5000/api/appointment/updateAppointment/${appointmentId}`,
         `${GlobalUrls.UPDATE_APPOINTMENTS}/${appointmentId}`,
         status
       );
