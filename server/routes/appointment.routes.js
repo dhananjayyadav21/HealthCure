@@ -198,7 +198,7 @@ router.put("/rescheduleAppointment", FetchUser, async (req, res) => {
 
     res
       .status(200)
-      .json({ success, message: "Appointment ReScheduling Successfully", appointment });
+      .json({ success, message: "Appointment Rescheduling Successfully", appointment });
   } catch (error) {
     const success = false;
     res.status(500).json({
