@@ -1,4 +1,4 @@
-## Healthcare Web App: Doctor Appointment Scheduling & Management
+# Healthcare Web App: Doctor Appointment Scheduling & Management
 
 ## User Registration and Authentication:🔒
 
