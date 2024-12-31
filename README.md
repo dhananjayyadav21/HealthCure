@@ -15,12 +15,12 @@ JWT (JSON Web Token) for authentication
 
 ## Doctor Scheduling System: 🩺
 
-### View Available Doctors: 
+#### View Available Doctors: 
 Users can browse a list of available doctors based on specialties and availability.
 Schedule Appointment: Users can select a doctor and schedule an appointment.
 View Appointments: Users can view all their past, upcoming, and canceled appointments.
 
-### Technology:
+#### Technology:
 MongoDB to store doctor and appointment data. 📅 
 React for front-end dynamic interactions.
 
@@ -31,7 +31,7 @@ React for front-end dynamic interactions.
 If a user misses an appointment, an email notification is automatically sent, reminding them of the missed appointment.
 Reschedule Functionality: Users can reschedule their missed appointments.
 
-### Technology:
+#### Technology:
 Node.js for back-end processing. ✉️
 Nodemailer for sending emails.
 
