@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-const cron = require('node-cron');
-const Appointment = require('./models/Apointments.model');
+const mongoose = require("mongoose");
+const cron = require("node-cron");
+const Appointment = require("./models/Apointments.model");
 
 cron.schedule("* * * * *", async () => {
   try {
     const now = new Date();
-    
+
     // Get the date and time 15 minutes ago
     const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60000);
 
