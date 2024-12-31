@@ -143,31 +143,31 @@ return (
                      <small><label htmlFor="weekAvailability" className="form-label">Available in Week</label></small>
                      <div className="row">
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Monday" id="mondayCheck" name="weekAvailability" required/>
+                           <input className="form-check-input" type="checkbox" value="Monday" id="mondayCheck" name="weekAvailability" />
                            <label className="form-check-label" htmlFor="mondayCheck">Monday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Tuesday" id="tuesdayCheck" name="weekAvailability" required/>
+                           <input className="form-check-input" type="checkbox" value="Tuesday" id="tuesdayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="tuesdayCheck">Tuesday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Wednesday" id="wednesdayCheck" name="weekAvailability" required/>
+                           <input className="form-check-input" type="checkbox" value="Wednesday" id="wednesdayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="wednesdayCheck">Wednesday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Thursday" id="thursdayCheck" name="weekAvailability" required/>
+                           <input className="form-check-input" type="checkbox" value="Thursday" id="thursdayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="thursdayCheck">Thursday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Friday" id="fridayCheck" name="weekAvailability" required/>
+                           <input className="form-check-input" type="checkbox" value="Friday" id="fridayCheck" name="weekAvailability" />
                            <label className="form-check-label" htmlFor="fridayCheck">Friday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Saturday" id="saturdayCheck" name="weekAvailability" required/>
+                           <input className="form-check-input" type="checkbox" value="Saturday" id="saturdayCheck" name="weekAvailability"/>
                            <label className="form-check-label" htmlFor="saturdayCheck">Saturday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Sunday" id="sundayCheck" name="weekAvailability" required/>
+                           <input className="form-check-input" type="checkbox" value="Sunday" id="sundayCheck" name="weekAvailability" />
                            <label className="form-check-label" htmlFor="sundayCheck">Sunday</label>
                         </div>
                      </div>
