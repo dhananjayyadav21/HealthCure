@@ -125,25 +125,20 @@ router.get("/getappointment", FetchUser, async (req, res) => {
 router.put("/updateAppointment/:id", FetchUser, async (req, res) => {
   try {
     const status  = req.body.status;
-    const appointmentId = req.params.id;
-
-    console.log("appointmentId----------", appointmentId)
-    console.log("status----------", status)
-    
+    const appointmentId = req.params.id;    
     if (!appointmentId || !status) {
       return res.status(400).send({ error: "Appointment ID and status are required" });
     }
 
     const appointment = await Appointments.findById(appointmentId);
-
     if (!appointment) {
       return res.status(404).send({ error: "Appointment not found" });
     }
     
     appointment.status = status;
     await appointment.save();
-
     const success = true;
+    
     res.status(200).json({ success, message: "Appointment status updated", appointment });
   } catch (error) {
     const success = false;

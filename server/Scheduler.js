@@ -1,50 +1,16 @@
-const mongoose = require("mongoose");
 const cron = require("node-cron");
-const nodemailer = require("nodemailer");
 const Appointment = require("./models/Apointments.model");
-require("dotenv").config();
+const User = require('./models/User.model');
+const sendEmail = require("./mailer");
 
-const MyEmail = process.env.EMAIL;
-const PASS = process.env.PASS;
-
-// Nodemailer Transporter
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: MyEmail,
-    pass: PASS,
-  },
-});
-
-// Send Email Function
-async function sendEmail(patientName, patientEmail, appointmentId, status) {
-  const mailOptions = {
-    from: MyEmail,
-    to: patientEmail,
-    subject: `Appointment Status Updated - ${status}`,
-    text: `Dear ${patientName},\n\nYour appointment (ID: ${appointmentId}) status has been updated to: ${status}.\n\nThank you.`,
-  };
-
-  try {
-    await transporter.sendMail(mailOptions);
-    console.log(
-      `Email sent to ${patientEmail} for appointment ID: ${appointmentId}`
-    );
-  } catch (error) {
-    console.error(
-      `Error sending email for appointment ID: ${appointmentId}`,
-      error
-    );
-  }
-}
-
-// Cron Job: Runs Every Minute
 cron.schedule("* * * * *", async () => {
   try {
+
+    //====== Genrate 15 Minutes Ago Time
     const now = new Date();
     const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60000);
 
-    // Fetch Appointments with Scheduled Status
+    //====== Fetch Appointments with Scheduled Status
     const appointments = await Appointment.find({ status: "Scheduled" });
 
     for (const appointment of appointments) {
@@ -52,15 +18,17 @@ cron.schedule("* * * * *", async () => {
       const [hours, minutes] = appointment.time.split(":");
       appointmentDateTime.setHours(parseInt(hours), parseInt(minutes));
 
+      //========= if appointment is overdue Status update as Missed
       if (appointmentDateTime < fifteenMinutesAgo) {
-        // Update Status to Missed
+    
         appointment.status = "Missed";
         await appointment.save();
 
-        // Send Email Notification
-        const patientEmail = `${appointment.patientname
-          .toLowerCase()
-          .replace(/\s/g, "")}@gmail.com`; // Generate email based on name (replace with actual logic)
+        //========= Find Patient detail Using patientid
+        const user = await User.findById(appointment.patientid);
+
+        //====== Send Email Notification
+        const patientEmail = user.email; // Replace with actual email logic
         await sendEmail(
           appointment.patientname,
           patientEmail,
@@ -68,12 +36,12 @@ cron.schedule("* * * * *", async () => {
           appointment.status
         );
       }
-
-      console.log("Cron job is running... 3");
     }
+     
+    console.log("Cron job is running !");
   } catch (error) {
     console.error("Error updating appointments:", error);
   }
 });
 
-console.log("Cron job with email notifications is running...");
+console.log("Scheduler start successfully with cron-job....!");
