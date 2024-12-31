@@ -64,7 +64,7 @@ const PatientsAppointmentDetail = () => {
                                 </div>
                             </div>
                             {/* <button type="submit" className="btn btn-info text-white fw-bolder fs-4 w-100"><Link className='nav-link' to="/appointmentBill">PROCEED NEXT</Link></button> */}
-                            <button type="submit" className="btn btn-info text-white fw-bolder fs-4 w-100"> PROCEED NEXT</button>
+                            <button type="submit" className="btn btn-info text-white fw-bolder fs-6 w-100"> PROCEED NEXT</button>
                         </form>
                     </div>
                 </section>

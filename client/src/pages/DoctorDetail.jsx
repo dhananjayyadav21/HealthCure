@@ -71,13 +71,13 @@ const DoctorDetail = () => {
                 </div>
                 </section>
 
-                <div className="d-flex justify-content-md-end d-md-none">
+                {/* <div className="d-flex justify-content-md-end d-md-none">
                 <Link className='btn btn-info btn-Appointment text-white fw-sm-bold my-3 ' to="/BookSedule">Book on Appointment</Link>
-                </div>
+                </div> */}
             </section>  
 
             {/* DoctorDetail-Right-container  */}  
-            <section className='col-md-4 DoctorDetail-right-container d-flex justify-content-center d-none d-md-flex'>
+            <section className='col-md-4 DoctorDetail-right-container d-flex justify-content-center'>
                 <div className='bg-light p-4 rounded-4 w-100'>
                     <BookSedule doctorDetail={doctorDetail}/>
                 </div>

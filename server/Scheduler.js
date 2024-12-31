@@ -28,12 +28,16 @@ cron.schedule("* * * * *", async () => {
         const user = await User.findById(appointment.patientid);
 
         //====== Send Email Notification
-        const patientEmail = user.email; // Replace with actual email logic
+        // const patientEmail = user.email; 
+        const rescheduleLink = process.env.RESCHEDULE_LINK
+
+        const patientEmail = 'dhananjay1807d@gmail.com'; // Replace with actual email logic
         await sendEmail(
           appointment.patientname,
           patientEmail,
           appointment._id,
-          appointment.status
+          appointment.status,
+          rescheduleLink,
         );
       }
     }

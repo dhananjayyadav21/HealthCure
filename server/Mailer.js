@@ -17,12 +17,37 @@ const transporter = nodemailer.createTransport({
 });
 
 // Send Email Function
-async function sendEmail(patientName, patientEmail, appointmentId, status) {
+async function sendEmail(patientName, patientEmail, appointmentId, status, rescheduleLink) {
   const mailOptions = {
-    from: MyEmail,
+    from: `"HealthCure" <${MyEmail}>`, // Sender name
     to: patientEmail,
     subject: `Appointment Status Updated - ${status}`,
-    text: `Dear ${patientName},\n\nYour appointment (ID: ${appointmentId}) status has been updated to: ${status}.\n\nThank you.`,
+    html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <h4 style="color:rgb(197, 197, 197);">Dear ${patientName},</h4>
+        <p>
+          Unfortunately, your appointment <br> (ID: <strong>${appointmentId}</strong>)
+          <span style="color: red;"><strong>${status}</strong></span> due to a delay.
+        </p>
+        <p>You missed your scheduled appointment. Please reschedule at your earliest convenience to ensure timely care. You can reschedule your appointment using the link below:</p>
+        <p style="text-align: center; margin: 20px 0;">
+          <a 
+            href="${rescheduleLink}" 
+            style="
+              background-color: #2d89ef; 
+              color: white; 
+              padding: 10px 20px; 
+              text-decoration: none; 
+              border-radius: 5px;
+              font-weight: bold;"
+          >
+            Reschedule Appointment
+          </a>
+        </p>
+        <p>Thank you for choosing HealthCure.</p>
+        <p style="font-size: 0.9em; color: #777;">Sincerely,<br>The HealthCure Team</p>
+      </div>
+    `,
   };
 
   try {

@@ -114,7 +114,7 @@ const Reschedule = () => {
                                             <div className="text-secondary" >
                                               <div className='d-flex'>
                                                   <p className="m-1 w-25">Name</p>
-                                                  <p className='m-1'>:  {missedAppointments[0]?.patientname}</p>
+                                                  <p className='m-1 text-capitalize'>:  {missedAppointments[0]?.patientname}</p>
                                               </div>
                                               <div className='d-flex'>
                                                   <p className="m-1 w-25">Age</p>

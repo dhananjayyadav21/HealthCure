@@ -250,6 +250,17 @@ code {
 }
 
 /*================================================================= {Media query} ===========================================*/
+@media screen and (max-width: 760px) {
+  .btn-RequestAppointment {
+    width: 90%;
+    font-size: medium;
+    font-weight: 600;
+    position: fixed;
+    bottom: 0;
+    left: 5%;
+  }
+}
+
 @media screen and (min-width: 480px) {
   .carousel img {
     height: 320px;
@@ -264,10 +275,6 @@ code {
 }
 
 @media screen and (max-width: 480px) {
-  /* .SignIn-Container,
-  .SignUp-Container {
-    height: 80vh !important;
-  } */
   .Lets-start-container h5 {
     font-size: small;
   }

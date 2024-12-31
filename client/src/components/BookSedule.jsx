@@ -124,7 +124,7 @@ const BookSedule = ({doctorDetail}) => {
         </section>
 
         <div>
-            <button  className='btn btn-warning btn-RequestAppointment text-white fw-sm-bold my-3' to="/patientsAppointmentDetail" type="submit">Request for Appointment</button>
+            <button  className='btn btn-info btn-RequestAppointment text-white fw-sm-bold my-3' to="/patientsAppointmentDetail" type="submit">Book on Appointment</button>
         </div>
 
       </form>

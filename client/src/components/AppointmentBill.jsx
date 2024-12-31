@@ -106,7 +106,7 @@ const AppointmentBill = () => {
                             <div className='col-12'>
                                 <div className="mb-3">
                                     <div className='border p-3 rounded-3 AppointmentBill-Patientdetails'>
-                                        <h5>Patient details</h5>
+                                        <h6>Patient details</h6>
                                         <div className='d-flex justify-content-between text-secondary'>
                                             <p className='m-0'>Consultion Fees</p> 
                                             <p className='m-0'>${doctorDetail?.doctorDetails?.Fees??0}</p>
@@ -117,8 +117,8 @@ const AppointmentBill = () => {
                                         </div>
                                         <hr />
                                         <div className='d-flex justify-content-between'>
-                                            <h5>Total Payable</h5>
-                                            <h5 className='fw-bold'>${(doctorDetail?.doctorDetails?.Fees?? 0) + ((doctorDetail?.doctorDetails?.Fees??0) * vat/100)}</h5>
+                                            <h6>Total Payable</h6>
+                                            <h6 className='fw-bold'>${(doctorDetail?.doctorDetails?.Fees?? 0) + ((doctorDetail?.doctorDetails?.Fees??0) * vat/100)}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -136,16 +136,16 @@ const AppointmentBill = () => {
                             <div className='col-12'>
                                 <div className="mb-3">
                                     <div className='border p-3 rounded-3 AppointmentBill-payment'>
-                                        <h5>How would you like to pay?</h5>
+                                        <h6>How would you like to pay?</h6>
                                         <p className='text-secondary'>To make a payment, tap your desired payment method</p>
                                         <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="VisaCard" id="VisaCard"/>
+                                            <input className="form-check-input" type="radio" name="card" id="VisaCard"/>
                                             <label className="form-check-label" for="VisaCard">
                                                 Visa 
                                             </label>
                                         </div>
                                         <div className="form-check">     
-                                            <input className="form-check-input" type="radio" name="Mastercard" id="Mastercard" />
+                                            <input className="form-check-input" type="radio" name="card" id="Mastercard" />
                                             <label className="form-check-label" for="Mastercard">
                                                 Mastercard
                                             </label>
@@ -154,7 +154,7 @@ const AppointmentBill = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={handleClick} type="submit" className="btn btn-info text-white fw-bolder fs-4 w-100"><Link className='nav-link' to="/">Pay with visa</Link></button>
+                        <button onClick={handleClick} type="submit" className="btn btn-info text-white fw-bolder fs-6 w-100"><Link className='nav-link' to="/">Pay with card</Link></button>
                     </form>
                 </div>
             </section>
