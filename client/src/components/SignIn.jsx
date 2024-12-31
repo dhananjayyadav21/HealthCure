@@ -50,7 +50,7 @@ const SignIn = () => {
             </div> 
            
             {/* <!-- Sing In Form --> */}
-            <form noValidate onSubmit={handleonSubmit} >
+            <form onSubmit={handleonSubmit} >
                 <div className="mb-3">
                     <small><label htmlFor="email" className="form-label">Email</label></small>
                     <input type="email" className="form-control" name='email' id="email" placeholder="Enter your email"/>

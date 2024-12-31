@@ -64,7 +64,7 @@ return (
       </div>
       
       {/* <!-- SignUp Form --> */}
-      <form noValidate onSubmit={handleSubmit} id='signupform'>
+      <form onSubmit={handleSubmit} id='signupform'>
          <div className='row'>
             <div className='col-12 col-md-6'>
                <div className="mb-3">
@@ -111,31 +111,31 @@ return (
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="specialist" className="form-label">Specialist</label></small>
-                     <input type="text" className="form-control" name='specialist' id="specialist" placeholder="Enter your specialistizations"/>
+                     <input type="text" className="form-control" name='specialist' id="specialist" placeholder="Enter your specialistizations" required/>
                   </div>
                </div>
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="hospital" className="form-label">Hostiplal/Clinic Name</label></small>
-                     <input type="text" className="form-control" name='hospital' id="hospital" placeholder="Enter YourHostiplal/Clinic Name"/>
+                     <input type="text" className="form-control" name='hospital' id="hospital" placeholder="Enter YourHostiplal/Clinic Name" required/>
                   </div>
                </div>
                <div className='col-12'>
                   <div className="mb-3">
                      <small><label htmlFor="hospitalAddress" className="form-label">Hostiplal/Clinic Address</label></small>
-                     <input type="text" name='hospitalAddress' className="form-control" id="hospitalAddress" placeholder="Enter YourHostiplal/Clinic Address"/>
+                     <input type="text" name='hospitalAddress' className="form-control" id="hospitalAddress" placeholder="Enter YourHostiplal/Clinic Address" required/>
                   </div>
                </div>
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="hospitalContact" className="form-label">Hostiplal/Clinic Contact</label></small>
-                     <input type="number" className="form-control" name='hospitalContact' id="hospitalContact" placeholder="Hostiplal/Clinic Contact"/>
+                     <input type="number" className="form-control" name='hospitalContact' id="hospitalContact" placeholder="Hostiplal/Clinic Contact" required/>
                   </div>
                </div>
                <div className='col-12 col-md-6'>
                   <div className="mb-3">
                      <small><label htmlFor="Fees" className="form-label">Fees</label></small>
-                     <input type="number" name='Fees' className="form-control" id="Fees" placeholder="Enter Fees"/>
+                     <input type="number" name='Fees' className="form-control" id="Fees" placeholder="Enter Fees" required/>
                   </div>
                </div>
                <div className='col-12'>
@@ -143,31 +143,31 @@ return (
                      <small><label htmlFor="weekAvailability" className="form-label">Available in Week</label></small>
                      <div className="row">
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Monday" id="mondayCheck" name="weekAvailability"/>
+                           <input className="form-check-input" type="checkbox" value="Monday" id="mondayCheck" name="weekAvailability" required/>
                            <label className="form-check-label" htmlFor="mondayCheck">Monday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Tuesday" id="tuesdayCheck" name="weekAvailability"/>
+                           <input className="form-check-input" type="checkbox" value="Tuesday" id="tuesdayCheck" name="weekAvailability" required/>
                            <label className="form-check-label" htmlFor="tuesdayCheck">Tuesday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Wednesday" id="wednesdayCheck" name="weekAvailability"/>
+                           <input className="form-check-input" type="checkbox" value="Wednesday" id="wednesdayCheck" name="weekAvailability" required/>
                            <label className="form-check-label" htmlFor="wednesdayCheck">Wednesday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Thursday" id="thursdayCheck" name="weekAvailability"/>
+                           <input className="form-check-input" type="checkbox" value="Thursday" id="thursdayCheck" name="weekAvailability" required/>
                            <label className="form-check-label" htmlFor="thursdayCheck">Thursday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Friday" id="fridayCheck" name="weekAvailability"/>
+                           <input className="form-check-input" type="checkbox" value="Friday" id="fridayCheck" name="weekAvailability" required/>
                            <label className="form-check-label" htmlFor="fridayCheck">Friday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Saturday" id="saturdayCheck" name="weekAvailability"/>
+                           <input className="form-check-input" type="checkbox" value="Saturday" id="saturdayCheck" name="weekAvailability" required/>
                            <label className="form-check-label" htmlFor="saturdayCheck">Saturday</label>
                         </div>
                         <div className="col-6 col-md-4 form-check">
-                           <input className="form-check-input" type="checkbox" value="Sunday" id="sundayCheck" name="weekAvailability"/>
+                           <input className="form-check-input" type="checkbox" value="Sunday" id="sundayCheck" name="weekAvailability" required/>
                            <label className="form-check-label" htmlFor="sundayCheck">Sunday</label>
                         </div>
                      </div>
