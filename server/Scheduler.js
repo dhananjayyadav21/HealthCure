@@ -1,7 +1,7 @@
 const cron = require("node-cron");
 const Appointment = require("./models/Apointments.model");
 const User = require('./models/User.model');
-const sendEmail = require("./mailer");
+const sendEmail = require("./Mailer");
 
 cron.schedule("* * * * *", async () => {
   try {
