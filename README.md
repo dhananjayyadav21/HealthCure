@@ -12,6 +12,8 @@ Password Reset: Users can reset their passwords through email if they forget the
 MERN Stack (MongoDB, Express.js, React, Node.js)
 JWT (JSON Web Token) for authentication
 
+
+
 ### Doctor Scheduling System: 🩺
 
 ### View Available Doctors: 
@@ -24,6 +26,8 @@ MongoDB to store doctor and appointment data. 📅
 React for front-end dynamic interactions.
 
 
+
+
 ### Missed Appointment Notification: ⏰
 If a user misses an appointment, an email notification is automatically sent, reminding them of the missed appointment.
 Reschedule Functionality: Users can reschedule their missed appointments.
@@ -31,6 +35,8 @@ Reschedule Functionality: Users can reschedule their missed appointments.
 ### Technology:
 Node.js for back-end processing. ✉️
 Nodemailer for sending emails.
+
+
 
 
 ### Technologies Used:
