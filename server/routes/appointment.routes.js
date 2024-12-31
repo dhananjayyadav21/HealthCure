@@ -79,7 +79,7 @@ router.post("/createappointment", FetchUser, async (req, res) => {
       },
     });
 
-    if (existingAppointment) {
+    if (existingAppointment !== null) {
       return res.status(400).json({
         success: false,
         message: "Unfortunately An appointment is already scheduled with this doctor at the selected date and time.",
