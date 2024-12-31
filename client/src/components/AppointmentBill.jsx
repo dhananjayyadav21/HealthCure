@@ -1,18 +1,16 @@
-import React, { } from 'react'
+import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import HttpService from '../Service/httpservice';
+import AuthContext from '../context/AuthContext';
 
 const AppointmentBill = () => {
 
     const location = useLocation(); 
+    const Context = useContext(AuthContext);
+    const {appointment } = Context;
 
     const PatientDetail = location.state;
     const doctorDetail = location?.state?.doctorDetail;
     const vat = 5;
-
-
-    console.log(doctorDetail);
-    console.log(PatientDetail);
 
     const appointmentDataObject = {
         patientname: PatientDetail?.PatientName,
@@ -28,23 +26,15 @@ const AppointmentBill = () => {
         time: PatientDetail?.time,
     }
 
-   const handleClick = ()=>{
-       appointment(appointmentDataObject);
-       alert("Your Appointment Book");
+   const handleClick = async ()=>{
+     let res = await appointment(appointmentDataObject);
+     if(res?.success === true){
+        alert("Your Appointment Book");
+     }else{
+        alert("An appointment is already scheduled with this doctor at the selected date and time.");
+     }
    }
 
-     // appointment Using httpService (post) request
-    const appointment = async (formDataObject) => {
-        try {
-        const response = await HttpService.POST(
-            "http://localhost:5000/api/appointment/createappointment",
-            formDataObject
-        );
-        return response.data;
-        } catch (error) {
-        console.error(error?.response?.data?.errors);
-        }
-    };
 
   return (
     <>

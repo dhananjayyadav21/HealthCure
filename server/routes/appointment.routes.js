@@ -68,6 +68,24 @@ router.post("/createappointment", FetchUser, async (req, res) => {
       return res.status(400).send({ error: "Patient ID is required" });
     }
 
+    const {doctorid, date, time} = req.body;
+
+    // Check if an appointment already exists for the same doctor, date, and time
+    const existingAppointment = await Appointments.findOne({
+      where: {
+        doctorid: doctorid,
+        date: date,
+        time: time,
+      },
+    });
+
+    if (existingAppointment) {
+      return res.status(400).json({
+        success: false,
+        message: "Unfortunately An appointment is already scheduled with this doctor at the selected date and time.",
+      });
+    }
+
     const appointment = await Appointments.create({
       patientid: userid,
       patientname: req.body.patientname,

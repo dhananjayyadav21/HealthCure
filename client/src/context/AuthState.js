@@ -98,6 +98,19 @@ const AuthState = (props) => {
     }
   };
 
+  //========================================= appointment Using httpService (post) request ===================================
+  const appointment = async (formDataObject) => {
+    try {
+      const response = await HttpService.POST(
+        "http://localhost:5000/api/appointment/createappointment",
+        formDataObject
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error?.response?.data?.errors);
+    }
+  };
+
   //============================================== appointments info get ===================================================
   const GetAppointments = async (appointmentStatus) => {
     try {
@@ -110,7 +123,6 @@ const AuthState = (props) => {
       throw error;
     }
   };
-  
 
   //============================================== Update appointment status (PUT) ===================================================
   const UpdateAppointmentStatus = async (appointmentId, status) => {
@@ -126,7 +138,6 @@ const AuthState = (props) => {
     }
   };
 
-
   const [errors, setErrors] = useState([]);
 
   return (
@@ -140,6 +151,7 @@ const AuthState = (props) => {
         GetDoctorDetailById,
         GetAvialbeDateForDoctor,
         GetAvialbeTimeDateAndForDoctor,
+        appointment,
         GetAppointments,
         UpdateAppointmentStatus,
       }}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import BookSedule from '../components/BookSedule'
 import AuthContext from '../context/AuthContext'
 
