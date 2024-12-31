@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import AuthContext from '../context/AuthContext';
 
 const AppointmentBill = () => {
 
     const location = useLocation(); 
+    const navigate = useNavigate();
     const Context = useContext(AuthContext);
     const {appointment } = Context;
 
@@ -30,6 +31,7 @@ const AppointmentBill = () => {
      let res = await appointment(appointmentDataObject);
      if(res?.success === true){
         alert("Your Appointment Book");
+        navigate('/');
      }else{
         alert("Somthing went wrong!, please try again");
      }
@@ -144,7 +146,7 @@ const AppointmentBill = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={handleClick} type="submit" className="btn btn-info text-white fw-bolder fs-6 w-100"><Link className='nav-link' to="/">Pay with card</Link></button>
+                        <button onClick={handleClick} type="submit" className="btn btn-info text-white fw-bolder fs-6 w-100">Pay with card</button>
                     </form>
                 </div>
             </section>
