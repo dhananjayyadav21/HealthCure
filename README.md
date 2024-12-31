@@ -1,5 +1,5 @@
 # Healthcare Web App: Doctor Appointment Scheduling & Management
-## Features:
+#### Features:
 
 ## User Registration and Authentication:🔒
 
@@ -14,7 +14,7 @@ JWT (JSON Web Token) for authentication
 
 
 
-### Doctor Scheduling System: 🩺
+## Doctor Scheduling System: 🩺
 
 ### View Available Doctors: 
 Users can browse a list of available doctors based on specialties and availability.
@@ -28,7 +28,7 @@ React for front-end dynamic interactions.
 
 
 
-### Missed Appointment Notification: ⏰
+## Missed Appointment Notification: ⏰
 If a user misses an appointment, an email notification is automatically sent, reminding them of the missed appointment.
 Reschedule Functionality: Users can reschedule their missed appointments.
 
@@ -39,7 +39,7 @@ Nodemailer for sending emails.
 
 
 
-### Technologies Used:
+## Technologies Used:
 MongoDB: NoSQL database to store user data, doctor information, appointments, and notifications.
 
 Express.js: Framework to build the RESTful API and handle back-end requests.
