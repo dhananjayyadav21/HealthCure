@@ -147,7 +147,7 @@ const AuthState = (props) => {
   const rescheduleAppointment = async (data) => {
     try {
       const response = await HttpService.PUT(
-        `http://localhost:5000/api/appointment/rescheduleAppointment`,
+        `${GlobalUrls.RESCHEDULE_APPOINTMENTS}`,
         data
       );
       return response.data;

@@ -13,3 +13,4 @@ export const AVILABLE_TIMEDATE_FOR_DOCTOR = `${BASEURL}api/appointment/getAvialb
 export const APPOINTMENT = `${BASEURL}api/appointment/createappointment`
 export const GET_APPOINTMENTS = `${BASEURL}api/appointment/getappointment`
 export const UPDATE_APPOINTMENTS = `${BASEURL}api/appointment/updateAppointment`
+export const RESCHEDULE_APPOINTMENTS = `${BASEURL}api/appointment/rescheduleAppointment`
