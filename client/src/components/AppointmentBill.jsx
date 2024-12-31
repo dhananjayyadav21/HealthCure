@@ -130,13 +130,13 @@ const AppointmentBill = () => {
                                         <p className='text-secondary'>To make a payment, tap your desired payment method</p>
                                         <div className="form-check">
                                             <input className="form-check-input" type="radio" name="card" id="VisaCard" required/>
-                                            <label className="form-check-label" for="VisaCard">
+                                            <label className="form-check-label" htmlFor="VisaCard">
                                                 Visa 
                                             </label>
                                         </div>
                                         <div className="form-check">     
                                             <input className="form-check-input" type="radio" name="card" id="Mastercard" required/>
-                                            <label className="form-check-label" for="Mastercard">
+                                            <label className="form-check-label" htmlFor="Mastercard">
                                                 Mastercard
                                             </label>
                                         </div>

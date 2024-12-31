@@ -105,7 +105,7 @@ const MyAppointment = () => {
                     <div className='Missed-Appointment scrollable '>
                       <div className='px-2'>
                         {missedAppointments.map((Appointments,index)=>{
-                         let currentindex = index % 10
+                         let currentindex = index % 6;
                         return  <Appointmentcard key={index} index={currentindex} Appointments={Appointments}/> })}  
                       </div>
                     </div>
@@ -124,7 +124,7 @@ const MyAppointment = () => {
                     <div className='Upcomming-Appointment scrollable'>
                       <div className='px-2'>
                         {scheduledAppointments?.map((Appointments,index)=>{
-                         let currentindex = index % 10
+                         let currentindex = index % 6;
                         return  <Appointmentcard key={index} index={currentindex} Appointments={Appointments} />})} 
                       </div>
                     </div>   
@@ -144,7 +144,7 @@ const MyAppointment = () => {
                   <div className='Past-Appointment scrollable'>
                     <div className='px-2'>
                       {completedAppointments?.map((Appointments,index)=>{
-                      let currentindex = index % 10
+                      let currentindex = index % 6
                       return  <Appointmentcard key={index} index={currentindex} Appointments={Appointments}/>})} 
                     </div> 
                   </div>
