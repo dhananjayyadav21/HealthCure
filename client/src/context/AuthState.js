@@ -6,7 +6,6 @@ import * as GlobalUrls from '../GlobalURL'
 const AuthState = (props) => {
   //================================== register user Using httpService (post) request ===============================
   const adduser = async (formDataObject) => {
-    console.log("//++++",(GlobalUrls.AddUSER))
     try {
       setErrors([]);
       const response = await HttpService.POST(
@@ -18,6 +17,8 @@ const AuthState = (props) => {
       if (error?.response?.data?.errors) {
         setErrors(error?.response?.data?.errors ?? []);
       }
+
+      throw error;
     }
   };
 
@@ -32,6 +33,7 @@ const AuthState = (props) => {
     } catch (error) {
       console.error(error?.response?.data?.errors);
       setErrors(error?.response?.data?.errors);
+      throw error;
     }
   };
 

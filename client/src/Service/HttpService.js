@@ -1,5 +1,4 @@
 import axios from "axios";
-const AuthToken = localStorage.getItem("AuthToken");
 
 class HttpService {
   //============================================= Get httpservice ==================================
@@ -7,7 +6,7 @@ class HttpService {
     try {
       const response = await axios.get(url, {
         headers: {
-          AuthToken: AuthToken,
+          AuthToken: localStorage.getItem("AuthToken"),
         },
       });
       return response;
@@ -23,7 +22,7 @@ class HttpService {
       const response = await axios.post(url,
         body,
         {headers:{
-            AuthToken: AuthToken,
+            AuthToken: localStorage.getItem("AuthToken"),
           }}, 
       );
       return response; 
@@ -41,7 +40,7 @@ class HttpService {
         body, 
         {
           headers: {
-            AuthToken: AuthToken,
+            AuthToken: localStorage.getItem("AuthToken"),
           },
         }
       );

@@ -5,8 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 const SignUp = () => {
 
    const Context = useContext(AuthContext);
-   const { adduser, errors } = Context;
+   const { adduser } = Context;
    const [currentRole, setCurrentRole] = useState();
+    const [errors,setErrors]= useState([]);
    const navigate = useNavigate();
 
    //====== handle Form radionChange event for select patient or doctor ==============
@@ -17,6 +18,7 @@ const SignUp = () => {
    //====== handle Form sumbit event ==============
    const handleSubmit = async (event) => {
      event.preventDefault();
+     setErrors([]);
      // Target Form
      const formData = new FormData(event.target);
      const formDataObject = {};
@@ -36,11 +38,18 @@ const SignUp = () => {
        }
      });
 
-      //register user with httpservice
-      let res = await adduser(formDataObject);
-      if(res?.success === true){
-         alert(res.message);
-         navigate('/signin');
+      
+      try {
+        //register user with httpservice
+        let res = await adduser(formDataObject);
+        if (res?.success === true) {
+          alert(res.message);
+          navigate("/signin");
+        }
+      } catch (error) {
+         if (error?.response?.data?.errors) {
+            setErrors(error?.response?.data?.errors ?? []);
+          }
       }
       
    };

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import AuthContext from '../context/AuthContext';
 
 const AppointmentBill = () => {
@@ -27,11 +27,12 @@ const AppointmentBill = () => {
         time: PatientDetail?.time,
     }
 
-   const handleClick = async ()=>{
+   const handleClick = async (event)=>{
+    event.preventDefault();
      let res = await appointment(appointmentDataObject);
      if(res?.success === true){
         alert("Your Appointment Book");
-        navigate('/');
+        navigate('/appointment');
      }else{
         alert("Somthing went wrong!, please try again");
      }

@@ -19,18 +19,30 @@ const MyAppointment = () => {
   const [completedAppointments, setCompletedAppointments] = useState([]);
 
   const GetMissedAppointments = async (appointmentStatus) => {
-    const res = await GetAppointments(appointmentStatus);
-    setMissedAppointments(res.appointments);
+    try {
+      const res = await GetAppointments(appointmentStatus);
+      setMissedAppointments(res.appointments);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const GetScheduledAppointments = async (appointmentStatus) => {
-    const res = await GetAppointments(appointmentStatus);
-    setScheduledAppointments(res.appointments);
+    try {
+      const res = await GetAppointments(appointmentStatus);
+      setScheduledAppointments(res.appointments);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const GetCompletedAppointments = async (appointmentStatus) => {
-    const res = await GetAppointments(appointmentStatus);
-    setCompletedAppointments(res.appointments);
+    try {
+      const res = await GetAppointments(appointmentStatus);
+      setCompletedAppointments(res.appointments);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
 

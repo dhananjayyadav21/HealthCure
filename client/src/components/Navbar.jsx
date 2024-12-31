@@ -48,7 +48,9 @@ const Navbar = () => {
                         </a>
                         <ul className="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
                             <li><h6 className="dropdown-item text-capitalize">{userRole}</h6></li>
-                            <li><h6 className="dropdown-item text-danger" onClick={Logout}>Logout <i className="fa-solid fa-arrow-right-from-bracket"></i></h6></li>
+                            { localStorage.getItem("AuthToken") ?
+                                <li><h6 className="dropdown-item text-danger" onClick={Logout}>Logout <i className="fa-solid fa-arrow-right-from-bracket"></i></h6></li> : ""
+                            }
                             <li><hr className="dropdown-divider"/></li>
                             <li><a className="dropdown-item" href="/userProfile"><button className='btn btn-dark w-100'>My Profile</button></a></li>
                         </ul>

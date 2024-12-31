@@ -1,31 +1,41 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import AuthContext from '../context/AuthContext';
 
 const SignIn = () => {
 
     const Context = useContext(AuthContext);
-    const { login, errors } = Context;
+    const { login } = Context;
     const navigate = useNavigate();
+
+    const [errors,setErrors]= useState([]);
 
     const handleonSubmit = async (event) => {
       event.preventDefault();
+      setErrors([]);
       const form = new FormData(event.target);
       const formDataObject = {};
       form.forEach((value, key) => {
         formDataObject[key] = value;
       });
 
-      //login user with httpservice
+      try {
+        //login user with httpservice
        let res = await login(formDataObject);
-
-      //If success true show alert and navigate
-      if (res?.success === true) {
-        localStorage.setItem('AuthToken', res.AuthToken);
-        localStorage.setItem('UserRole', res.Role);
-        alert(res.message);
-        navigate("/");
+        console.log(res)
+       //If success true show alert and navigate
+       if (res?.success === true) {
+         localStorage.setItem('AuthToken', res.AuthToken);
+         localStorage.setItem('UserRole', res.Role);
+         alert(res.message);
+         navigate("/");
+       }
+      } catch (error) {
+        if (error?.response?.data?.errors) {
+          setErrors(error?.response?.data?.errors ?? []);
+        }
       }
+
     };
 
   return (
