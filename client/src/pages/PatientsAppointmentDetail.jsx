@@ -41,29 +41,28 @@ const PatientsAppointmentDetail = () => {
                                 <div className='col-12'>
                                     <div className="mb-3">
                                         <label htmlFor="Patient" className="form-label">Patient</label> 
-                                        <input type="text" onChange={handleOnchange} name='PatientName' value={patiendetails.PatientName}  className="form-control" id="Patient" placeholder="Patient"/>
+                                        <input type="text" onChange={handleOnchange} name='PatientName' value={patiendetails.PatientName}  className="form-control" id="Patient" placeholder="Patient" required/>
                                     </div>
                                 </div>
                                 <div className='col-12 col-md-6'>
                                     <div className="mb-3">
                                         <label htmlFor="Age" className="form-label">Age</label> 
-                                        <input type="number" name='Age' value={patiendetails.Age} className="form-control" id="Age" placeholder="Age" onChange={handleOnchange}/>
+                                        <input type="number" name='Age' value={patiendetails.Age} className="form-control" id="Age" placeholder="Age" onChange={handleOnchange} required/>
                                     </div>
                                 </div>
                                 <div className='col-12 col-md-6'>
                                     <div className="mb-3">
                                         <label htmlFor="weight" className="form-label">Weight (kg)</label> 
-                                        <input type="number" name='Weight' value={patiendetails.Weight} className="form-control" id="weight" placeholder="Weight" onChange={handleOnchange}/>
+                                        <input type="number" name='Weight' value={patiendetails.Weight} className="form-control" id="weight" placeholder="Weight" onChange={handleOnchange} required/>
                                     </div>
                                 </div>
                                 <div className='col-12'>
                                     <div className="mb-3">
                                         <label htmlFor="problem" className="form-label">Brifly describe your problem</label> 
-                                        <textarea type="text" name='Problem' value={patiendetails.Problem}  className="form-control" id="problem" placeholder="Describe Your Problem.............." onChange={handleOnchange}/>
+                                        <textarea type="text" name='Problem' value={patiendetails.Problem}  className="form-control" id="problem" placeholder="Describe Your Problem.............." onChange={handleOnchange} required/>
                                     </div>
                                 </div>
                             </div>
-                            {/* <button type="submit" className="btn btn-info text-white fw-bolder fs-4 w-100"><Link className='nav-link' to="/appointmentBill">PROCEED NEXT</Link></button> */}
                             <button type="submit" className="btn btn-info text-white fw-bolder fs-6 w-100"> PROCEED NEXT</button>
                         </form>
                     </div>

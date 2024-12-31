@@ -31,7 +31,7 @@ const SignIn = () => {
   return (
     <>
        <div className="container d-flex justify-content-center align-items-center px-3 py-3 py-md-5 SignIn-Container">
-        <div className="form-containe col-12 col-md-5 shadow rounded-4 py-4 px-4 p-md-5">
+        <div className="form-containe col-12 col-sm-10 col-lg-5 shadow rounded-4 py-4 px-4 p-md-5">
 
             {/* <!-- Sing In Heading --> */}
             <div className='mb-4'>

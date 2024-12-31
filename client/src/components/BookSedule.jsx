@@ -91,6 +91,7 @@ const BookSedule = ({doctorDetail}) => {
                     value={day.formattedDate}
                     onChange={onDateChange}
                     className="visually-hidden cursor-pointer" 
+                    required
                     />
                     <p className='m-0 text-uppercase'>{day.dayName.substring(0,3)}</p>
                     <p className='m-0'>{new Date(day.formattedDate).getDate()}</p>
@@ -115,7 +116,7 @@ const BookSedule = ({doctorDetail}) => {
                     value={e.time}
                     disabled={!e.isAvailable}
                     className="visually-hidden"
-                    />  
+                    required />  
                         <p className='m-0 text-center text-uppercase'>{e.time}</p>
                        </label> 
                     </div>

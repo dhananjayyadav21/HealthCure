@@ -48,7 +48,7 @@ const SignUp = () => {
 return (
 <>
 <div className="container d-flex justify-content-center align-items-center p-3 SignUp-Container py-3 py-md-5">
-   <div className="form-containe col-12 col-md-5 shadow rounded-4 py-4 px-3 p-md-5">
+   <div className="form-containe col-12 col-sm-10 col-lg-5 shadow rounded-4 py-4 px-3 p-md-5">
       {/* <!-- SignUp Header --> */}
       <div className='mb-4'>
          <i className="fa-solid fa-2x fa-user my-3"></i>

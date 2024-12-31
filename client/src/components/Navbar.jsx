@@ -24,6 +24,7 @@ const Navbar = () => {
     const Logout = () => {
       localStorage.removeItem("AuthToken");
       localStorage.removeItem("UserRole");
+      alert("You are logout");
       navigate('/');
     };
 

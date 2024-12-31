@@ -94,7 +94,7 @@ const PatientDetailAfterBook = () => {
                                         { AppointmentsDetails?.status === "Missed" ?
                                             <p className='text-danger'><i className="fa-solid fa-circle-exclamation"></i> 
                                                 { UserRole === 'patient' ? 
-                                                  <span>You missed your scheduled appointment. Please reschedule at your earliest convenience to ensure timely care.</span> : 
+                                                  <span> You missed your scheduled appointment. Please reschedule at your earliest convenience to ensure timely care.</span> : 
                                                   <span className='text-capitalize'> <span className='text-capitalize'>{AppointmentsDetails?.patientname}</span> missed  scheduled appointment.</span>
                                                 } </p> :""
                                         } 
