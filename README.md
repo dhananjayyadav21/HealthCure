@@ -57,7 +57,6 @@ Bcrypt.js: For password encryption.
 Cron: For handling date and time functionalities (e.g., for scheduling).
 
 ## [Healthcure](https://healthcuree.netlify.app/)
-![8](https://github.com/user-attachments/assets/11a8504c-93f3-47d7-98e0-4dab9d0c0db0)
 ![1](https://github.com/user-attachments/assets/4314bf2b-e75d-4f2a-9677-b2548eca404e)
 ![2](https://github.com/user-attachments/assets/657c3662-a77a-47b8-b087-5028e53dc3a0)
 ![3](https://github.com/user-attachments/assets/116f3f60-6f9b-41c8-87db-7e42b8895bde)
@@ -65,4 +64,6 @@ Cron: For handling date and time functionalities (e.g., for scheduling).
 ![5](https://github.com/user-attachments/assets/4e1c9884-af4b-4ae5-9bad-64f6f3d741da)
 ![6](https://github.com/user-attachments/assets/52732b94-bed9-48d2-9695-a479da136f75)
 ![7](https://github.com/user-attachments/assets/6e3829c0-b599-4f48-986e-b26a39b5e189)
+![8](https://github.com/user-attachments/assets/11a8504c-93f3-47d7-98e0-4dab9d0c0db0)
+
 
