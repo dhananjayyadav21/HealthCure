@@ -74,7 +74,7 @@ router.post("/createappointment", FetchUser, async (req, res) => {
     const existingAppointment = await Appointments.findOne({
       where: {
         doctorid: doctorid,
-        date: date,
+        date: new Date(date),
         time: time,
       },
     });
