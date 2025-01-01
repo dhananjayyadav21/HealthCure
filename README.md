@@ -36,7 +36,8 @@ Node.js for back-end processing. ✉️
 Nodemailer for sending emails.
 
 # Flowchart:
-![image](https://github.com/user-attachments/assets/2de48542-193f-4963-ad56-56889a58f2bb)
+
+![diagram-export-1-1-2025-3_59_10-AM](https://github.com/user-attachments/assets/f508ec94-f0e5-490a-91fa-29391c87dce1)
 
 
 ## Technologies Used:
