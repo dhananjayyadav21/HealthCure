@@ -97,10 +97,10 @@ const Home = () => {
       </section>
 
       {/*================================= Top Doctors =============================*/}
-      <section className='container-md px-3 my-2 my-md-5 Doctor-container'>
-        <div className='container-md text-center'>
+      <section className='container-lg px-3 my-2 my-md-5 Doctor-container'>
+        <div className='container-lg text-center'>
           <h4 className='mt-3 mb-2 mt-sm-4 mb-sm-3'>Top Doctor</h4>
-          <p className='text-secondary'>End to end care from Top Surgeons at our HealthCure Care Clinics. Emphasizes comprehensive  medical services provided by leading surgeons at HealthCure clinics.</p>
+          <p className='text-secondary px-5'>End to end care from Top Surgeons at our HealthCure Care Clinics. Emphasizes comprehensive  medical services provided by leading surgeons at HealthCure clinics.</p>
         </div> 
         <div className="d-flex justify-content-center align-items-center gap-3" >
           <div className='row g-3 w-100'>
@@ -113,10 +113,10 @@ const Home = () => {
       </section>
 
       {/*================================= Top Hotspital =============================*/}
-      <section className='container-md px-3 my-5 Hotspital-container'>
+      <section className='container-lg px-3 my-5 Hotspital-container'>
         <div className='text-center'>
           <h4 className='mt-3 mb-2 mt-sm-4 mb-sm-3'>Top Hospital</h4>
-          <p className='text-secondary'>A top hospital is a premier healthcare institution known for its exceptional medical services, cutting-edge technology, and patient-centered care.</p>
+          <p className='text-secondary px-5'>A top hospital is a premier healthcare institution known for its exceptional medical services, cutting-edge technology, and patient-centered care.</p>
         </div>
         <div className="d-flex justify-content-center justify-content-sm-start align-items-center gap-3" >
           <div className='row g-3'>
