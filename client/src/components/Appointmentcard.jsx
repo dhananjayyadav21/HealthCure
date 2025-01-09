@@ -20,7 +20,7 @@ const Appointmentcard = (props) => {
   const AppointmentStatusUpdate = async (appointmentId, status) => {
     const res = await UpdateAppointmentStatus(appointmentId, status);
     if (res?.success === true) {
-      alert("Appointment updated as a missed");
+      alert("Appointment updated");
     }
   };
 
