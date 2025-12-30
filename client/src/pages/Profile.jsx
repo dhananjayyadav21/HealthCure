@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
 const UserProfile = () => {
 
@@ -38,7 +39,7 @@ const UserProfile = () => {
                                 {userinfo?.user?.role === "doctor" && <div className='p-5'>
                                     <div className='d-flex justify-content-center'>
                                         <div className='rounded-circle p-1 shadow-sm' style={{ background: 'var(--secondary-gradient)', width: '158px', height: '158px' }}>
-                                            <img className='bg-light' src="/assets/img/Doctor_6.png" alt="User-img" style={{ width: "150px", height: '150px', borderRadius: "50%", objectFit: 'contain' }} />
+                                            <OptimizedImage className='bg-light' src="/assets/img/Doctor_6.png" alt="User-img" style={{ width: "150px", height: '150px', borderRadius: "50%" }} imageStyle={{ borderRadius: '50%' }} objectFit="contain" />
                                         </div>
                                     </div>
                                     <div className='text-center mt-4'>
@@ -52,7 +53,7 @@ const UserProfile = () => {
                                 {userinfo?.user?.role === "patient" && <div className='p-5'>
                                     <div className='d-flex justify-content-center'>
                                         <div className='rounded-circle p-1 shadow-sm' style={{ background: 'var(--secondary-gradient)', width: '158px', height: '158px' }}>
-                                            <img className='bg-light' src="/assets/img/Patient.png" alt="User-img" style={{ width: "150px", height: '150px', borderRadius: "50%", objectFit: 'contain' }} />
+                                            <OptimizedImage className='bg-light' src="/assets/img/Patient.png" alt="User-img" style={{ width: "150px", height: '150px', borderRadius: "50%" }} imageStyle={{ borderRadius: '50%' }} objectFit="contain" />
                                         </div>
                                     </div>
                                     <div className='text-center mt-4'>

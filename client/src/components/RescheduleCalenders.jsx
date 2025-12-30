@@ -1,7 +1,7 @@
-import React, { useState,useContext,useEffect, useRef } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
-const ReSeduleCalender = ({AppointmentsDetails}) => {
+const ReSeduleCalender = ({ AppointmentsDetails }) => {
 
   // Context to access methods from AuthContext
   const Context = useContext(AuthContext);
@@ -61,11 +61,11 @@ const ReSeduleCalender = ({AppointmentsDetails}) => {
 
     //---- Reschedule Appointment
     const res = await rescheduleAppointment(formDataObject);
-    if(res?.success === true){
-        refClose.current.click();
-        navigate('/');
-        alert(`${res?.message}`)
-    }else{
+    if (res?.success === true) {
+      refClose.current.click();
+      navigate('/');
+      alert(`${res?.message}`)
+    } else {
       alert('Somthing went wrong!, please try again');
     }
   };
@@ -93,54 +93,47 @@ const ReSeduleCalender = ({AppointmentsDetails}) => {
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h1 className="modal-title fs-5" id="RescheduleModalLabel">
-                  Reschedule Appointment
-                </h1>
+            <div className="modal-content glass-effect border-0 rounded-4 shadow-lg overflow-hidden" style={{ background: 'rgba(255, 255, 255, 0.95)' }}>
+              <div className="modal-header border-0 pb-0">
+                <h5 className="modal-title fw-bold" id="RescheduleModalLabel" style={{ color: '#2d3436' }}>
+                  <i className="fa-solid fa-calendar-check me-2 text-primary"></i>Reschedule Appointment
+                </h5>
                 <button
                   type="button"
-                  className="btn-close"
+                  className="btn-close shadow-none"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div className="modal-body">
+              <div className="modal-body p-4">
                 <form
                   onSubmit={handleSubmit}
-                  className="BookSchedule-container potion-relative"
+                  className="BookSchedule-container position-relative"
                   id="RescheduleForm"
                 >
-                  {/* Sedule Date */}
+                  {/* Schedule Date */}
                   <section className="SeduleDate mb-4">
-                    <small>
-                      <p className="fw-bold">Date</p>
-                    </small>
+                    <p className="fw-bold mb-3 small text-uppercase opacity-75" style={{ letterSpacing: '1px' }}>Select New Date</p>
                     <div className="row g-2">
                       {dates?.map((day, index) => (
                         <div className="col-3" key={index}>
-                          <div
-                            className={`btn btn-outline-info fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-day cursor-pointer`}
-                          >
+                          <div className="position-relative h-100">
+                            <input
+                              type="radio"
+                              name="date"
+                              id={"date" + day.formattedDate}
+                              value={day.formattedDate}
+                              onChange={onDateChange}
+                              className="btn-check"
+                              required
+                            />
                             <label
-                              className={`d-flex flex-column align-items-center cursor-pointer`}
+                              className={`btn btn-outline-info w-100 h-100 p-2 d-flex flex-column align-items-center justify-content-center rounded-3 border-2 transition-smooth`}
                               htmlFor={"date" + day.formattedDate}
+                              style={{ fontSize: '0.8rem' }}
                             >
-                              <input
-                                type="radio"
-                                name="date"
-                                id={"date" + day.formattedDate}
-                                value={day.formattedDate}
-                                onChange={onDateChange}
-                                className="visually-hidden cursor-pointer"
-                                required
-                              />
-                              <p className="m-0 text-uppercase cursor-pointer">
-                                {day.dayName.substring(0, 3)}
-                              </p>
-                              <p className="m-0 cursor-pointer">
-                                {new Date(day.formattedDate).getDate()}
-                              </p>
+                              <span className="opacity-75">{day.dayName.substring(0, 3)}</span>
+                              <span className="h5 m-0 fw-bold">{new Date(day.formattedDate).getDate()}</span>
                             </label>
                           </div>
                         </div>
@@ -148,66 +141,62 @@ const ReSeduleCalender = ({AppointmentsDetails}) => {
                     </div>
                   </section>
 
-                  {/* Morning Slots */}
-                  <section className="MorningSlots my-4">
-                    <small>
-                      <p className="fw-bold">Time Slots</p>
-                    </small>
-                    <div className="row g-2">
-                      {timeSlots?.map((e) => (
-                        <div className="col-4">
-                          <div
-                            className={`btn fw-bolder rounded-3 d-flex flex-column justify-content-center calandar-time ${
-                              !e.isAvailable
-                                ? "btn-outline-danger cursor-not-allowed"
-                                : "btn-outline-info cursor-pointer"
-                            }`}
-                          >
-                            <label
-                              className={`d-flex align-items-center cursor-pointer justify-content-center ${
-                                !e.isAvailable
-                                  ? "btn-outline-danger cursor-not-allowed"
-                                  : "btn-outline-info cursor-pointer"
-                              }`}
-                              title={
-                                !e.isAvailable ? "Not Available" : "Available"
-                              }
-                            >
+                  {/* Time Slots */}
+                  <section className="MorningSlots mb-2">
+                    <p className="fw-bold mb-3 small text-uppercase opacity-75" style={{ letterSpacing: '1px' }}>Available Time Slots</p>
+                    {timeSlots.length === 0 ? (
+                      <div className="text-center py-3 bg-light rounded-3 opacity-50">
+                        <small>Please select a date first</small>
+                      </div>
+                    ) : (
+                      <div className="row g-2">
+                        {timeSlots?.map((e, idx) => (
+                          <div className="col-4" key={idx}>
+                            <div className="position-relative h-100">
                               <input
                                 type="radio"
                                 name="time"
+                                id={"time" + e.time}
                                 value={e.time}
                                 disabled={!e.isAvailable}
                                 onChange={OnChange}
-                                className="visually-hidden"
+                                className="btn-check"
                                 required
                               />
-                              <p className="m-0 text-center text-uppercase">
+                              <label
+                                className={`btn w-100 p-2 rounded-3 border-2 transition-smooth small fw-bold ${!e.isAvailable
+                                    ? "btn-outline-secondary opacity-25 cursor-not-allowed"
+                                    : "btn-outline-primary"
+                                  }`}
+                                htmlFor={"time" + e.time}
+                                title={!e.isAvailable ? "Not Available" : "Available"}
+                              >
                                 {e.time}
-                              </p>
-                            </label>
+                              </label>
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
+                        ))}
+                      </div>
+                    )}
                   </section>
                 </form>
               </div>
-              <div className="modal-footer">
+              <div className="modal-footer border-0 pt-0 gap-2">
                 <button
                   type="button"
-                  className="btn btn-light"
+                  className="btn btn-light rounded-pill px-4 fw-bold text-secondary"
                   data-bs-dismiss="modal"
                   ref={refClose}
                 >
-                  Cancel
+                  Close
                 </button>
                 <button
                   type="submit"
                   form="RescheduleForm"
-                  className="btn btn-info text-white"
+                  className="btn btn-primary-gradient border-0 rounded-pill px-4 fw-bold shadow-sm"
+                  style={{ background: 'var(--primary-gradient)' }}
                 >
-                  Update
+                  Confirm New Schedule
                 </button>
               </div>
             </div>
