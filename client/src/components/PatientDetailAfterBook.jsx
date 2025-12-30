@@ -59,42 +59,73 @@ const PatientDetailAfterBook = () => {
                         {/* <!-- Form --> */}
                         <form className='AppointmentBill-form py-3'>
                             <div className='row'>
-                                <div className='col-md-6'>
-                                    <div className="mb-3">
-                                        <div className='border p-3 rounded-3 shadow-sm AppointmentBill-Patientdetails'>
-                                            <h6>Fee details :</h6>
-                                            <div className='d-flex justify-content-between text-secondary'>
-                                                <p className='m-1'>Consultion Fees</p>
-                                                <p className='m-1'>${ConsultionFees}</p>
+                                <div className='col-md-6 mb-4'>
+                                    <div className="h-100">
+                                        <div className='glass-effect p-4 rounded-4 shadow-sm border-0 h-100' style={{ background: 'rgba(255, 255, 255, 0.7)' }}>
+                                            <h6 className='fw-bold mb-3' style={{ color: '#2d3436' }}><i className="fa-solid fa-receipt me-2 text-primary"></i>Fee details</h6>
+                                            <div className='d-flex justify-content-between text-secondary mb-2'>
+                                                <small className='fw-medium'>Consultation Fees</small>
+                                                <span className='fw-bold text-dark'>${ConsultionFees}</span>
                                             </div>
-                                            <div className='d-flex justify-content-between text-secondary'>
-                                                <p className='m-1'>Vat <span>(5%)</span></p>
-                                                <p className='m-1'>${VatFess}</p>
+                                            <div className='d-flex justify-content-between text-secondary mb-2'>
+                                                <small className='fw-medium'>Vat (5%)</small>
+                                                <span className='fw-bold text-dark'>${VatFess}</span>
                                             </div>
-                                            <div className='d-flex justify-content-between text-secondary'>
-                                                <p className="m-1" >Total</p>
-                                                <p className='m-1'>${ConsultionFees + VatFess}</p>
+                                            <div className='d-flex justify-content-between align-items-center mt-3 pt-3 border-top'>
+                                                <span className="fw-bold text-dark" >Total Amount</span>
+                                                <span className='h5 m-0 fw-bold text-primary'>${ConsultionFees + VatFess}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className='col-md-6'>
-                                    <div className="mb-3">
-                                        <div className='border p-3 rounded-3 shadow-sm AppointmentBill-Patientdetails'>
-                                            <h6>Patient info:</h6>
+                                <div className='col-md-6 mb-4'>
+                                    <div className="h-100">
+                                        <div className='glass-effect p-4 rounded-4 shadow-sm border-0 h-100' style={{ background: 'rgba(255, 255, 255, 0.7)' }}>
+                                            <h6 className='fw-bold mb-3' style={{ color: '#2d3436' }}><i className="fa-solid fa-user-info me-2 text-primary"></i>Patient info</h6>
                                             <div className="text-secondary" >
-                                                <div className='d-flex'>
-                                                    <p className="m-1 w-25">Name</p>
-                                                    <p className='m-1 text-capitalize'>: {AppointmentsDetails?.patientname}</p>
+                                                <div className='d-flex justify-content-between mb-2'>
+                                                    <small className="fw-medium">Name</small>
+                                                    <small className='fw-bold text-dark text-capitalize'>{AppointmentsDetails?.patientname}</small>
                                                 </div>
-                                                <div className='d-flex'>
-                                                    <p className="m-1 w-25">Age</p>
-                                                    <p className='m-1'>: {AppointmentsDetails?.age}</p>
+                                                <div className='d-flex justify-content-between mb-2'>
+                                                    <small className="fw-medium">Age</small>
+                                                    <small className='fw-bold text-dark'>{AppointmentsDetails?.age} Years</small>
                                                 </div>
-                                                <div className='d-flex'>
-                                                    <p className="m-1 w-25">Weight </p>
-                                                    <p className='m-1'>: {AppointmentsDetails?.weight}</p>
+                                                <div className='d-flex justify-content-between mb-2'>
+                                                    <small className="fw-medium">Weight</small>
+                                                    <small className='fw-bold text-dark'>{AppointmentsDetails?.weight} Kg</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='col-12 mb-4'>
+                                    <div className="mb-3">
+                                        <div className='glass-effect p-4 rounded-4 shadow-sm border-0' style={{ background: 'rgba(255, 255, 255, 0.7)' }}>
+                                            <h5 className='fw-bold mb-3' style={{ color: '#2d3436' }}><i className="fa-solid fa-clock me-2 text-primary"></i>Appointment Schedule</h5>
+
+                                            {AppointmentsDetails?.status === "Missed" &&
+                                                <div className='alert alert-danger glass-effect border-0 bg-danger bg-opacity-10 mb-3 px-3 py-2 rounded-3'>
+                                                    <small className='fw-bold d-block'>
+                                                        <i className="fa-solid fa-circle-exclamation me-2"></i>
+                                                        {UserRole === 'patient' ?
+                                                            "You missed your scheduled appointment. Please reschedule at your earliest convenience." :
+                                                            `${AppointmentsDetails?.patientname} missed the scheduled appointment.`
+                                                        }
+                                                    </small>
+                                                </div>
+                                            }
+
+                                            <div className="text-secondary" >
+                                                <div className='d-flex justify-content-between mb-2'>
+                                                    <small className="fw-medium">Consultation Day</small>
+                                                    <small className='fw-bold text-dark'>{new Date(AppointmentsDetails?.date).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', })}</small>
+                                                </div>
+                                                <div className='d-flex justify-content-between mb-2'>
+                                                    <small className="fw-medium">Scheduled Time</small>
+                                                    <small className='fw-bold text-dark text-capitalize'>{AppointmentsDetails?.time}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,38 +133,11 @@ const PatientDetailAfterBook = () => {
                                 </div>
 
                                 <div className='col-12'>
-                                    <div className="mb-3">
-                                        <div className='border p-3 rounded-3 shadow-sm AppointmentBill-payment'>
-                                            <h5>Visit Time</h5>
-                                            {AppointmentsDetails?.status === "Missed" ?
-                                                <p className='text-danger'><i className="fa-solid fa-circle-exclamation"></i>
-                                                    {UserRole === 'patient' ?
-                                                        <span> You missed your scheduled appointment. Please reschedule at your earliest convenience to ensure timely care.</span> :
-                                                        <span className='text-capitalize'> <span className='text-capitalize'>{AppointmentsDetails?.patientname}</span> missed  scheduled appointment.</span>
-                                                    } </p> : ""
-                                            }
-                                            <div className="text-secondary" >
-                                                <div className='d-flex'>
-                                                    <p className="m-1 w-25">Day</p>
-                                                    <p className='m-1'>: {new Date(AppointmentsDetails?.date).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', })}</p>
-                                                </div>
-                                                <div className='d-flex'>
-                                                    <p className="m-1 w-25">Time</p>
-                                                    <p className='m-1 text-capitalize'>: {AppointmentsDetails?.time}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className='col-md-6'>
-                                    <div className="mb-3">
-                                        {UserRole === 'patient' ?
-                                            <div className=' AppointmentBill-payment'>
-                                                {AppointmentsDetails?.status === "Missed" ?
-                                                    <button type='button' className="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#RescheduleModal" >Reschedule Appointment</button> : ""
-                                                }
-                                            </div> : ""
+                                    <div className="d-flex justify-content-end">
+                                        {UserRole === 'patient' && AppointmentsDetails?.status === "Missed" &&
+                                            <button type='button' className="btn btn-primary-gradient border-0 px-4 py-2 rounded-pill fw-bold shadow-sm transition-smooth" style={{ background: 'var(--primary-gradient)' }} data-bs-toggle="modal" data-bs-target="#RescheduleModal" >
+                                                <i className="fa-solid fa-calendar-plus me-2"></i>Reschedule Appointment
+                                            </button>
                                         }
                                     </div>
                                 </div>

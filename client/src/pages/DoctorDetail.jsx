@@ -40,6 +40,7 @@ const DoctorDetail = () => {
                   src={`/assets/img/Doctor_${(location.state?.doctorImageIndex ?? 5) + 1}.png`}
                   style={{ height: '280px', borderRadius: '1rem' }}
                   imageStyle={{ height: '280px', borderRadius: '1rem' }}
+                  objectFit="contain"
                   alt="Doctor"
                 />
                 <div className='position-absolute text-center glass-effect p-3 rounded-4 shadow-sm' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '240px' }}>
