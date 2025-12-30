@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate, NavLink } from 'react-router-dom'
 import OptimizedImage from './OptimizedImage';
 
 const Navbar = () => {
-
     const userRole = localStorage.getItem('UserRole');
-
+    const authToken = localStorage.getItem('AuthToken');
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -23,90 +22,90 @@ const Navbar = () => {
     };
 
     const Logout = () => {
-        localStorage.removeItem("AuthToken");
-        localStorage.removeItem("UserRole");
-        alert("You are logout");
-        navigate('/');
+        if (window.confirm("Are you sure you want to logout?")) {
+            localStorage.removeItem("AuthToken");
+            localStorage.removeItem("UserRole");
+            navigate('/');
+        }
     };
+
+    const navLinkClass = ({ isActive }) =>
+        `nav-link px-3 py-2 rounded-pill fw-medium transition-smooth ${isActive ? 'text-primary' : 'text-secondary'}`;
 
     return (
         <>
+            <nav id='nav' className="navbar sticky-top navbar-expand-lg glass-effect px-1 px-md-4 py-3" style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
+                <div className="container-fluid">
+                    <Link className="navbar-brand d-flex align-items-center gap-2" to="/" style={{ letterSpacing: '-1px' }}>
+                        <div className="bg-primary-gradient rounded-3 d-flex align-items-center justify-content-center shadow-sm" style={{ width: '35px', height: '35px', background: 'var(--primary-gradient)' }}>
+                            <i className="fa-solid fa-heart-pulse text-white fs-5"></i>
+                        </div>
+                        <h4 className='m-0 fw-bold text-primary mb-0'>HealthCure</h4>
+                    </Link>
 
-            <nav id='nav' className="navbar sticky-top navbar-expand-lg glass-effect px-1 px-md-4 py-2">
-                <div className="container-fluid fs-6">
+                    <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                        {!["/signin", "/signup", "/getStart", "/welcomePage"].includes(location.pathname) && (
+                            <ul className="navbar-nav gap-2">
+                                <li className="nav-item">
+                                    <NavLink className={navLinkClass} to="/">Home</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className={navLinkClass} to="/appointment">Appointments</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className={navLinkClass} to="/reschedule">Reschedule</NavLink>
+                                </li>
+                            </ul>
+                        )}
+                    </div>
 
-                    {/* Brand-Logo For App */}
-                    <h4 className='m-0 fw-bold'><Link className="nav-text nav-link navbar-brand mt-0 text-primary" to="/" style={{ letterSpacing: '-0.5px' }}>HealthCure</Link></h4>
+                    <div className='d-flex align-items-center gap-2 gap-md-3'>
+                        <Link className="round-icon shadow-sm d-flex justify-content-center align-items-center bg-white position-relative" style={{ width: '40px', height: '40px', borderRadius: '12px' }} to="/notification">
+                            <i className="fa-solid fa-bell text-secondary"></i>
+                            <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle" style={{ width: '8px', height: '8px' }}></span>
+                        </Link>
 
-                    <span className='d-flex align-items-center gap-2'>
-                        {/* profile icon for MobileBar */}
-                        <div className="nav-item dropdown">
-                            <a className="nav-text nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {userRole === "patient" ?
-                                    <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><OptimizedImage className='navbar-profile-img rounded-circle' src="assets/img/Patient.png" alt="profile" /></div> :
-                                    <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><OptimizedImage className='navbar-profile-img rounded-circle' src="assets/img/Doctorr.png" alt="profile" /></div>
-                                }
-                            </a>
-                            <ul className="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
-                                <li><h6 className="dropdown-item text-capitalize">{userRole}</h6></li>
-                                {localStorage.getItem("AuthToken") ?
-                                    <li><h6 className="dropdown-item text-danger" onClick={Logout}>Logout <i className="fa-solid fa-arrow-right-from-bracket"></i></h6></li> : ""
-                                }
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="/userProfile"><button className='btn btn-dark w-100'>My Profile</button></a></li>
+                        <div className="dropdown">
+                            <div className="cursor-pointer d-flex align-items-center gap-2 bg-light p-1 pe-2 rounded-pill shadow-sm transition-smooth border" style={{ height: '40px' }} data-bs-toggle="dropdown">
+                                <div className='d-flex justify-content-center align-items-center overflow-hidden rounded-circle bg-white shadow-sm' style={{ width: '32px', height: '32px' }}>
+                                    <OptimizedImage
+                                        src={userRole === "doctor" ? "/assets/img/Doctorr.png" : "/assets/img/Patient.png"}
+                                        alt="profile"
+                                        style={{ width: '32px', height: '32px' }}
+                                    />
+                                </div>
+                                <i className="fa-solid fa-chevron-down text-secondary small"></i>
+                            </div>
+                            <ul className="dropdown-menu dropdown-menu-end p-2 mt-3 shadow-lg border-0 rounded-4 animated-card">
+                                <li>
+                                    <div className="px-3 py-2 border-bottom mb-2">
+                                        <p className="m-0 small text-secondary">Signed in as</p>
+                                        <p className="m-0 fw-bold text-dark text-capitalize">{userRole || 'Guest'}</p>
+                                    </div>
+                                </li>
+                                <li><Link className="dropdown-item rounded-3 py-2" to="/userProfile"><i className="fa-solid fa-user-circle me-2 opacity-50"></i> My Profile</Link></li>
+                                {authToken && (
+                                    <>
+                                        <li><hr className="dropdown-divider opacity-50" /></li>
+                                        <li><div className="dropdown-item dropdown-item-danger rounded-3 py-2 cursor-pointer text-danger" onClick={Logout}><i className="fa-solid fa-power-off me-2"></i> Logout</div></li>
+                                    </>
+                                )}
                             </ul>
                         </div>
-                        <div className="nav-item">
-                            <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center bg-white" style={{ border: '1px solid rgba(0,0,0,0.05)' }} to="/notification"><i className="fa-solid fa-bell text-secondary"></i></Link>
-                        </div>
-                        {/* Hamburger icon for MobileBar */}
-                        <i className={`fa-solid fa-bars mx-1 align-self-center round-icon shadow-sm d-flex justify-content-center align-items-center d-lg-none d-${openMBDisply}`} onClick={openMobileBar}  ></i>
-                        <i className={`fa-solid fa-xmark align-self-center round-icon shadow-sm d-flex justify-content-center align-items-center d-lg-none d-${display}`} onClick={closeMobileBar}></i>
-                    </span>
 
-                    {/* Colaps item Below Lg Screen */}
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                        {/* Shedule, Available Slots, Reschedule, notification */}
-                        <div className='d-flex justify-content-between align-items-center'>
-
-                            {["/signin", "/signup", "/getStart", "/welcomePage"].includes(location.pathname) ? "" :
-
-                                <> <ul className="navbar-nav me-auto d-flex align-items-center">
-
-                                    {!localStorage.getItem('AuthToken') ? <> <li className="nav-item">
-                                        <Link className="nav-text nav-link bg-info px-2 py-1 rounded-4 text-white fw-bold" to="/getStart">Getstart</Link></li> </> : ""
-                                    }
-                                    <li className="nav-item">
-                                        <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-text nav-link " to="/reschedule">Reschedule</Link>
-                                    </li>
-                                </ul> </>
-                            }
-                        </div>
+                        <i className={`fa-solid fa-bars round-icon d-lg-none cursor-pointer d-${openMBDisply}`} onClick={openMobileBar} style={{ width: '40px', height: '40px' }}></i>
+                        <i className={`fa-solid fa-xmark round-icon d-lg-none cursor-pointer d-${display}`} onClick={closeMobileBar} style={{ width: '40px', height: '40px' }}></i>
                     </div>
                 </div>
             </nav>
 
-            <div className='MobileBar-container sticky-top'>
-                {/*====================================================== mobilebar =======================================================*/}
-                <div className={`MobileBar p-2 d-flex d-${display}`}>
-                    <div className="navbar-nav me-auto mb-2 mb-lg-0 ">
-
-                        {/* Shedule, Available Slots, Reschedule, notification */}
-                        <div onClick={closeMobileBar}>
-
-                            {!localStorage.getItem('AuthToken') ? <> <li className="nav-item">
-                                <Link className="nav-text nav-link bg-info px-2 py-1 rounded-4 text-white fw-bold" to="/getStart">Getstart</Link></li> </> : ""
-                            }
-                            <li className="nav-item">
-                                <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-text nav-link px-3 py-2 rounded-3 hover-bg-light" to="/reschedule">Reschedule</Link>
-                            </li>
-                        </div>
+            {/* Mobile Menu Overlay */}
+            <div className={`MobileBar-container py-3 d-${display} glass-effect position-fixed w-100 start-0 z-3 transition-smooth`} style={{ top: '75px', height: 'calc(100vh - 75px)', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)' }}>
+                <div className="container">
+                    <div className="navbar-nav gap-3">
+                        <NavLink className={({ isActive }) => `nav-link p-3 rounded-4 h5 m-0 fw-bold ${isActive ? 'bg-primary text-white' : 'bg-light'}`} to="/" onClick={closeMobileBar}>Home</NavLink>
+                        <NavLink className={({ isActive }) => `nav-link p-3 rounded-4 h5 m-0 fw-bold ${isActive ? 'bg-primary text-white' : 'bg-light'}`} to="/appointment" onClick={closeMobileBar}>Appointments</NavLink>
+                        <NavLink className={({ isActive }) => `nav-link p-3 rounded-4 h5 m-0 fw-bold ${isActive ? 'bg-primary text-white' : 'bg-light'}`} to="/reschedule" onClick={closeMobileBar}>Reschedule</NavLink>
                     </div>
                 </div>
             </div>
@@ -115,4 +114,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import OptimizedImage from '../components/OptimizedImage';
 
@@ -20,6 +20,21 @@ const PatientsAppointmentDetail = () => {
         console.log({ ...location.state, ...patiendetails });
         toast.info("Saving patient details and proceeding to bill...");
         navigate("/appointmentBill", { state: { ...location.state, ...patiendetails } })
+    }
+
+    if (!doctorDetail) {
+        return (
+            <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
+                <div className="glass-effect p-5 rounded-5 shadow-sm text-center" style={{ maxWidth: '500px' }}>
+                    <i className="fa-solid fa-user-doctor fa-4x text-muted mb-4 opacity-25"></i>
+                    <h3 className="fw-bold text-dark">Selection Missing</h3>
+                    <p className="text-secondary mt-3">Please select a doctor first to book an appointment.</p>
+                    <Link className="btn btn-primary rounded-pill px-4 py-2 mt-4" to="/">
+                        Find a Doctor
+                    </Link>
+                </div>
+            </div>
+        );
     }
 
     return (
