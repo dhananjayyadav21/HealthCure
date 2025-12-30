@@ -4,12 +4,37 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #000000;
+  transition: all 0.3s ease;
+}
+
+/* Global Transitions */
+a,
+button,
+.btn,
+.card,
+.form-control,
+input {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
 code {
@@ -33,14 +58,14 @@ code {
 .scrollable {
   scrollbar-color: #888 #e0e0e0;
   /* scrollbar-width: thin */
-  scrollbar-width:none
+  scrollbar-width: none
 }
 
 .cursor-pointer {
   cursor: pointer;
 }
 
-.error-icon{
+.error-icon {
   color: rgb(209, 1, 1);
 }
 
@@ -55,6 +80,7 @@ code {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -123,7 +149,7 @@ code {
   object-fit: contain;
 }
 
-.Hospital-Banner img{
+.Hospital-Banner img {
   height: 320px;
   width: 100%;
   object-fit: cover, fill, contain;
@@ -134,30 +160,35 @@ code {
   background-color: rgb(202, 254, 251);
 }
 
-.Hotspital-img-container img{
+.Hotspital-img-container img {
   object-fit: cover;
 }
 
-.doctor-img-bg-1{
+.doctor-img-bg-1 {
   background-color: rgb(254, 202, 244);
 }
-.doctor-img-bg-2{
+
+.doctor-img-bg-2 {
   background-color: rgb(202, 224, 254);
 }
-.doctor-img-bg-3{
+
+.doctor-img-bg-3 {
   background-color: rgb(202, 254, 220);
 }
-.doctor-img-bg-4{
+
+.doctor-img-bg-4 {
   background-color: rgb(241, 254, 202);
 }
-.doctor-img-bg-5{
+
+.doctor-img-bg-5 {
   background-color: rgb(202, 248, 254);
 }
-.doctor-img-bg-6{
+
+.doctor-img-bg-6 {
   background-color: rgb(224, 202, 254);
 }
 
-.Footer-container{
+.Footer-container {
   background-color: rgb(13, 13, 20);
 }
 
@@ -200,7 +231,7 @@ code {
 }
 
 .DoctorDetail-left-container .btn-Appointment,
-.btn-RequestAppointment{
+.btn-RequestAppointment {
   width: calc(100% - 16px);
   font-size: large;
   font-weight: 600;
@@ -209,13 +240,13 @@ code {
 }
 
 /*==================================================== {PatientsAppointment Detail} =================================================*/
-.AppointmentBill-form .form-control{
-   border: none; 
+.AppointmentBill-form .form-control {
+  border: none;
 }
 
 .AppointmentBill-form .form-control:hover,
-.AppointmentBill-form .form-control:focus-visible{
-  border: none; 
+.AppointmentBill-form .form-control:focus-visible {
+  border: none;
   box-shadow: none;
 }
 
@@ -223,23 +254,23 @@ code {
 .AppointmentBill-payment,
 .AppointmentBill-promocode,
 .AppointmentBill-name,
-.AppointmentBill-container{
+.AppointmentBill-container {
   background-color: var(--primary-bg-White);
 }
 
 
 /*============================================================= {Appointmentcard} ===========================================*/
-.Appointmentcard-img-container{
+.Appointmentcard-img-container {
   width: 100px;
 }
 
-.Appointmentcard-img-container img{
+.Appointmentcard-img-container img {
   width: 100%;
 }
 
 .Missed-Appointment,
 .Upcomming-Appointment,
-.Past-Appointment{
+.Past-Appointment {
   height: 80vh;
 }
 
@@ -265,9 +296,11 @@ code {
   .carousel img {
     height: 320px;
   }
+
   .Lets-start-container img {
     height: 50px;
   }
+
   .Lets-start-container p {
     font-size: small;
     font-weight: 600;
@@ -278,19 +311,24 @@ code {
   .Lets-start-container h5 {
     font-size: small;
   }
+
   .get-start button {
     width: 80vw;
   }
+
   .DoctorDetail-Banner img {
     height: 100px;
   }
+
   .position-absolute h5 {
     font-size: small;
   }
+
   .position-absolute p {
     font-size: xx-small;
   }
-  .Hospital-Banner img{
+
+  .Hospital-Banner img {
     height: 30vh;
   }
 }
@@ -303,7 +341,8 @@ code {
     position: fixed;
     bottom: 0;
   }
-  .Hospital-Banner img{
+
+  .Hospital-Banner img {
     height: 250px;
     width: 100%;
     object-fit: cover, fill, contain;
@@ -330,13 +369,69 @@ code {
 }
 
 .calandar-day:has(input[type="radio"]:checked),
-.calandar-time:has(input[type="radio"]:checked)
-{
+.calandar-time:has(input[type="radio"]:checked) {
   color: white;
-  background-color: var(--bs-btn-hover-bg); /* Bootstrap info color */
+  background-color: var(--bs-btn-hover-bg);
+  /* Bootstrap info color */
   border-radius: 5px;
 }
 
-.cursor-not-allowed{
+.cursor-not-allowed {
   cursor: not-allowed;
+}
+
+/* Support for OptimizedImage sizing */
+.optimized-image-container img {
+  height: inherit;
+  width: inherit;
+  object-fit: inherit;
+}
+
+.carousel .optimized-image-container,
+.carousel .optimized-image-container img {
+  height: 150px;
+}
+
+@media screen and (min-width: 480px) {
+
+  .carousel .optimized-image-container,
+  .carousel .optimized-image-container img {
+    height: 320px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+  .carousel .optimized-image-container,
+  .carousel .optimized-image-container img {
+    height: 70vh;
+  }
+}
+
+.Lets-start-container .optimized-image-container {
+  height: 30px;
+  width: 30px;
+}
+
+@media screen and (min-width: 480px) {
+  .Lets-start-container .optimized-image-container {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.Doctor-container .optimized-image-container,
+.Hotspital-container .optimized-image-container {
+  height: 200px;
+  width: 100%;
+}
+
+.DoctorDetail-Banner .optimized-image-container {
+  height: 200px;
+}
+
+@media screen and (max-width: 480px) {
+  .DoctorDetail-Banner .optimized-image-container {
+    height: 100px;
+  }
 }
