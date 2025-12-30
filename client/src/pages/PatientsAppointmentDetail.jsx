@@ -29,12 +29,11 @@ const PatientsAppointmentDetail = () => {
                     {/* PatientsAppointmentDetail-left-container  */}
                     <section className='col-md-8 PatientsAppointmentDetail-left-container'>
                         <section className='DoctorDetail-Banner mb-5'>
-                            <div className='w-100 p-4 premium-card border-0 position-relative overflow-hidden' style={{ background: 'var(--secondary-gradient)', minHeight: '320px' }}>
+                            <div className='w-100 premium-card border-0 position-relative overflow-hidden' style={{ background: '#ffffff', height: '250px' }}>
                                 <div className='d-flex justify-content-center h-100'>
                                     <OptimizedImage
                                         src={`/assets/img/Doctor_${(doctorImageIndex ?? 5) + 1}.png`}
-                                        style={{ height: '320px', width: 'auto' }}
-                                        imageStyle={{ height: '320px', width: 'auto' }}
+                                        style={{ height: '250px', width: '100%' }}
                                         objectFit="contain"
                                         alt="Doctor"
                                     />
