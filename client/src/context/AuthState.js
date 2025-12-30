@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthContext from "./AuthContext";
-import HttpService from "../service/httpservice";
+import HttpService from "../services/HttpService";
 import * as GlobalUrls from '../GlobalURL'
 
 const AuthState = (props) => {
