@@ -435,3 +435,12 @@ code {
     height: 100px;
   }
 }
+.navbar-profile-img {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.navbar-profile-img img {
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}

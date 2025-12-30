@@ -32,13 +32,13 @@ const DoctorDetail = () => {
       <div className='p-2 p-md-4 DoctorDetail-Container '>
         <div className='row'>
           {/* DoctorDetail-left-container  */}
-          <section className='col-md-8 DoctorDetail-left-container potion-relative'>
+          <section className='col-md-8 DoctorDetail-left-container position-relative'>
             <section className='DoctorDetail-Banner'>
-              <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative'>
-                <OptimizedImage src="/assets/img/Doctor_6.png" alt="Doctor" />
-                <div className='position-absolute text-xenter'>
-                  <h5>Dr. {doctorDetail?.name}</h5>
-                  <p className='text-secondary text-capitalize'>{doctorDetail?.doctorDetails?.specialist}, MBBS, MS</p>
+              <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative overflow-hidden'>
+                <OptimizedImage src="/assets/img/Doctor_6.png" style={{ height: '250px' }} imageStyle={{ height: '250px' }} alt="Doctor" />
+                <div className='position-absolute text-center' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%' }}>
+                  <h5 className='m-0'>Dr. {doctorDetail?.name}</h5>
+                  <p className='text-secondary text-capitalize m-0 shadow-sm d-inline-block bg-white px-2 py-1 rounded-2' style={{ fontSize: '0.9rem' }}>{doctorDetail?.doctorDetails?.specialist}, MBBS, MS</p>
                 </div>
               </div>
             </section>

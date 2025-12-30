@@ -43,8 +43,8 @@ const Navbar = () => {
                         <div className="nav-item dropdown">
                             <a className="nav-text nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {userRole === "patient" ?
-                                    <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><OptimizedImage className='profile-img rounded-circle' src="assets/img/Patient.png" alt="profile" /></div> :
-                                    <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><OptimizedImage className='profile-img rounded-circle' src="assets/img/Doctorr.png" alt="profile" /></div>
+                                    <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><OptimizedImage className='navbar-profile-img rounded-circle' src="assets/img/Patient.png" alt="profile" /></div> :
+                                    <div className='round-icon shadow-sm d-flex justify-content-center align-items-center'><OptimizedImage className='navbar-profile-img rounded-circle' src="assets/img/Doctorr.png" alt="profile" /></div>
                                 }
                             </a>
                             <ul className="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
