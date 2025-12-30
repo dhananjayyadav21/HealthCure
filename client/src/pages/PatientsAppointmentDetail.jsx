@@ -29,16 +29,19 @@ const PatientsAppointmentDetail = () => {
                     {/* PatientsAppointmentDetail-left-container  */}
                     <section className='col-md-8 PatientsAppointmentDetail-left-container'>
                         <section className='DoctorDetail-Banner mb-5'>
-                            <div className='w-100 p-3 premium-card border-0 position-relative overflow-hidden' style={{ background: 'var(--secondary-gradient)', minHeight: '280px' }}>
-                                <OptimizedImage
-                                    src={`/assets/img/Doctor_${(doctorImageIndex ?? 5) + 1}.png`}
-                                    style={{ height: '280px', borderRadius: '1rem' }}
-                                    imageStyle={{ height: '280px', borderRadius: '1rem' }}
-                                    alt="Doctor"
-                                />
-                                <div className='position-absolute text-center glass-effect p-3 rounded-4 shadow-sm' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '240px' }}>
+                            <div className='w-100 p-4 premium-card border-0 position-relative overflow-hidden' style={{ background: 'var(--secondary-gradient)', minHeight: '320px' }}>
+                                <div className='d-flex justify-content-center h-100'>
+                                    <OptimizedImage
+                                        src={`/assets/img/Doctor_${(doctorImageIndex ?? 5) + 1}.png`}
+                                        style={{ height: '320px', width: 'auto' }}
+                                        imageStyle={{ height: '320px', width: 'auto' }}
+                                        objectFit="contain"
+                                        alt="Doctor"
+                                    />
+                                </div>
+                                <div className='position-absolute text-center glass-effect p-4 rounded-4 shadow-sm border-0' style={{ bottom: '20px', left: '50%', transform: 'translateX(-50%)', minWidth: '280px', background: 'rgba(255,255,255,0.85)' }}>
                                     <h4 className='m-0 fw-bold' style={{ color: '#2d3436' }}>Dr. {doctorDetail?.name}</h4>
-                                    <p className='text-primary fw-bold text-uppercase m-0 mt-1' style={{ fontSize: '0.8rem', letterSpacing: '1px' }}>{doctorDetail?.doctorDetails?.specialist}</p>
+                                    <p className='text-primary fw-bold text-uppercase m-0 mt-2 small opacity-75' style={{ letterSpacing: '2px' }}>{doctorDetail?.doctorDetails?.specialist}</p>
                                 </div>
                             </div>
                         </section>
@@ -73,7 +76,9 @@ const PatientsAppointmentDetail = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" className="btn btn-info text-white fw-bolder fs-6 w-100"> PROCEED NEXT</button>
+                                    <button type="submit" className="btn btn-primary-gradient border-0 rounded-pill py-3 fw-bold shadow-sm w-100 transition-smooth mt-4 uppercase" style={{ background: 'var(--primary-gradient)', letterSpacing: '1px' }}>
+                                        Continue to Payment <i className="fa-solid fa-arrow-right ms-2"></i>
+                                    </button>
                                 </form>
                             </div>
                         </section>

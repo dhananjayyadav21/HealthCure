@@ -75,10 +75,10 @@ const BookSchedule = ({ doctorDetail, doctorImageIndex }) => {
     <>
       <form onSubmit={handleSubmit} className='BookSchedule-container p-0 position-relative'>
 
-        {/* Sedule Date */}
-        <section className='SeduleDate my-4'>
-          <small><p className='fw-bold'>Date</p></small>
-          <div className='row g-3'>
+        {/* Shedule Date */}
+        <section className='SeduleDate mb-4'>
+          <p className='fw-bold mb-3 small text-uppercase opacity-75' style={{ letterSpacing: '1px' }}>Select Preferred Date</p>
+          <div className='row g-2'>
             {dates?.map((day, index) =>
               <div className='col-3' key={index}>
                 <div className='position-relative h-100'>
@@ -88,19 +88,15 @@ const BookSchedule = ({ doctorDetail, doctorImageIndex }) => {
                     id={"day" + day.formattedDate}
                     value={day.formattedDate}
                     onChange={onDateChange}
-                    className="visually-hidden"
+                    className="btn-check"
                     required
                   />
                   <label
                     htmlFor={"day" + day.formattedDate}
-                    className="premium-card d-flex flex-column align-items-center justify-content-center p-2 cursor-pointer w-100 transition-smooth"
-                    style={{
-                      border: '1.5px solid rgba(0,0,0,0.05)',
-                      backgroundColor: 'white'
-                    }}
+                    className="btn btn-outline-info w-100 h-100 p-2 d-flex flex-column align-items-center justify-content-center rounded-3 border-2 transition-smooth"
                   >
-                    <p className='m-0 text-uppercase fw-bold text-secondary' style={{ fontSize: '0.65rem' }}>{day.dayName.substring(0, 3)}</p>
-                    <p className='m-0 fw-bold' style={{ fontSize: '1.1rem' }}>{new Date(day.formattedDate).getDate()}</p>
+                    <span className='m-0 text-uppercase fw-bold opacity-75' style={{ fontSize: '0.6rem' }}>{day.dayName.substring(0, 3)}</span>
+                    <span className='h5 m-0 fw-bold'>{new Date(day.formattedDate).getDate()}</span>
                   </label>
                 </div>
               </div>
@@ -108,42 +104,45 @@ const BookSchedule = ({ doctorDetail, doctorImageIndex }) => {
           </div>
         </section>
 
-        {/* Morning Slots */}
-        <section className='MorningSlots my-4'>
-          <small><p className='fw-bold'>Time Slots</p></small>
-          <div className='row g-3'>
-            {timeSlots?.map((e, index) =>
-              <div className='col-4' key={index}>
-                <div className='position-relative h-100'>
-                  <input
-                    type="radio"
-                    name="time"
-                    id={"time" + index}
-                    value={e.time}
-                    disabled={!e.isAvailable}
-                    className="visually-hidden"
-                    required
-                  />
-                  <label
-                    htmlFor={"time" + index}
-                    className={`premium-card d-flex align-items-center justify-content-center p-2 transition-smooth w-100 ${!e.isAvailable ? 'opacity-25 grayscale cursor-not-allowed shadow-none' : 'cursor-pointer'}`}
-                    style={{
-                      border: '1.5px solid rgba(0,0,0,0.05)',
-                      backgroundColor: 'white'
-                    }}
-                    title={!e.isAvailable ? "Not Available" : "Available"}
-                  >
-                    <p className='m-0 text-center fw-bold text-uppercase' style={{ fontSize: '0.8rem' }}>{e.time}</p>
-                  </label>
+        {/* Time Slots */}
+        <section className='MorningSlots mb-4'>
+          <p className='fw-bold mb-3 small text-uppercase opacity-75' style={{ letterSpacing: '1px' }}>Available Time Slots</p>
+          {timeSlots.length === 0 ? (
+            <div className="text-center py-4 bg-light rounded-4 opacity-50 border-dashed">
+              <i className="fa-solid fa-calendar-day mb-2 d-block opacity-50"></i>
+              <small className="fw-medium">Choose a date to see available slots</small>
+            </div>
+          ) : (
+            <div className='row g-2'>
+              {timeSlots?.map((e, index) =>
+                <div className='col-4' key={index}>
+                  <div className='position-relative h-100'>
+                    <input
+                      type="radio"
+                      name="time"
+                      id={"time" + index}
+                      value={e.time}
+                      disabled={!e.isAvailable}
+                      className="btn-check"
+                      required
+                    />
+                    <label
+                      htmlFor={"time" + index}
+                      className={`btn w-100 p-2 rounded-3 border-2 transition-smooth small fw-bold ${!e.isAvailable ? 'btn-outline-secondary opacity-25 cursor-not-allowed' : 'btn-outline-primary'}`}
+                      title={!e.isAvailable ? "Not Available" : "Available"}
+                    >
+                      {e.time}
+                    </label>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </section>
 
         <div className='mt-4'>
-          <button className='btn w-100 text-white fw-bold py-3 rounded-4 shadow-sm transition-smooth' style={{ background: 'var(--primary-gradient)', border: 'none' }} type="submit">
-            Confirm Appointment
+          <button className='btn w-100 text-white fw-bold py-3 rounded-pill shadow-sm transition-smooth btn-primary-gradient border-0' style={{ background: 'var(--primary-gradient)' }} type="submit">
+            <i className="fa-solid fa-calendar-check me-2"></i>Confirm Appointment
           </button>
         </div>
 
