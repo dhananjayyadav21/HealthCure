@@ -17,7 +17,7 @@ const OptimizedImage = ({ src, alt, className, style, imageStyle, objectFit = 'c
             style={{
                 position: 'relative',
                 overflow: 'hidden',
-                backgroundColor: '#f3f4f6', // Light gray background while loading
+                backgroundColor: 'transparent', // Transparent background
                 aspectRatio: aspectRatio,
                 ...style
             }}
