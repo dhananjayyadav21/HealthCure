@@ -253,7 +253,7 @@ code {
 }
 
 .DoctorDetail-Banner .position-absolute {
-  top: 30%;
+  top: 70%;
   left: 40%;
 }
 
@@ -476,8 +476,9 @@ code {
   border-radius: 50% !important;
   object-fit: cover !important;
 }
+
 /* Radio selection styles for premium feel */
-.BookSchedule-container input[type='radio']:checked + label {
+.BookSchedule-container input[type='radio']:checked+label {
   background: var(--primary-gradient) !important;
   color: white !important;
   border: none !important;
@@ -485,7 +486,7 @@ code {
   box-shadow: 0 8px 20px -5px rgba(13, 202, 240, 0.4);
 }
 
-.BookSchedule-container input[type='radio']:checked + label p {
+.BookSchedule-container input[type='radio']:checked+label p {
   color: white !important;
 }
 
@@ -497,14 +498,13 @@ code {
 
 .custom-radio label {
   background: white;
-  border-color: rgba(0,0,0,0.1) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
   color: #636e72;
 }
 
-.custom-radio input[type='radio']:checked + label {
+.custom-radio input[type='radio']:checked+label {
   background: var(--primary-accent) !important;
   color: white !important;
   border-color: var(--primary-accent) !important;
   box-shadow: 0 4px 15px -3px rgba(13, 202, 240, 0.3);
 }
-

@@ -91,7 +91,7 @@ const Reschedule = () => {
                                                     alt="Patient"
                                                 />
                                             </div>
-                                            <div className='position-absolute text-center glass-effect p-2 rounded-3 shadow-sm' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '200px', background: 'rgba(255,255,255,0.8)' }}>
+                                            <div className='position-absolute text-center glass-effect p-2 rounded-3 shadow-sm' style={{ top: '90%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '200px', background: 'rgba(255,255,255,0.8)' }}>
                                                 <h5 className='m-0 fw-bold text-capitalize' style={{ color: '#2d3436' }}>{missedAppointments[0]?.patientname}</h5>
                                                 <p className='text-primary fw-bold text-uppercase m-0' style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>{missedAppointments[0]?.problem}</p>
                                             </div>

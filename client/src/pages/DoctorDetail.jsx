@@ -43,9 +43,9 @@ const DoctorDetail = () => {
                   alt="Doctor"
                 />
               </div>
-              <div className='position-absolute text-center glass-effect p-4 rounded-4 shadow-sm border-0' style={{ bottom: '20px', left: '50%', transform: 'translateX(-50%)', minWidth: '280px', background: 'rgba(255,255,255,0.85)' }}>
-                <h4 className='m-0 fw-bold' style={{ color: '#2d3436' }}>Dr. {doctorDetail?.name}</h4>
-                <p className='text-primary fw-bold text-uppercase m-0 mt-2 small opacity-75' style={{ letterSpacing: '2px' }}>{doctorDetail?.doctorDetails?.specialist}</p>
+              <div className='position-absolute text-center glass-effect px-3 py-2 rounded-2 shadow-sm border-0' style={{ bottom: '20px', left: '50%', transform: 'translateX(-50%)', minWidth: '10px', background: 'rgba(255,255,255,0.85)' }}>
+                <h6 className='m-0 fw-bold' style={{ color: '#2d3436' }}>Dr. {doctorDetail?.name}</h6>
+                <p className='text-primary fw-bold text-uppercase m-0 mt-1 small opacity-75' style={{ letterSpacing: '1px' }}>{doctorDetail?.doctorDetails?.specialist}</p>
               </div>
             </div>
           </section>
