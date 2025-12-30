@@ -32,11 +32,11 @@ const Navbar = () => {
     return (
         <>
 
-            <nav id='nav' className="navbar sticky-top navbar-expand-lg shadow-sm px-1 px-md-4 nav-color">
+            <nav id='nav' className="navbar sticky-top navbar-expand-lg glass-effect px-1 px-md-4 py-2">
                 <div className="container-fluid fs-6">
 
                     {/* Brand-Logo For App */}
-                    <h4 className='m-0'><Link className="nav-text nav-link navbar-brand mt-0" to="/">HealthCure</Link></h4>
+                    <h4 className='m-0 fw-bold'><Link className="nav-text nav-link navbar-brand mt-0 text-primary" to="/" style={{ letterSpacing: '-0.5px' }}>HealthCure</Link></h4>
 
                     <span className='d-flex align-items-center gap-2'>
                         {/* profile icon for MobileBar */}
@@ -56,8 +56,8 @@ const Navbar = () => {
                                 <li><a className="dropdown-item" href="/userProfile"><button className='btn btn-dark w-100'>My Profile</button></a></li>
                             </ul>
                         </div>
-                        <div className="nav-item d-lg-none">
-                            <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center" to="/notification"><i className="fa-solid fa-bell"></i></Link>
+                        <div className="nav-item">
+                            <Link className="nav-text nav-link round-icon shadow-sm d-flex justify-content-center align-items-center bg-white" style={{ border: '1px solid rgba(0,0,0,0.05)' }} to="/notification"><i className="fa-solid fa-bell text-secondary"></i></Link>
                         </div>
                         {/* Hamburger icon for MobileBar */}
                         <i className={`fa-solid fa-bars mx-1 align-self-center round-icon shadow-sm d-flex justify-content-center align-items-center d-lg-none d-${openMBDisply}`} onClick={openMobileBar}  ></i>
@@ -104,7 +104,7 @@ const Navbar = () => {
                                 <Link className="nav-text nav-link " to="/appointment">Appointment </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-text nav-link " to="/reschedule">Reschedule</Link>
+                                <Link className="nav-text nav-link px-3 py-2 rounded-3 hover-bg-light" to="/reschedule">Reschedule</Link>
                             </li>
                         </div>
                     </div>

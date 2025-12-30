@@ -29,9 +29,9 @@ const Home = () => {
   let Arra = [{}, {}, {}, {}, {}, {}, {}]
 
   return (
-    <div className='bg-light'>
+    <div className='bg-light' style={{ minHeight: '100vh' }}>
       {/*================================================= crousal section =================================================*/}
-      <section className='py-3 p-md-4'>
+      <section className='py-4 p-md-5' style={{ background: 'var(--secondary-gradient)' }}>
         <div className='container-fluid'>
           <div id="HomeBannerCrousal" className="carousel slide">
             <div className="carousel-indicators">
@@ -42,7 +42,7 @@ const Home = () => {
               <button type="button" data-bs-target="#HomeBannerCrousal" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
             </div>
-            <div className="carousel-inner rounded-2 rounded-md-4 border border-2 ">
+            <div className="carousel-inner rounded-4 shadow-lg border-0 overflow-hidden">
               <div className="carousel-item active">
                 <OptimizedImage className="w-100" src="/assets/img/Home_banner_1.jpg" alt='1' />
               </div>
@@ -71,27 +71,35 @@ const Home = () => {
       </section>
 
       {/*================================= Lets Check =============================*/}
-      <section className='px-4 Lets-start-container'>
-        <h5 className=' mb-2 mt-sm-4 mb-sm-3 text-secondary d-flex justify-content-center'>Let`s start with HealthCure</h5>
-        <div className="d-flex justify-content-center align-items-center gap-3" >
-          <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
-            <OptimizedImage className='m-0 p-0' objectFit="contain" src="/assets/img/Doctor_3.png" alt="Doctors" />
-            <small><p className='m-0'>Doctor</p></small>
+      <section className='px-4 Lets-start-container my-5'>
+        <h5 className='mb-4 text-center fw-bold' style={{ color: '#2d3436' }}>Let's start with HealthCure</h5>
+        <div className="d-flex flex-wrap justify-content-center align-items-center gap-4" >
+          <div className='premium-card d-flex flex-column justify-content-center align-items-center gap-2 bg-white shadow-sm rounded-4 p-3 cursor-pointer border-0' style={{ width: '120px' }}>
+            <div className='p-2 rounded-circle bg-info bg-opacity-10 d-flex align-items-center justify-content-center' style={{ width: '50px', height: '50px' }}>
+              <OptimizedImage className='m-0 p-0' objectFit="contain" src="/assets/img/Doctor_3.png" alt="Doctors" />
+            </div>
+            <small className='fw-bold' style={{ color: '#636e72', fontSize: '0.75rem' }}>Doctors</small>
           </div>
 
-          <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
-            <OptimizedImage className='m-0 p-0' objectFit="contain" src="/assets/img/apoinment.png" alt="Doctors" />
-            <small><p className='m-0'>Appoinment</p></small>
+          <div className='premium-card d-flex flex-column justify-content-center align-items-center gap-2 bg-white shadow-sm rounded-4 p-3 cursor-pointer border-0' style={{ width: '120px' }}>
+            <div className='p-2 rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center' style={{ width: '50px', height: '50px' }}>
+              <OptimizedImage className='m-0 p-0' objectFit="contain" src="/assets/img/apoinment.png" alt="Appointment" />
+            </div>
+            <small className='fw-bold' style={{ color: '#636e72', fontSize: '0.75rem' }}>Appointment</small>
           </div>
 
-          <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
-            <OptimizedImage className='m-0 p-0' objectFit="contain" src="/assets/img/sechudle.png" alt="Doctors" />
-            <small><p className='m-0'>Reshedule</p></small>
+          <div className='premium-card d-flex flex-column justify-content-center align-items-center gap-2 bg-white shadow-sm rounded-4 p-3 cursor-pointer border-0' style={{ width: '120px' }}>
+            <div className='p-2 rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center' style={{ width: '50px', height: '50px' }}>
+              <OptimizedImage className='m-0 p-0' objectFit="contain" src="/assets/img/sechudle.png" alt="Reschedule" />
+            </div>
+            <small className='fw-bold' style={{ color: '#636e72', fontSize: '0.75rem' }}>Reschedule</small>
           </div>
 
-          <div className='col-md-1 bg-white d-flex flex-column justify-content-center align-items-center gap-2 bg-light shadow rounded-3 p-2 cursor-pointer'>
-            <OptimizedImage className='m-0 p-0' objectFit="contain" src="/assets/img/notification.png" alt="Doctors" />
-            <small><p className='m-0'>Notification</p></small>
+          <div className='premium-card d-flex flex-column justify-content-center align-items-center gap-2 bg-white shadow-sm rounded-4 p-3 cursor-pointer border-0' style={{ width: '120px' }}>
+            <div className='p-2 rounded-circle bg-warning bg-opacity-10 d-flex align-items-center justify-content-center' style={{ width: '50px', height: '50px' }}>
+              <OptimizedImage className='m-0 p-0' objectFit="contain" src="/assets/img/notification.png" alt="Notification" />
+            </div>
+            <small className='fw-bold' style={{ color: '#636e72', fontSize: '0.75rem' }}>Notification</small>
           </div>
         </div>
       </section>

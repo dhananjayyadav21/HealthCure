@@ -5,6 +5,8 @@ import OptimizedImage from '../components/OptimizedImage';
 
 const PatientsAppointmentDetail = () => {
     const location = useLocation();
+    const doctorImageIndex = location.state?.doctorImageIndex;
+
     const navigate = useNavigate();
     const doctorDetail = location?.state?.doctorDetail;
     const [patiendetails, setPatiendetails] = useState({ Age: "", Weight: "", Problem: "", PatientName: '' });
@@ -26,18 +28,23 @@ const PatientsAppointmentDetail = () => {
                 <div className='d-flex justify-content-center align-items-center'>
                     {/* PatientsAppointmentDetail-left-container  */}
                     <section className='col-md-8 PatientsAppointmentDetail-left-container'>
-                        <section className='DoctorDetail-Banner'>
-                            <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative overflow-hidden'>
-                                <OptimizedImage src="/assets/img/Doctor_6.png" style={{ height: '250px' }} imageStyle={{ height: '250px' }} alt="Doctor" />
-                                <div className='position-absolute text-center' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%' }}>
-                                    <h5 className='m-0'>Dr. {doctorDetail?.name}</h5>
-                                    <p className='text-secondary m-0 shadow-sm d-inline-block bg-white px-2 py-1 rounded-2' style={{ fontSize: '0.9rem' }}>{doctorDetail?.doctorDetails?.specialist}</p>
+                        <section className='DoctorDetail-Banner mb-5'>
+                            <div className='w-100 p-3 premium-card border-0 position-relative overflow-hidden' style={{ background: 'var(--secondary-gradient)', minHeight: '280px' }}>
+                                <OptimizedImage
+                                    src={`/assets/img/Doctor_${(doctorImageIndex ?? 5) + 1}.png`}
+                                    style={{ height: '280px', borderRadius: '1rem' }}
+                                    imageStyle={{ height: '280px', borderRadius: '1rem' }}
+                                    alt="Doctor"
+                                />
+                                <div className='position-absolute text-center glass-effect p-3 rounded-4 shadow-sm' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '240px' }}>
+                                    <h4 className='m-0 fw-bold' style={{ color: '#2d3436' }}>Dr. {doctorDetail?.name}</h4>
+                                    <p className='text-primary fw-bold text-uppercase m-0 mt-1' style={{ fontSize: '0.8rem', letterSpacing: '1px' }}>{doctorDetail?.doctorDetails?.specialist}</p>
                                 </div>
                             </div>
                         </section>
 
-                        <section className='d-flex justify-content-between align-items-center my-3'>
-                            <div className="form-containe col-12 shadow rounded-4 py-4 px-3 p-md-5">
+                        <section className='d-flex justify-content-center align-items-center my-5'>
+                            <div className="form-container col-12 glass-effect rounded-4 p-4 p-md-5 border-0 shadow-sm">
                                 {/* <!-- Form --> */}
                                 <form onSubmit={handleSubmit}>
                                     <div className='row'>

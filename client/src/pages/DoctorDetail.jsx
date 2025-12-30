@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import BookSchedule from '../components/BookSchedule'
 import AuthContext from '../context/AuthContext'
 import OptimizedImage from '../components/OptimizedImage'
@@ -10,6 +10,7 @@ const DoctorDetail = () => {
   const { GetDoctorDetailById } = Context;
   const [doctorDetail, setDoctorDetail] = useState();
   const params = useParams()
+  const location = useLocation();
 
   useEffect(() => {
     getDoctorDetail();
@@ -29,16 +30,21 @@ const DoctorDetail = () => {
 
   return (
     <>
-      <div className='p-2 p-md-4 DoctorDetail-Container '>
+      <div className='p-3 p-md-5 DoctorDetail-Container' style={{ background: '#fcfcfc' }}>
         <div className='row'>
           {/* DoctorDetail-left-container  */}
           <section className='col-md-8 DoctorDetail-left-container position-relative'>
-            <section className='DoctorDetail-Banner'>
-              <div className='w-100 px-2 pt-2 border rounded-4 bg-light position-relative overflow-hidden'>
-                <OptimizedImage src="/assets/img/Doctor_6.png" style={{ height: '250px' }} imageStyle={{ height: '250px' }} alt="Doctor" />
-                <div className='position-absolute text-center' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%' }}>
-                  <h5 className='m-0'>Dr. {doctorDetail?.name}</h5>
-                  <p className='text-secondary text-capitalize m-0 shadow-sm d-inline-block bg-white px-2 py-1 rounded-2' style={{ fontSize: '0.9rem' }}>{doctorDetail?.doctorDetails?.specialist}, MBBS, MS</p>
+            <section className='DoctorDetail-Banner mb-5'>
+              <div className='w-100 p-3 premium-card border-0 position-relative overflow-hidden' style={{ background: 'var(--secondary-gradient)', minHeight: '280px' }}>
+                <OptimizedImage
+                  src={`/assets/img/Doctor_${(location.state?.doctorImageIndex ?? 5) + 1}.png`}
+                  style={{ height: '280px', borderRadius: '1rem' }}
+                  imageStyle={{ height: '280px', borderRadius: '1rem' }}
+                  alt="Doctor"
+                />
+                <div className='position-absolute text-center glass-effect p-3 rounded-4 shadow-sm' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '240px' }}>
+                  <h4 className='m-0 fw-bold' style={{ color: '#2d3436' }}>Dr. {doctorDetail?.name}</h4>
+                  <p className='text-primary fw-bold text-uppercase m-0 mt-1' style={{ fontSize: '0.8rem', letterSpacing: '1px' }}>{doctorDetail?.doctorDetails?.specialist}</p>
                 </div>
               </div>
             </section>
@@ -79,8 +85,8 @@ const DoctorDetail = () => {
 
           {/* DoctorDetail-Right-container  */}
           <section className='col-md-4 DoctorDetail-right-container d-flex justify-content-center'>
-            <div className='bg-light p-4 rounded-4 w-100'>
-              <BookSchedule doctorDetail={doctorDetail} />
+            <div className='glass-effect p-4 rounded-4 w-100 shadow-sm border-0'>
+              <BookSchedule doctorDetail={doctorDetail} doctorImageIndex={location.state?.doctorImageIndex} />
             </div>
           </section>
         </div>

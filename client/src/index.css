@@ -1,5 +1,14 @@
 :root {
   --primary-bg-White: #ffffff;
+  --primary-accent: #0dcaf0;
+  /* HealthCure Info Blue */
+  --primary-gradient: linear-gradient(135deg, #0dcaf0 0%, #0097b2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --premium-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  --premium-shadow-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -9,8 +18,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #000000;
-  transition: all 0.3s ease;
+  color: #1a1a1a;
+  background: #fcfcfc;
+  transition: var(--transition-smooth);
+}
+
+/* Premium Utilities */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.premium-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--premium-shadow);
+  border-radius: 1.25rem;
+  transition: var(--transition-smooth);
+}
+
+.premium-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--premium-shadow-hover);
 }
 
 /* Global Transitions */
@@ -20,7 +51,7 @@ button,
 .card,
 .form-control,
 input {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: var(--transition-smooth) !important;
 }
 
 .btn:hover {
@@ -435,6 +466,7 @@ code {
     height: 100px;
   }
 }
+
 .navbar-profile-img {
   width: 30px !important;
   height: 30px !important;
@@ -444,3 +476,35 @@ code {
   border-radius: 50% !important;
   object-fit: cover !important;
 }
+/* Radio selection styles for premium feel */
+.BookSchedule-container input[type='radio']:checked + label {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  border: none !important;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px -5px rgba(13, 202, 240, 0.4);
+}
+
+.BookSchedule-container input[type='radio']:checked + label p {
+  color: white !important;
+}
+
+
+/* Custom radio styles for SignUp Role */
+.custom-radio input[type='radio'] {
+  display: none;
+}
+
+.custom-radio label {
+  background: white;
+  border-color: rgba(0,0,0,0.1) !important;
+  color: #636e72;
+}
+
+.custom-radio input[type='radio']:checked + label {
+  background: var(--primary-accent) !important;
+  color: white !important;
+  border-color: var(--primary-accent) !important;
+  box-shadow: 0 4px 15px -3px rgba(13, 202, 240, 0.3);
+}
+

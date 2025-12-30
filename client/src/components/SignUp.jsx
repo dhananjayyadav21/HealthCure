@@ -57,17 +57,19 @@ const SignUp = () => {
 
    return (
       <>
-         <div className="container d-flex justify-content-center align-items-center p-3 SignUp-Container py-3 py-md-5">
-            <div className="form-containe col-12 col-sm-10 col-lg-5 shadow rounded-4 py-4 px-3 p-md-5">
+         <div className="container d-flex justify-content-center align-items-center p-3 SignUp-Container py-5" style={{ minHeight: '100vh' }}>
+            <div className="col-12 col-sm-10 col-lg-7 glass-effect premium-card p-4 p-md-5 border-0">
                {/* <!-- SignUp Header --> */}
-               <div className='mb-4'>
-                  <i className="fa-solid fa-2x fa-user my-3"></i>
-                  <h4 className="text-start mb-1 fw-bold">SignUp</h4>
-                  <p className='text-secondary'>to continue to HealthCure</p>
+               <div className='mb-4 text-center'>
+                  <div className='d-inline-flex p-3 rounded-circle bg-primary bg-opacity-10 mb-3'>
+                     <i className="fa-solid fa-2x fa-user-plus text-primary"></i>
+                  </div>
+                  <h3 className="fw-bold mb-1" style={{ color: '#2d3436' }}>Create Account</h3>
+                  <p className='text-secondary small'>Join the HealthCure medical community</p>
                   {
-                     errors.length !== 0 && <div>
+                     errors.length !== 0 && <div className='mt-2'>
                         {errors.map((e) => <small className='d-block text-danger py-1'>
-                           {e.msg}
+                           <i className="fa-solid fa-circle-exclamation me-1"></i> {e.msg}
                         </small>)}
                      </div>
                   }
@@ -76,41 +78,36 @@ const SignUp = () => {
                {/* <!-- SignUp Form --> */}
                <form onSubmit={handleSubmit} id='signupform'>
                   <div className='row'>
-                     <div className='col-12 col-md-6'>
-                        <div className="mb-3">
-                           <small><label htmlFor="name" className="form-label">Username</label></small>
-                           <input type="text" className="form-control" name='name' id="name" placeholder="Enter your name" />
-                        </div>
+                     <div className='col-12 col-md-6 mb-4'>
+                        <label htmlFor="name" className="form-label small fw-bold text-secondary">Username</label>
+                        <input type="text" className="form-control py-2 ps-3 rounded-3 border-0 bg-light" name='name' id="name" placeholder="John Doe" required style={{ fontSize: '0.9rem' }} />
                      </div>
-                     <div className='col-12 col-md-6'>
-                        <div className="mb-3">
-                           <small><label htmlFor="email" className="form-label">Email</label></small>
-                           <input type="email" className="form-control" name='email' id="email" placeholder="Enter your email" />
-                           <small className='error text-danger'></small>
-                        </div>
+                     <div className='col-12 col-md-6 mb-4'>
+                        <label htmlFor="email" className="form-label small fw-bold text-secondary">Email Address</label>
+                        <input type="email" className="form-control py-2 ps-3 rounded-3 border-0 bg-light" name='email' id="email" placeholder="john@example.com" required style={{ fontSize: '0.9rem' }} />
                      </div>
-                     <div className='col-12 col-md-6'>
-                        <div className="mb-3">
-                           <small><label htmlFor="password" className="form-label">Password</label></small>
-                           <input type="password" className="form-control" name='password' id="password" placeholder="Enter your password" />
-                        </div>
+                     <div className='col-12 col-md-6 mb-4'>
+                        <label htmlFor="password" className="form-label small fw-bold text-secondary">Password</label>
+                        <input type="password" className="form-control py-2 ps-3 rounded-3 border-0 bg-light" name='password' id="password" placeholder="••••••••" required style={{ fontSize: '0.9rem' }} />
                      </div>
-                     <div className='col-12 col-md-6'>
-                        <div className="mb-3">
-                           <small><label htmlFor="confirmPassword" className="form-label">Confirm Password</label></small>
-                           <input type="password" className="form-control" name='confirmpassword' id="confirmPassword" placeholder="Re-enter your password" />
-                        </div>
+                     <div className='col-12 col-md-6 mb-4'>
+                        <label htmlFor="confirmPassword" className="form-label small fw-bold text-secondary">Confirm Password</label>
+                        <input type="password" className="form-control py-2 ps-3 rounded-3 border-0 bg-light" name='confirmpassword' id="confirmPassword" placeholder="••••••••" required style={{ fontSize: '0.9rem' }} />
                      </div>
-                     <div className='col-12 col-md-12'>
-                        <div className="mb-3">
-                           <small><label htmlFor="email" className="form-label">Role</label></small>
-                           <div className="form-check form-switch">
-                              <input onChange={handleRadioChange} name='role' value="patient" className="form-check-input" type="radio" id="Patient" />
-                              <label className="form-check-label" for="Patient">Patient</label>
+                     <div className='col-12 mb-4'>
+                        <label className="form-label small fw-bold text-secondary d-block mb-3">Join as</label>
+                        <div className="d-flex gap-4">
+                           <div className="form-check custom-radio">
+                              <input onChange={handleRadioChange} name='role' value="patient" className="form-check-input" type="radio" id="Patient" required />
+                              <label className="form-check-label fw-bold py-2 px-4 rounded-3 border cursor-pointer transition-smooth" htmlFor="Patient" style={{ fontSize: '0.9rem' }}>
+                                 Patient
+                              </label>
                            </div>
-                           <div className="form-check form-switch">
-                              <input onChange={handleRadioChange} name='role' value="doctor" className="form-check-input" type="radio" id="Doctor" />
-                              <label className="form-check-label" for="Doctor">Doctor</label>
+                           <div className="form-check custom-radio">
+                              <input onChange={handleRadioChange} name='role' value="doctor" className="form-check-input" type="radio" id="Doctor" required />
+                              <label className="form-check-label fw-bold py-2 px-4 rounded-3 border cursor-pointer transition-smooth" htmlFor="Doctor" style={{ fontSize: '0.9rem' }}>
+                                 Doctor
+                              </label>
                            </div>
                         </div>
                      </div>
@@ -204,8 +201,12 @@ const SignUp = () => {
                         </div>
                      }
                   </div>
-                  <button type="submit" className="btn btn-info text-white fw-bolder w-100">Register</button>
-                  <small className='d-flex p-1'>Already have an account?<Link to="/signin" className='nav-link fw-normal text-primary'>Sign in</Link></small>
+                  <button type="submit" className="btn w-100 py-3 rounded-4 text-white fw-bold shadow-sm transition-smooth border-0 mt-3" style={{ background: 'var(--primary-gradient)' }}>
+                     Complete Registration
+                  </button>
+                  <div className='text-center mt-3'>
+                     <small className='text-secondary'>Already have an account? <Link to="/signin" className='text-primary fw-bold text-decoration-none'>Sign in</Link></small>
+                  </div>
                </form>
             </div>
          </div>

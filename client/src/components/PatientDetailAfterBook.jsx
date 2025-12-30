@@ -23,24 +23,34 @@ const PatientDetailAfterBook = () => {
                         {/* DoctorDetail-left-container  */}
 
                         {UserRole === 'patient' ?
-                            <section className='DoctorDetail-Banner'>
-                                <div className='px-2 pt-2 border rounded-4 bg-light position-relative'>
-                                    <OptimizedImage src={`/assets/img/Doctor_6.png`} alt="Doctor" />
-                                    <div className='position-absolute text-xenter'>
-                                        <h5 className='text-capitalize'>Dr. {AppointmentsDetails?.doctorname}</h5>
-                                        <p className='text-secondary text-capitalize'>Sr. {AppointmentsDetails?.doctorspecialist}</p>
+                            <section className='DoctorDetail-Banner mb-4'>
+                                <div className='p-3 premium-card border-0 position-relative overflow-hidden' style={{ background: 'var(--secondary-gradient)', minHeight: '180px' }}>
+                                    <OptimizedImage
+                                        src={`/assets/img/Doctor_${(AppointmentsDetails?.doctorImageIndex ?? 5) + 1}.png`}
+                                        style={{ height: '180px', borderRadius: '1rem' }}
+                                        imageStyle={{ height: '180px', borderRadius: '1rem' }}
+                                        alt="Doctor"
+                                    />
+                                    <div className='position-absolute text-center glass-effect p-2 rounded-3 shadow-sm' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '200px' }}>
+                                        <h5 className='m-0 fw-bold' style={{ color: '#2d3436' }}>Dr. {AppointmentsDetails?.doctorname}</h5>
+                                        <p className='text-primary fw-bold text-uppercase m-0' style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>{AppointmentsDetails?.doctorspecialist}</p>
                                     </div>
                                 </div>
                             </section> : ""
                         }
 
                         {UserRole === 'doctor' ?
-                            <section className='DoctorDetail-Banner'>
-                                <div className='px-2 pt-2 border rounded-4 bg-light position-relative'>
-                                    <OptimizedImage src={`/assets/img/Patient.png`} alt="Doctor" />
-                                    <div className='position-absolute text-start'>
-                                        <h5 className='text-capitalize'>{AppointmentsDetails?.patientname}</h5>
-                                        <p className='text-secondary text-capitalize'>{(AppointmentsDetails?.problem)}</p>
+                            <section className='DoctorDetail-Banner mb-4'>
+                                <div className='p-3 premium-card border-0 position-relative overflow-hidden' style={{ background: 'var(--secondary-gradient)', minHeight: '180px' }}>
+                                    <OptimizedImage
+                                        src={`/assets/img/Patient.png`}
+                                        style={{ height: '180px', borderRadius: '1rem' }}
+                                        imageStyle={{ height: '180px', borderRadius: '1rem' }}
+                                        alt="Patient"
+                                    />
+                                    <div className='position-absolute text-center glass-effect p-2 rounded-3 shadow-sm' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '200px' }}>
+                                        <h5 className='m-0 fw-bold' style={{ color: '#2d3436' }}>{AppointmentsDetails?.patientname}</h5>
+                                        <p className='text-primary fw-bold text-uppercase m-0' style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>{AppointmentsDetails?.problem}</p>
                                     </div>
                                 </div>
                             </section> : ""
