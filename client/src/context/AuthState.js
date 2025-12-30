@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthContext from "./AuthContext";
-import HttpService from "../Service/httpservice";
+import HttpService from "../service/httpservice";
 import * as GlobalUrls from '../GlobalURL'
 
 const AuthState = (props) => {
@@ -77,7 +77,7 @@ const AuthState = (props) => {
   };
 
 
-  
+
   //============================================= GetAvialbeDateForDoctor get ===============================================
   const GetAvialbeDateForDoctor = async (id) => {
     try {
